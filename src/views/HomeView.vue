@@ -149,7 +149,7 @@ const isDialogVisible = ref(false)
     <template #item="slotProps">
       <div class="p-4 CARD m-auto" style="width: fit-content;">
         <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-          <img :src="`../assets/${slotProps.data.productImage}`" class="productt" alt="">
+          <img :src="`src/assets/${slotProps.data.productImage}`" class="productt" alt="">
           <span class="material-symbols-outlined appearOnHover">
             visibility
           </span>
