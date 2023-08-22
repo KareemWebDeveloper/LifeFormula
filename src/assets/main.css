@@ -1,0 +1,46 @@
+/* @import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities; */
+@import url('https://fonts.googleapis.com/css2?family=Artifika&family=Secular+One&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Artifika', serif;
+  font-family: 'Secular One', sans-serif;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f153;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.605);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.bluePrimary {
+  color: #147ff2 !important;
+}
+.darkGrey {
+  color: #30364be2 !important;
+}
+.greenLogoColor{
+  color: #00a650;
+}
+.border-radius {
+  border-radius: 8px !important;
+}
+.logoSecondaryColor{
+  color: #00405a !important;
+}
