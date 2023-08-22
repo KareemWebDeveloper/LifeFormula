@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import DataView from 'primevue/dataview';
 import { ref , onMounted , watch } from 'vue';
 import Skeleton from 'primevue/skeleton';
@@ -22,7 +22,7 @@ const loading = ref(true)
 const Slogan = ref(false)
 const layout = ref('grid')
 const SearchValue = ref()
-let productTmp : any[]= []
+let productTmp = []
 
 const categories = ref([
     { name: 'Wellness Supplements' },
@@ -154,7 +154,7 @@ watch(selectedCategories, () => {
       }
       else{
         let filteredCategories = productTmp
-        selectedCategories.value.forEach((element : any) => {
+        selectedCategories.value.forEach((element) => {
             filteredCategories = filteredCategories.filter(product =>
           product.CategoryName.toLowerCase().includes(element.name.toLowerCase())
         );

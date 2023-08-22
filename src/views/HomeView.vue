@@ -108,7 +108,7 @@ const isDialogVisible = ref(false)
          class="p-3 text-center m-auto bg-white bluePrimary no-underline px-4 shopNow my-5 cursor-pointer">SHOP NOW</h4>
       </div>
       <div class="carousel-item" style="position: relative;">
-        <img src="../assets/hth 8.jpg" class="d-block w-100" alt="...">
+        <img src="../assets/hth8.jpg" class="d-block w-100" alt="...">
         <div class="kimo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
           <h3 class="bluePrimary sales">Sales Up to 50% on our vitamins</h3>
           <h4 class="p-3 text-center m-auto bg-white bluePrimary no-underline px-4 shopNow my-5 cursor-pointer">SHOP NOW</h4>
@@ -211,7 +211,7 @@ const isDialogVisible = ref(false)
 
 <div class="relative">
   <img src="../assets/advertisement.png" class="w-full" alt="">
-  <img src="../assets/Life fourmla Logo versions.png" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);" class="w-2" alt="">
+  <img src="../assets/LifeFourmlaLogo.png" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);" class="w-2" alt="">
   <div style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%);" class="sm:w-10 md:w-9">
     <h3 class="text-center cursor-pointer aboutUs" style="color: #00405a;">ABOUT US</h3>
     <p class="text-white text-center hidden w-8 text-lg m-auto lg:flex">Ready to take the first step towards a healthier you? Explore our wide range of products and embark on your wellness journey.</p>
@@ -279,7 +279,7 @@ const isDialogVisible = ref(false)
   <!-- FAQ CONTENT -->
   <div class="w-full flex lg:flex-row sm:flex-column md:flex-column justify-content-center px-3 align-items-center FAQ">
   <div style="width: 45%;" class="flex align-items-center md:w-7 sm:w-8 faqImg">
-    <img src="../assets/vitaminsFaq (2).png" class="w-full" alt="faq">
+    <img src="../assets/vitaminsFaq.png" class="w-full" alt="faq">
   </div>
   <div style="width: 45%;" class="sm:w-full md:w-full accordion">
     <Accordion :activeIndex="0">

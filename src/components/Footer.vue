@@ -24,7 +24,7 @@
         </div> 
         <div class="newsletter my-3">
             <!-- <h4>Registration</h4> -->
-            <img src="../assets/Life fourmla Logo versions.png" class="w-6 sm:m-auto md:m-auto" alt="">
+            <img src="../assets/LifeFourmlaLogo.png" class="w-6 sm:m-auto md:m-auto" alt="">
             <!-- <div class="icons my-2">
                 <i class="fa-brands fa-facebook icc mx-1"></i>
                 <i class="fa-brands fa-twitter icc mx-1"></i>

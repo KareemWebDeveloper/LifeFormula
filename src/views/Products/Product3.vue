@@ -141,7 +141,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 <p>For adults, take one (1) capsule daily, preferably with a meal.</p>
             </div>
             <div class="w-10 text-center flex justify-content-center sm:m-auto md:m-auto lg:m-0 mgAuto" v-if="OptionsValue=='INGREDIENTS'">
-                <img src="../../assets/greenCoffee ingredients.png" alt="">
+                <img src="../../assets/greenCoffeeIngredients.png" alt="">
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@ import Fieldset from 'primevue/fieldset';
               <span class="logoSecondaryColor mx-3 text-2xl pt-2">ABOUT US</span>
           </div>
       </template>
-      <img src="../assets/Life fourmla Logo versions.png" class="w-5 m-auto flex justify-content-center pr-3 mb-2" alt="">
+      <img src="../assets/LifeFourmlaLogo.png" class="w-5 m-auto flex justify-content-center pr-3 mb-2" alt="">
         <p class="text-center w-12 m-auto">
           Welcome to <span class="greenLogoColor text-xl">Life Formula</span>, where commitment to wellness comes first. Our journey began with a passion for making a positive impact
            on people's lives through premium vitamins and supplements. Drawing upon our extensive expertise in the realm of importation, distribution, and personalized customer consultation within the vitamins and nutritional supplements sector, we have cultivated a resolute belief that everyone deserves access to products that promote a healthier and happier life.
@@ -39,7 +39,7 @@ import Fieldset from 'primevue/fieldset';
             <span class="logoSecondaryColor mx-3 text-2xl pt-2">ABOUT US</span>
         </div>
     </template>
-    <img src="../assets/Life fourmla Logo versions.png" class="w-5 m-auto flex justify-content-center pr-3 mb-2" alt="">
+    <img src="../assets/LifeFourmlaLogo.png" class="w-5 m-auto flex justify-content-center pr-3 mb-2" alt="">
       <p class="text-center w-12 m-auto">
         Welcome to <span class="greenLogoColor text-xl">Life Formula</span>, where commitment to wellness comes first. Our journey began with a passion for making a positive impact
          on people's lives through premium vitamins and supplements. Drawing upon our extensive expertise in the realm of importation, distribution, and personalized customer consultation within the vitamins and nutritional supplements sector, we have cultivated a resolute belief that everyone deserves access to products that promote a healthier and happier life.
@@ -56,7 +56,7 @@ import Fieldset from 'primevue/fieldset';
             <span class="logoSecondaryColor mx-3 text-2xl pt-2">ABOUT US</span>
         </div>
     </template>
-    <!-- <img src="../assets/Life fourmla Logo versions.png" class="w-3 m-auto flex justify-content-center pr-3 mb-2" alt=""> -->
+    <img src="../assets/LifeFourmlaLogo.png" class="w-3 m-auto flex justify-content-center pr-3 mb-2" alt="">
       <p class="text-center w-12 m-auto">
         Welcome to <span class="greenLogoColor text-xl">Life Formula</span>, where commitment to wellness comes first. Our journey began with a passion for making a positive impact
          on people's lives through premium vitamins and supplements. Drawing upon our extensive expertise in the realm of importation, distribution, and personalized customer consultation within the vitamins and nutritional supplements sector, we have cultivated a resolute belief that everyone deserves access to products that promote a healthier and happier life.
