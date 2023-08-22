@@ -32,7 +32,7 @@ const categories = ref([
 let Products = ref([
   {
     productId : 1 ,
-    productImage : "1.jpg",
+    productImage : "https://github.com/KareemWebDeveloper/LifeFormulaImages/blob/main/Images/D3-50000.jpg?raw=true",
     productName : "D3 50,000 IU",
     productDescription : "Vitamin D3 is a nutrient that is essential for many bodily functions, including bone health, immune function, and muscle function. It is also important for the absorption of calcium and phosphorus",
     CategoryName : "Wellness Supplements",
@@ -43,7 +43,7 @@ let Products = ref([
   },
   {
     productId : 3 ,
-    productImage : "3.jpg",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
     productName : "Raspberry ketone",
     productDescription : "Raspberry ketones are a natural compound found in raspberries. They have been shown to have a number of health benefits",
     CategoryName : "Wellness Supplements",
@@ -54,7 +54,7 @@ let Products = ref([
   },
   {
     productId : 2 ,
-    productImage : "2.jpg",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
     productDescription : "Green coffee bean extract is also a good source of other antioxidants, such as quercetin and kaempferol. These antioxidants can help protect your cells from damage and improve your overall health",
     CategoryName : "Wellness Supplements",
@@ -65,7 +65,7 @@ let Products = ref([
   },
   {
     productId : 4,
-    productImage : "4.jpg",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
     productName : "D3 10,000 IU",
     productDescription : "Vitamin D3 is a nutrient that is essential for many bodily functions, including bone health, immune function, and muscle function. It is also important for the absorption of calcium and phosphorus.",
     CategoryName : "Wellness Supplements",
@@ -76,7 +76,7 @@ let Products = ref([
   },
   {
     productId : 5,
-    productImage : "5.jpg",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/WFS-PLUS.jpg",
     productName : "WFS PLUS",
     productDescription : "Life Formula's WFS MAX is a natural supplement that can help women with fertility problems. It contains ingredients that improve insulin sensitivity and ovulation, two important factors for conception",
     CategoryName : "Fertility Supplements",
@@ -87,18 +87,7 @@ let Products = ref([
   },
   {
     productId : 6,
-    productImage : "6.jpg",
-    productName : "MFS",
-    productDescription : "Life Formula's MFS is a natural supplement that can help men with fertility problems. It contains ingredients that support sperm count, motility, and morphology.",
-    CategoryName : "Fertility Supplements",
-    Price : '680.00EGP',
-    OldPrice : '799.00EGP', 
-    Sale : "-17%",
-    Rating : 0
-  },
-  {
-    productId : 6,
-    productImage : "6.jpg",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     productDescription : "Life Formula's MFS is a natural supplement that can help men with fertility problems. It contains ingredients that support sperm count, motility, and morphology.",
     CategoryName : "Fertility Supplements",
@@ -108,6 +97,7 @@ let Products = ref([
     Rating : 0
   },
 ])
+
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
@@ -235,7 +225,7 @@ watch(selectedCategories, () => {
                 <div class="cardss fadein flex flex-wrap justify-content-center m-auto responsivee" >
                     <div class="p-4 CARD m-2" style="width: fit-content;">
                         <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-                            <img :src="`src/assets/${slotProps.data.productImage}`" class="productt" alt="">
+                            <img :src="slotProps.data.productImage" class="productt" alt="">
                             <span class="material-symbols-outlined appearOnHover">
                                 visibility
                             </span>
@@ -256,7 +246,7 @@ watch(selectedCategories, () => {
                     <div class="flex flex-column my-3">
                         <div class="flex sm:flex-column md:flex-column lg:flex-row FilterResponsive w-full p-2">
                             <div class="ProductImgList mr-5" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-                                <img :src="`src/assets/${slotProps.data.productImage}`" class="productList" alt="">
+                                <img :src="slotProps.data.productImage" class="productList" alt="">
                                 <span class="material-symbols-outlined appearOnHover">
                                     visibility
                                 </span>

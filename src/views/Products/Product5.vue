@@ -11,38 +11,43 @@ import ContactIcons from '@/components/ContactIcons.vue';
 
 const RatingValue = ref(5)
 const QuantityValue = ref(1)
+
 const Featured = [
   {
-    productImage : "1.jpg",
-    productName : "D3 50,000 IU",
-    CategoryName : "Vitamins",
-    Price : '620.00',
-    OldPrice : '699.00', 
+    productId : "3",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
+    productName : "Raspberry ketone",
+    CategoryName : "Wellness Supplements",
+    Price : '19$',
+    OldPrice : '25$', 
+    Sale : "-21%",
+  },
+  {
+    productId : "6",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
+    productName : "MFS",
+    CategoryName : "Fertility Supplements",
+    Price : '32.40$',
+    OldPrice : '35.00$', 
     Sale : "-10%",
   },
   {
-    productImage : "2.jpg",
+    productId : "2",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
-    CategoryName : "Category Name",
-    Price : '550.00EGP',
-    OldPrice : '639.00', 
+    CategoryName : "Wellness Supplements",
+    Price : '18$',
+    OldPrice : '20$', 
     Sale : "-14%",
   },
   {
-    productImage : "3.jpg",
-    productName : "Raspberry ketone",
-    CategoryName : "Vitamins",
-    Price : '455.00EGP',
-    OldPrice : '699.00', 
-    Sale : "-19%",
-  },
-  {
-    productImage : "1.jpg",
-    productName : "D3 100,000 IU",
-    CategoryName : "Vitamins",
-    Price : '680.00',
-    OldPrice : '799.00', 
-    Sale : "-17%",
+    productId : "4",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
+    productName : "D3 10,000 IU",
+    CategoryName : "Wellness Supplements",
+    Price : '23.90$',
+    OldPrice : '25.90$', 
+    Sale : "-14%",
   },
 ]
 const responsiveOptions = ref([
@@ -93,7 +98,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
     <!-- PRODUCT DETAILS -->
     <div class="scalein animation-duration-2000 animation-iteration-1 p-2 lg:p-5 flex FlexColumnMob lg:flex-row md:flex-column sm:flex-column">
         <div class="lg:mx-5 sm:m-auto md:m-auto lg:m-1 MargAutoMob">
-            <Image src="../../../src/assets/5.jpg" alt="Image" class="productDetailsImage" width="500" preview />
+            <Image src="https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/WFS-PLUS.jpg" alt="Image" class="productDetailsImage" width="500" preview />
         </div>
         <div class="hidden lg:flex">
             <Divider layout="vertical" />

@@ -18,40 +18,40 @@ function scrollToTop() {
 
 const Featured = [
   {
-    productId : "1",
-    productImage : "1.jpg",
-    productName : "D3 50,000 IU",
+    productId : "3",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
+    productName : "Raspberry ketone",
     CategoryName : "Wellness Supplements",
-    Price : '620.00',
-    OldPrice : '699.00', 
+    Price : '19$',
+    OldPrice : '25$', 
+    Sale : "-21%",
+  },
+  {
+    productId : "6",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
+    productName : "MFS",
+    CategoryName : "Fertility Supplements",
+    Price : '32.40$',
+    OldPrice : '35.00$', 
     Sale : "-10%",
   },
   {
     productId : "2",
-    productImage : "2.jpg",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
     CategoryName : "Wellness Supplements",
-    Price : '550.00EGP',
-    OldPrice : '639.00', 
+    Price : '18$',
+    OldPrice : '20$', 
     Sale : "-14%",
   },
   {
-    productId : "3",
-    productImage : "3.jpg",
-    productName : "Raspberry ketone",
+    productId : "4",
+    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
+    productName : "D3 10,000 IU",
     CategoryName : "Wellness Supplements",
-    Price : '455.00EGP',
-    OldPrice : '699.00', 
-    Sale : "-19%",
-  },
-  {
-    productId : "1",
-    productImage : "1.jpg",
-    productName : "D3 100,000 IU",
-    CategoryName : "Wellness Supplements",
-    Price : '680.00',
-    OldPrice : '799.00', 
-    Sale : "-17%",
+    Price : '23.90$',
+    OldPrice : '25.90$', 
+    Sale : "-14%",
   },
 ]
 
@@ -141,6 +141,7 @@ const isDialogVisible = ref(false)
       </div>
     </div>
   </div>
+
   <!-- best selling heading end-->
 
   <!-- best selling card-->
@@ -149,7 +150,7 @@ const isDialogVisible = ref(false)
     <template #item="slotProps">
       <div class="p-4 CARD m-auto" style="width: fit-content;">
         <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-          <img :src="`src/assets/${slotProps.data.productImage}`" class="productt" alt="">
+          <img :src="slotProps.data.productImage" class="productt" alt="">
           <span class="material-symbols-outlined appearOnHover">
             visibility
           </span>
