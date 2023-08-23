@@ -8,6 +8,14 @@ import Carousel from 'primevue/carousel';
 import {ref} from 'vue'
 import Breadcrumb from 'primevue/breadcrumb';
 import ContactIcons from '@/components/ContactIcons.vue';
+import { useRouter } from 'vue-router';
+const { push } = useRouter();
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
 
 const RatingValue = ref(4)
 const QuantityValue = ref(1)
@@ -173,7 +181,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <Carousel :value="Featured" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
               <template #item="slotProps">
                 <div class="p-4 CARD m-auto" style="width: fit-content;">
-                  <div class="ProductImage">
+                  <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
                     <img :src="slotProps.data.productImage" class="productt" alt="">
                     <span class="material-symbols-outlined appearOnHover">
                       visibility

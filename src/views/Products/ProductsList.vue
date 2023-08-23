@@ -243,7 +243,7 @@ watch(selectedCategories, () => {
                     </div>
                 </template>
                 <template #list="slotProps">
-                    <div class="flex flex-column my-3">
+                    <div class="flex flex-column my-3 w-full">
                         <div class="flex sm:flex-column md:flex-column lg:flex-row FilterResponsive w-full p-2">
                             <div class="ProductImgList mr-5" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
                                 <img :src="slotProps.data.productImage" class="productList" alt="">
@@ -252,7 +252,7 @@ watch(selectedCategories, () => {
                                 </span>
                                 <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
                             </div>
-                            <div class="flex justify-content-between">
+                            <div class="flex justify-content-between w-full">
                                 <div class="flex flex-column">
                                     <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
                                     <h3 class=" my-2">{{slotProps.data.productName}}</h3>    
