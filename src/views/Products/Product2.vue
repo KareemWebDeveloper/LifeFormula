@@ -17,38 +17,35 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
     productName : "Raspberry ketone",
     CategoryName : "Wellness Supplements",
-    Price : '19$',
-    OldPrice : '25$', 
-    Sale : "-21%",
+    Price : '7.20$',
+    OldPrice : '13.00$', 
+    Sale : "-35%",
   },
   {
     productId : "6",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '32.40$',
-    OldPrice : '35.00$', 
-    Sale : "-10%",
+    Price : '36.50$',
   },
   {
     productId : "2",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
     CategoryName : "Wellness Supplements",
-    Price : '18$',
-    OldPrice : '20$', 
-    Sale : "-14%",
+    Price : '13.90$',
+    OldPrice : '18.00$', 
+    Sale : "-20%",
   },
   {
     productId : "4",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
     productName : "D3 10,000 IU",
     CategoryName : "Wellness Supplements",
-    Price : '23.90$',
-    OldPrice : '25.90$', 
-    Sale : "-14%",
+    Price : '8.60$',
   },
 ]
+
 const responsiveOptions = ref([
     {
         breakpoint: '1050px',
@@ -109,7 +106,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <h2 class="logoSecondaryColor my-2" style="letter-spacing: 2px;">Green Coffee Bean Extract 800 mg</h2>
             <p class="logoSecondaryColor my-2" style="letter-spacing: 2px;">Wellness Supplements</p>
             <div class="flex align-items-center md:justify-content-center sm:justify-content-center lg:justify-content-start justifyCenterMob">
-                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">18.99$</p>
+                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">13.90$</p>
                 <Rating v-model="RatingValue" readonly />
             </div>
             <p class="w-10 my-3 darkGrey sm:m-auto md:m-auto lg:m-0 MargAutoMob textJustifyMob">Green coffee bean extract is a natural supplement that has been shown to promote
@@ -135,8 +132,8 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 <p>One tablet daily or as directed by a healthcare professional. This product should be used with a
                     sensible diet and exercise program</p>
             </div>
-            <div class="w-10 text-center flex justify-content-center sm:m-auto md:m-auto lg:m-0 mgAuto" v-if="OptionsValue=='INGREDIENTS'">
-                <img src="../../assets/greenCoffeeIngredients.png" alt="">
+            <div class="w-7 lg:w-10 text-center flex justify-content-center sm:m-auto md:m-auto lg:m-0 mgAuto" v-if="OptionsValue=='INGREDIENTS'">
+                <img src="../../assets/greenCoffeeIngredients.png" class="width80" alt="">
             </div>
         </div>
     </div>
@@ -183,10 +180,6 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <h2 class="productIconsFont">Blood Sugar Regulation</h2>
         </div>
 
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
         <div class="text-center mx-3 my-3 lg:mb-5">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 sports_gymnastics
@@ -214,16 +207,16 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
               <template #item="slotProps">
                 <div class="p-4 CARD m-auto" style="width: fit-content;">
                   <div class="ProductImage">
-                    <img :src="`../../../src/assets/${slotProps.data.productImage}`" class="productt" alt="">
+                    <img :src="slotProps.data.productImage" class="productt" alt="">
                     <span class="material-symbols-outlined appearOnHover">
                       visibility
                     </span>
-                    <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                    <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3" v-if="slotProps.data.Sale"> {{ slotProps.data.Sale }}</h4>
                   </div>
                   <div class="px-2">
                       <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
                       <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.OldPrice">{{slotProps.data.OldPrice}}</span></p>
                       <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
                     </span> </h4>
@@ -262,6 +255,47 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             </span>
             <h2 class="productIconsFont">Questions?</h2>
             <p class="darkGrey w-full text-center m-auto">Email us at hello@lifeFormula.com and we’ll be happy to help you.</p>
+        </div>
+    </div>
+
+    <div class="Blog w-12 lg:w-9 m-auto padding5 sm:p-2 md:p-3 lg:p-5">
+        <div class="my-2">
+            <h2 class="text-center">The Buzz About Coffee Bean Supplements</h2>
+            <p class="m-auto text-center p-2 productIconsFont">In the fast-paced world we live in, finding ways to boost our energy and focus is a
+                 top priority. Amidst the hustle and bustle, coffee has always been a trusted companion. But what if we told you that the benefits 
+                 of coffee could extend beyond your morning cup? Enter coffee bean supplements – a trending addition to the world of vitamins and 
+                 supplements. Unveiling the Power of Coffee Beans 
+            </p>
+            <p class="m-auto text-center p-2 py-3 productIconsFont">
+                Coffee beans are more than just the beans that brew your morning pick-me-up. They are rich in a variety of compounds,
+                including antioxidants, chlorogenic acid, and caffeine. These elements contribute to the potential health benefits 
+                associated with coffee consumption.
+            </p>
+        </div>
+        <hr>
+        <div class="my-4">
+            <h2 class="text-center my-2">Why Choose Coffee Bean Supplements?</h2>
+            <p class="m-auto text-justify p-3 productIconsFont"><span class="font-bold text-md">Antioxidant Boost :</span> Antioxidants play a crucial role in combating free radicals and 
+                oxidative stress in the body. Coffee beans are loaded with these powerful antioxidants, which can help protect your cells from 
+                damage and contribute to overall well-being.
+            </p>
+            <p class="m-auto text-justify p-3 productIconsFont"><span class="font-bold text-md">Metabolism Support :</span> Some studies suggest that the 
+                chlorogenic acid found in coffee beans may have a positive effect on metabolism and weight management. This can be particularly 
+                appealing to those looking to support their fitness goals.
+            </p>
+            <p class="m-auto text-justify p-3 productIconsFont"><span class="font-bold text-md">Enhanced Cognitive Function :</span> Coffee's caffeine content is known to provide
+                 a temporary energy boost and improve mental alertness. Coffee bean supplements offer a more controlled and sustained release of 
+                 caffeine, potentially enhancing cognitive function and focus throughout the day.
+            </p>
+            <p class="m-auto text-justify p-3 productIconsFont"><span class="font-bold text-md">Heart Health :</span> CResearch suggests that coffee consumption 
+                may be associated with a reduced risk of certain cardiovascular conditions. The compounds found in coffee beans might contribute to maintaining a healthy heart.
+            </p>
+            <hr>
+            <p class="m-auto my-3 text-center p-2 productIconsFont">Coffee bean supplements offer a convenient and controlled way to tap into 
+                the potential health benefits of coffee beans beyond your morning cup of joe. From antioxidant support to enhanced cognitive
+                function, these supplements are garnering attention for good reason. As the world of wellness evolves, coffee bean supplements
+                 stand as a testament to our ongoing exploration of nature's treasures in the pursuit of a healthier, more vibrant life.
+            </p>
         </div>
     </div>
     </template>
@@ -316,6 +350,10 @@ font-family: 'Bricolage Grotesque', sans-serif !important;
 }    
 }
 @media screen and (max-width : 575px){
+    .width80{
+        width: 100% !important;
+        margin: auto !important;
+    }
     .FlexColumnMob{
         flex-direction: column !important;
         padding: 1vh !important;

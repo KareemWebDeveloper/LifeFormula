@@ -6,7 +6,7 @@ import Carousel from 'primevue/carousel';
 import ContactIcons from '@/components/ContactIcons.vue';
 import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
-import {ref} from 'vue'
+import {ref , onMounted} from 'vue'
 import { useRouter } from 'vue-router';
 const { push } = useRouter();
 function scrollToTop() {
@@ -22,36 +22,32 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
     productName : "Raspberry ketone",
     CategoryName : "Wellness Supplements",
-    Price : '19$',
-    OldPrice : '25$', 
-    Sale : "-21%",
+    Price : '7.20$',
+    OldPrice : '13.00$', 
+    Sale : "-35%",
   },
   {
     productId : "6",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '32.40$',
-    OldPrice : '35.00$', 
-    Sale : "-10%",
+    Price : '36.50$',
   },
   {
     productId : "2",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
     CategoryName : "Wellness Supplements",
-    Price : '18$',
-    OldPrice : '20$', 
-    Sale : "-14%",
+    Price : '13.90$',
+    OldPrice : '18.00$', 
+    Sale : "-20%",
   },
   {
     productId : "4",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
     productName : "D3 10,000 IU",
     CategoryName : "Wellness Supplements",
-    Price : '23.90$',
-    OldPrice : '25.90$', 
-    Sale : "-14%",
+    Price : '8.60$',
   },
 ]
 
@@ -74,6 +70,16 @@ const responsiveOptions = ref([
 ]);
 
 const isDialogVisible = ref(false)
+
+onMounted(() => {
+      const anchor = window.location.hash;
+      if (anchor) {
+        const element = document.querySelector(anchor);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+});
 </script>
 
 <template>
@@ -98,20 +104,17 @@ const isDialogVisible = ref(false)
     <div class="carousel-inner">
       <div class="carousel-item active" style="position: relative;">
         <img src="../assets/steptodown.com664231.jpg" class="d-block w-100" alt="...">
-        <div class="kimo" style="position: absolute; top: 45%; left: 20%; transform: translate(-50%, -50%);">
-          <!-- <h1 class="bluePrimary sales">Sales Up to 50% on our vitamins</h1> -->
-
-          <h3 class="bluePrimary sales">Sales Up to 50% on our vitamins</h3>
-          <!-- <router-link to="" class="p-3 text-center m-auto bg-white bluePrimary no-underline px-4 shopNow">SHOP NOW</router-link> -->
+        <div class="kimo w-6 text-center ResponsiveCarouselPg" style="position: absolute; top: 36%; left: 22%; transform: translate(-50%, -50%);">
+          <img src="../assets/Life fourmla Logo versions (4).png" class="w-1 noneResp" alt="">
+          <p class="mt-2 text-lg lg:text-3xl kanitFont font-bold logoSecondaryColor">Experience the Life Formula Difference</p>
         </div>
-        <h4 style="position: absolute; top: 50%; left: 20%; transform: translate(-50%, -50%);"
-         class="p-3 text-center m-auto bg-white bluePrimary no-underline px-4 shopNow my-5 cursor-pointer">SHOP NOW</h4>
+        <h4 style="position: absolute; top: 42%; left: 22%; transform: translate(-50%, -50%);"
+         class="p-3 text-center ResponsiveCarouselShopNow m-auto bg-white bluePrimary no-underline px-5 shopNow my-5 cursor-pointer">SHOP NOW</h4>
       </div>
       <div class="carousel-item" style="position: relative;">
         <img src="../assets/hth8.jpg" class="d-block w-100" alt="...">
         <div class="kimo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-          <h3 class="bluePrimary sales">Sales Up to 50% on our vitamins</h3>
-          <h4 class="p-3 text-center m-auto bg-white bluePrimary no-underline px-4 shopNow my-5 cursor-pointer">SHOP NOW</h4>
+          <h4 class="p-3 text-center m-auto bg-white bluePrimary no-underline px-5 shopNow my-5 cursor-pointer">SHOP NOW</h4>
         </div>
       </div>
     </div>
@@ -154,12 +157,12 @@ const isDialogVisible = ref(false)
           <span class="material-symbols-outlined appearOnHover">
             visibility
           </span>
-          <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+          <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
         </div>
         <div class="px-2">
             <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
             <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
             <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
               shopping_cart
           </span> </h4>
@@ -172,56 +175,58 @@ const isDialogVisible = ref(false)
   
 </div>
 
-<div class="flex lg:flex-row md:flex-column sm:flex-column p-5 w-full Icons" style="background-color: #f2f4f765;">
-  <img src="../assets/Product-5-1-1.png" class="lg:m-5 pr-3 lg:w-6 IconsImg" alt="">
+<div class="flex lg:flex-row md:flex-column sm:flex-column p-4 py-5 w-full Icons" style="background-color: #f2f4f765;">
+  <img src="../assets/Product-5-1-1.png" class="lg:m-5 pr-3 lg:w-8 IconsImg" alt="">
   <div class="flex IconsColumn">
-    <div class="flex flex-column">
-      <div class="flex flex-column justify-content-center mb-5" style="width: fit-content;">
-        <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
-          neurology
-          </span>
-          <h4 class="m-auto my-2 text-center w-full">GOOD MEMORY</h4>
-          <p class="lg:w-8 w-9 m-auto text-center darkGrey">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ullam, a nihil, cum dolores</p>
-      </div>
-      <div class="flex flex-column justify-content-center">
-        <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
-          rheumatology
-          </span>
-          <h4 class="m-auto my-2 text-center w-full">Strong Bones</h4>
-          <p class="lg:w-8 w-9 m-auto text-center darkGrey">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ullam, a nihil, cum dolores</p>
-      </div>
-    </div>
     <div class="flex flex-column">
       <div class="flex flex-column justify-content-center" style="width: fit-content;">
         <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
-          ecg_heart
+          handshake
           </span>
-          <h4 class="m-auto my-2 text-center">GOOD FOR THE HEART</h4>
-          <p class="lg:w-8 w-9 m-auto text-center darkGrey">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ullam, a nihil, cum dolores</p>
+          <h4 class="m-auto my-2 text-center w-full">Transparency</h4>
+          <p class="lg:w-10 w-9 m-auto text-center darkGrey">At Life Formula, we are honest and open about the ingredients, manufacturing process, and testing procedures used to create our products.</p>
       </div>
-      <div class="flex flex-column  m-auto justify-content-center">
+      <div class="flex flex-column justify-content-center" style="width: fit-content;">
+        <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
+          psychology
+          </span>
+          <h4 class="m-auto my-2 text-center">Empowerment</h4>
+          <p class="lg:w-10 w-9 m-auto text-center darkGrey">At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake.</p>
+      </div>
+      <div class="flex flex-column justify-content-center" style="width: fit-content;">
+        <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
+          price_check
+          </span>
+          <h4 class="m-auto my-2 text-center">Affordability</h4>
+          <p class="lg:w-10 w-9 m-auto text-center darkGrey">At Life Formula, we aim to make our products accessible to the widest range of customers by offering competitive prices</p>
+      </div>
+
+    </div>
+    <div class="flex flex-column">
+      
+      <!-- <div class="flex flex-column  m-auto justify-content-center">
         <span class="material-symbols-outlined text-8xl hoverIcon greenLogoColor m-auto">
           monitor_heart
           </span>
           <h4 class="m-auto my-2 text-center">IMPROVE HEALTH</h4>
           <p class="lg:w-8 w-9 text-center m-auto darkGrey">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ullam, a nihil, cum dolores</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
 
 <div class="relative">
-  <img src="../assets/advertisement.png" class="w-full" alt="">
+  <img src="../assets/advertisement.png" class="w-full h-8rem lg:h-full" alt="">
   <img src="../assets/LifeFourmlaLogo.png" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);" class="w-2" alt="">
   <div style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%);" class="sm:w-10 md:w-9">
-    <h3 class="text-center cursor-pointer aboutUs" style="color: #00405a;">ABOUT US</h3>
+    <h3 class="text-center cursor-pointer aboutUs text-lg lg:text-2xl" style="color: #00405a; text-shadow: 0px 1px 4px white;" @click="push('/about'); scrollToTop()">ABOUT US</h3>
     <p class="text-white text-center hidden w-8 text-lg m-auto lg:flex">Ready to take the first step towards a healthier you? Explore our wide range of products and embark on your wellness journey.</p>
   </div>
 </div>
 
 
 <!-- Reviews  -->
-<div class="p-5 marginnn text-center">
+<div class="p-0 lg:p-5 marginnn text-center">
   <h3 class="text-center flex align-items-center m-auto justify-content-center darkGrey mb-5"><span class="material-symbols-outlined mx-2 text-5xl">
     reviews
     </span>OUR CUSTOMERS FEEDBACKS</h3>
@@ -235,7 +240,7 @@ const isDialogVisible = ref(false)
           <i class="fa-solid fa-star nocolor"></i>
           <i class="fa-solid fa-star nocolor"></i>
         </div>
-        <p class="WhiteHover" style="color: rgba(0, 0, 0, 0.733); cursor: default; width: 98%;">"Royal Company is one of the best and fastest companies in the field of nutritional and pharmaceutical supplements and I recommend it to all friends"</p>
+        <p class="WhiteHover" style="color: rgba(0, 0, 0, 0.733); cursor: default; width: 98%;">"Life Formula Company is one of the best and fastest companies in the field of nutritional and pharmaceutical supplements and I recommend it to all friends"</p>
         <img src="../assets/user.png" class="absolute w-2" style="top: -30px; left: 20px;"  alt="">
     </div>
     <div class="p-5 reviewCard relative">
@@ -274,11 +279,10 @@ const isDialogVisible = ref(false)
   <!-- FAQ HEADER -->
   <h3 class="flex align-items-center justify-content-center bluePrimary"><span class="material-symbols-outlined mx-1 text-6xl">contact_support</span> FREQUENTLY ASKED QUESTIONS</h3>
   <h1 class="flex justify-content-center text-center" style="letter-spacing: 4px;">You've Got Any Questions?</h1>
-  <p class="text-center w-8 m-auto my-3">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus repellat mollitia rem ea sunt quis animi vitae enim dolorum molestiae consectetur nisi dolorem aperiam error, sequi omnis excepturi culpa inventore.
-  </p>
+  <p class="text-center w-11 lg:w-8 m-auto my-3 mb-5">
+    At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake</p>
   <!-- FAQ CONTENT -->
-  <div class="w-full flex lg:flex-row sm:flex-column md:flex-column justify-content-center px-3 align-items-center FAQ">
+  <div class="w-full flex lg:flex-row sm:flex-column md:flex-column justify-content-center px-3 align-items-center FAQ" id="FAQ">
   <div style="width: 45%;" class="flex align-items-center md:w-7 sm:w-8 faqImg">
     <img src="../assets/vitaminsFaq.png" class="w-full" alt="faq">
   </div>
@@ -396,9 +400,14 @@ const isDialogVisible = ref(false)
       <router-link to="/products" class="p-3 px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4">SHOP NOW</router-link>
     </div>
 </div>
-
-  </template>
+</template>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&display=swap');
+.kanitFont{
+  font-family: 'Kanit', sans-serif !important;
+  text-shadow: 0px 1px 4px white ;
+}
 .rating{
   display: flex;
   margin: 1vh 0;
@@ -431,7 +440,7 @@ const isDialogVisible = ref(false)
 }
 .sales{
   color: white !important;
-  background-color: #30364b66;
+  background-color: #30364b44;
   padding: 2vh;
   border-radius: 5px;
   text-shadow: 0px 0px 4px black;
@@ -522,6 +531,7 @@ const isDialogVisible = ref(false)
 }
 .aboutUs:hover{
   color: white !important;
+  text-shadow: 0px 2px 5px black !important;
 }
 .WhiteHover{
   transition-duration: 0.2s;
@@ -547,14 +557,33 @@ const isDialogVisible = ref(false)
   }
   .reviewCard:hover{
     width: fit-content;
-  }
-  
+  } 
 }
+@media screen and (max-width : 770px){
+  .ResponsiveCarouselPg{
+    top: 54% !important;
+    left: 50% !important;
+    width: 80% !important;    
+    color: black !important;
+  }
+  .noneResp{
+    display: none !important;
+  }
+  .ResponsiveCarouselShopNow{
+    top: 57% !important;
+    left: 50% !important;    
+  }
+}
+
 @media screen and (max-width : 576px){
   .Icons{
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
+  }
+  .shopNow{
+    font-size: 11px !important;
+    padding: 0vh !important;
   }
   .IconsImg{
     margin: 0 !important;

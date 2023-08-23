@@ -17,38 +17,35 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
     productName : "Raspberry ketone",
     CategoryName : "Wellness Supplements",
-    Price : '19$',
-    OldPrice : '25$', 
-    Sale : "-21%",
+    Price : '7.20$',
+    OldPrice : '13.00$', 
+    Sale : "-35%",
   },
   {
     productId : "6",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '32.40$',
-    OldPrice : '35.00$', 
-    Sale : "-10%",
+    Price : '36.50$',
   },
   {
     productId : "2",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
     CategoryName : "Wellness Supplements",
-    Price : '18$',
-    OldPrice : '20$', 
-    Sale : "-14%",
+    Price : '13.90$',
+    OldPrice : '18.00$', 
+    Sale : "-20%",
   },
   {
     productId : "4",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
     productName : "D3 10,000 IU",
     CategoryName : "Wellness Supplements",
-    Price : '23.90$',
-    OldPrice : '25.90$', 
-    Sale : "-14%",
+    Price : '8.60$',
   },
 ]
+
 const responsiveOptions = ref([
     {
         breakpoint: '1050px',
@@ -109,7 +106,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <h2 class="logoSecondaryColor my-2" style="letter-spacing: 2px;">D3 10,000 IU</h2>
             <p class="logoSecondaryColor my-2" style="letter-spacing: 2px;">Wellness Supplements</p>
             <div class="flex align-items-center md:justify-content-center sm:justify-content-center lg:justify-content-start justifyCenterMob">
-                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">22.99$</p>
+                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">8.60$</p>
                 <Rating v-model="RatingValue" readonly />
             </div>
             <p class="w-10 my-3 darkGrey sm:m-auto md:m-auto lg:m-0 MargAutoMob textJustifyMob">Vitamin D3 is a nutrient that is essential for many bodily functions, including bone
@@ -176,16 +173,16 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
               <template #item="slotProps">
                 <div class="p-4 CARD m-auto" style="width: fit-content;">
                   <div class="ProductImage">
-                    <img :src="`../../../src/assets/${slotProps.data.productImage}`" class="productt" alt="">
+                    <img :src="slotProps.data.productImage" class="productt" alt="">
                     <span class="material-symbols-outlined appearOnHover">
                       visibility
                     </span>
-                    <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                    <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3" v-if="slotProps.data.Sale">{{ slotProps.data.Sale }}</h4>
                   </div>
                   <div class="px-2">
                       <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
                       <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.OldPrice">{{slotProps.data.OldPrice}}</span></p>
                       <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
                     </span> </h4>
@@ -224,6 +221,49 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             </span>
             <h2 class="productIconsFont">Questions?</h2>
             <p class="darkGrey w-full text-center m-auto">Email us at hello@lifeFormula.com and we’ll be happy to help you.</p>
+        </div>
+    </div>
+
+    <!-- Blog -->
+    <div class="Blog w-12 lg:w-9 m-auto padding5 sm:p-2 md:p-3 lg:p-5">
+        <div class="my-2">
+            <h2 class="text-center">Why Vitamin D Supplements Matter</h2>
+            <p class="m-auto text-center p-2 productIconsFont">In the intricate tapestry of human health, few nutrients play as pivotal a role 
+                as Vitamin D. Fondly known as the "sunshine vitamin," Vitamin D holds a unique position due to its connection with both bone 
+                health and overall well-being. While sunlight remains a primary source of this vital nutrient, the modern lifestyle and geographical factors often leave us deficient. Enter Vitamin D supplements – a beacon of support that ensures your body receives the benefits it deserves.
+            </p>
+        </div>
+        <hr>
+        <div class="my-4">
+            <h2 class="my-3">The Foundation of Strong Bones</h2>
+            <p class="m-auto text-justify p-3 productIconsFont">One of the most renowned roles of Vitamin D is its contribution to bone health. 
+                This vitamin aids the body's absorption of calcium, an elemental building block for bone strength. Without adequate Vitamin D,
+                even a calcium-rich diet may not deliver the benefits it should. Vitamin D supplements bridge this gap,
+                ensuring that your bones remain resilient and robust.
+            </p>
+            <h2 class="my-3">Guardian of Immunity</h2>
+            <p class="m-auto text-justify p-3 productIconsFont">Recent research has unveiled another layer to Vitamin D's importance – its
+                 potential role in supporting the immune system. Adequate levels of Vitamin D have been linked to enhanced immune responses,
+                  helping your body fend off infections and maintain a healthy defense mechanism. Particularly in times when immune health is
+                   paramount, Vitamin D takes the stage as a potential ally.
+            </p>
+            <h2 class="my-3">The Mood and Beyond</h2>
+            <p class="m-auto text-justify p-3 productIconsFont">Emerging studies are illuminating the connection between Vitamin D and mental 
+                health. While the exact mechanisms are still being explored, there's evidence to suggest that maintaining optimal Vitamin D levels
+                might play a role in mood regulation and mental well-being. This adds yet another layer to the multifaceted benefits of this
+                essential nutrient.
+            </p>
+        </div>
+        <hr>
+        <div class="my-3">
+            <h2 class="text-center my-2">Choosing Quality Supplements</h2>
+            <p class="m-auto text-center p-3 productIconsFont">When considering Vitamin D supplements, it's vital to prioritize quality. Opt for supplements from reputable brands 
+            that adhere to stringent manufacturing practices. Look for Vitamin D3 (cholecalciferol), the more effective and active
+            form of the vitamin, over Vitamin D2 (ergocalciferol).</p>
+            <h2 class="text-center my-2">Consulting the Experts</h2>
+            <p class="m-auto text-center p-3 productIconsFont">Before incorporating any new supplement into your routine, consulting with a healthcare professional is advised.
+                They can guide you in determining your specific needs and appropriate dosage, taking into account factors like your age, 
+                health status, and lifestyle.</p>
         </div>
     </div>
     </template>

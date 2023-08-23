@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router';
 const { push } = useRouter();
 let visible = ref(false)
 function scrollToTop() {
+  visible.value = false  
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
@@ -61,12 +62,12 @@ function scrollToTop() {
             <hr>
         </div>
         <div class="flex flex-column m-auto text-left p-3 px-3">
-            <router-link to="/" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop()" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">home</span>
+            <router-link to="/" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">home</span>
                 Home
             </router-link> 
-            <router-link to="/about" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop()" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">diversity_1</span>About Us</router-link> 
-            <router-link to="/products" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop()" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">shopping_basket</span>Shop</router-link> 
-            <router-link to="/" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop()" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">contact_phone</span>Contact Us</router-link> 
+            <router-link to="/about" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">diversity_1</span>About Us</router-link> 
+            <router-link to="/products" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">shopping_basket</span>Shop</router-link> 
+            <router-link to="/" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">contact_phone</span>Contact Us</router-link> 
         </div>
     </Sidebar>
 </template>

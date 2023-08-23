@@ -36,9 +36,9 @@ let Products = ref([
     productName : "D3 50,000 IU",
     productDescription : "Vitamin D3 is a nutrient that is essential for many bodily functions, including bone health, immune function, and muscle function. It is also important for the absorption of calcium and phosphorus",
     CategoryName : "Wellness Supplements",
-    Price : '620.00EGP',
-    OldPrice : '699.00EGP', 
-    Sale : "-10%",
+    Price : '28.50$',
+    // OldPrice : '32.00$', 
+    // Sale : "-13%",
     Rating : 0
   },
   {
@@ -47,9 +47,9 @@ let Products = ref([
     productName : "Raspberry ketone",
     productDescription : "Raspberry ketones are a natural compound found in raspberries. They have been shown to have a number of health benefits",
     CategoryName : "Wellness Supplements",
-    Price : '455.00EGP',
-    OldPrice : '699.00EGP', 
-    Sale : "-19%",
+    Price : '7.20$',
+    OldPrice : '13.00$', 
+    Sale : "-35%",
     Rating : 0
   },
   {
@@ -58,9 +58,9 @@ let Products = ref([
     productName : "Green coffee",
     productDescription : "Green coffee bean extract is also a good source of other antioxidants, such as quercetin and kaempferol. These antioxidants can help protect your cells from damage and improve your overall health",
     CategoryName : "Wellness Supplements",
-    Price : '550.00EGP',
-    OldPrice : '639.00EGP', 
-    Sale : "-14%",
+    Price : '13.90$',
+    OldPrice : '18.00$', 
+    Sale : "-20%",
     Rating : 0
   },
   {
@@ -69,9 +69,9 @@ let Products = ref([
     productName : "D3 10,000 IU",
     productDescription : "Vitamin D3 is a nutrient that is essential for many bodily functions, including bone health, immune function, and muscle function. It is also important for the absorption of calcium and phosphorus.",
     CategoryName : "Wellness Supplements",
-    Price : '650.00EGP',
-    OldPrice : '799.00EGP', 
-    Sale : "-19%",
+    Price : '8.60$',
+    // OldPrice : '10.00$', 
+    // Sale : "-10%",
     Rating : 0
   },
   {
@@ -80,9 +80,9 @@ let Products = ref([
     productName : "WFS PLUS",
     productDescription : "Life Formula's WFS MAX is a natural supplement that can help women with fertility problems. It contains ingredients that improve insulin sensitivity and ovulation, two important factors for conception",
     CategoryName : "Fertility Supplements",
-    Price : '680.00EGP',
-    OldPrice : '799.00EGP', 
-    Sale : "-17%",
+    Price : '36.50$',
+    // OldPrice : '38.99$', 
+    // Sale : "-12%",
     Rating : 0
   },
   {
@@ -91,9 +91,9 @@ let Products = ref([
     productName : "MFS",
     productDescription : "Life Formula's MFS is a natural supplement that can help men with fertility problems. It contains ingredients that support sperm count, motility, and morphology.",
     CategoryName : "Fertility Supplements",
-    Price : '680.00EGP',
-    OldPrice : '799.00EGP', 
-    Sale : "-17%",
+    Price : '36.50$',
+    // OldPrice : '39.99$', 
+    // Sale : "-17%",
     Rating : 0
   },
 ])
@@ -229,12 +229,12 @@ watch(selectedCategories, () => {
                             <span class="material-symbols-outlined appearOnHover">
                                 visibility
                             </span>
-                            <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                            <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
                         </div>
                         <div class="px-2">
                             <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
                             <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.OldPrice">{{slotProps.data.OldPrice}}</span></p>
                             <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                                     shopping_cart
                                 </span> </h4>
@@ -250,7 +250,7 @@ watch(selectedCategories, () => {
                                 <span class="material-symbols-outlined appearOnHover">
                                     visibility
                                 </span>
-                                <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                                <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
                             </div>
                             <div class="flex justify-content-between">
                                 <div class="flex flex-column">
@@ -260,7 +260,7 @@ watch(selectedCategories, () => {
                                 </div>
                                 <div class="flex flex-column align-items-center justifyStart sm:justify-content-start md:justify-content-start lg:justify-content-center">
                                     <p class="text-md greenLogoColor my-2">{{ slotProps.data.Price }}</p>
-                                    <span style="color: grey; text-decoration: line-through;" class="mx-2">{{slotProps.data.OldPrice}}</span>
+                                    <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.OldPrice">{{slotProps.data.OldPrice}}</span>
                                     <span @click="isDialogVisible = true" class="material-symbols-outlined text-4xl CartHover text-white p-2 my-2 cursor-pointer"
                                      style="background-color: #00a650; border-radius: 50%;">
                                         shopping_cart

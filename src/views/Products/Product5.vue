@@ -18,38 +18,35 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
     productName : "Raspberry ketone",
     CategoryName : "Wellness Supplements",
-    Price : '19$',
-    OldPrice : '25$', 
-    Sale : "-21%",
+    Price : '7.20$',
+    OldPrice : '13.00$', 
+    Sale : "-35%",
   },
   {
     productId : "6",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '32.40$',
-    OldPrice : '35.00$', 
-    Sale : "-10%",
+    Price : '36.50$',
   },
   {
     productId : "2",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
     CategoryName : "Wellness Supplements",
-    Price : '18$',
-    OldPrice : '20$', 
-    Sale : "-14%",
+    Price : '13.90$',
+    OldPrice : '18.00$', 
+    Sale : "-20%",
   },
   {
     productId : "4",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
     productName : "D3 10,000 IU",
     CategoryName : "Wellness Supplements",
-    Price : '23.90$',
-    OldPrice : '25.90$', 
-    Sale : "-14%",
+    Price : '8.60$',
   },
 ]
+
 const responsiveOptions = ref([
     {
         breakpoint: '1050px',
@@ -110,7 +107,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <h2 class="logoSecondaryColor my-2" style="letter-spacing: 2px;">WFS PLUS</h2>
             <p class="logoSecondaryColor my-2" style="letter-spacing: 2px;">Fertility Supplements</p>
             <div class="flex align-items-center md:justify-content-center sm:justify-content-center lg:justify-content-start justifyCenterMob">
-                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">26.99$</p>
+                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">36.50$</p>
                 <Rating v-model="RatingValue" readonly />
             </div>
             <p class="w-10 my-3 darkGrey sm:m-auto md:m-auto lg:m-0 MargAutoMob textJustifyMob">Life Formula's WFS MAX is a natural supplement that can help women with fertility
@@ -190,16 +187,16 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
               <template #item="slotProps">
                 <div class="p-4 CARD m-auto" style="width: fit-content;">
                   <div class="ProductImage">
-                    <img :src="`../../../src/assets/${slotProps.data.productImage}`" class="productt" alt="">
+                    <img :src="slotProps.data.productImage" class="productt" alt="">
                     <span class="material-symbols-outlined appearOnHover">
                       visibility
                     </span>
-                    <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                    <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3" v-if="slotProps.data.Sale">{{ slotProps.data.Sale }}</h4>
                   </div>
                   <div class="px-2">
                       <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
                       <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.OldPrice">{{slotProps.data.OldPrice}}</span></p>
                       <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
                     </span> </h4>

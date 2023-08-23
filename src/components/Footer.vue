@@ -11,20 +11,20 @@
         <div class="shops">
             <h4>INFORMATION</h4>
             <RouterLink to="/about" class="links">About Us</RouterLink>
-            <RouterLink to="" class="links">Customer Service</RouterLink>
+            <!-- <RouterLink to="" class="links">FAQ</RouterLink> -->
             <RouterLink to="" class="links">privacy policy</RouterLink>
             <RouterLink to="" class="links">Terms & condition</RouterLink>
         </div> 
         <div class="shops">
             <h4>CUSTOMER SERVICE</h4>
-            <RouterLink to="" class="links">Search Terms</RouterLink>
-            <RouterLink to="" class="links">Order and Returns</RouterLink>
+            <!-- <RouterLink to="" class="links">Search Terms</RouterLink> -->
+            <RouterLink to="" class="links">Shipping policy</RouterLink>
             <RouterLink to="" class="links">Contact Us</RouterLink>
-            <RouterLink to="" class="links">Help & FAQs</RouterLink>
+            <RouterLink :to="{ name: 'home', hash: 'FAQ' }" class="links">Help & FAQs</RouterLink>
         </div> 
         <div class="newsletter my-3">
             <!-- <h4>Registration</h4> -->
-            <img src="../assets/LifeFourmlaLogo.png" class="w-6 sm:m-auto md:m-auto" alt="">
+            <img src="../assets/LifeFourmlaLogo.png" class="w-8 sm:m-auto md:m-auto" alt="">
             <!-- <div class="icons my-2">
                 <i class="fa-brands fa-facebook icc mx-1"></i>
                 <i class="fa-brands fa-twitter icc mx-1"></i>

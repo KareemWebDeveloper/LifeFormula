@@ -6,9 +6,9 @@ const { push } = useRouter();
 const items2 = ref([
     {
         label: 'Whatsapp',
-        icon: 'pi pi-whatsapp',
+        icon: 'pi pi-question',
         command: () => {
-            window.location.href = 'https://www.whatsapp.com/'
+            push('/');
         }
     },
     {
@@ -20,9 +20,9 @@ const items2 = ref([
     },
     {
         label: 'Vue Website',
-        icon: 'pi pi-facebook',
+        icon: 'pi pi-comment',
         command: () => {
-            window.location.href = 'https://www.facebook.com/'
+            push('/');
         }
     }
 ])

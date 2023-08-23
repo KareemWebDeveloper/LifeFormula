@@ -8,6 +8,7 @@ import Carousel from 'primevue/carousel';
 import {ref} from 'vue'
 import Breadcrumb from 'primevue/breadcrumb';
 import ContactIcons from '@/components/ContactIcons.vue';
+import ScrollPanel from 'primevue/scrollpanel';
 
 const RatingValue = ref(5)
 const QuantityValue = ref(1)
@@ -17,38 +18,35 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
     productName : "Raspberry ketone",
     CategoryName : "Wellness Supplements",
-    Price : '19$',
-    OldPrice : '25$', 
-    Sale : "-21%",
+    Price : '7.20$',
+    OldPrice : '13.00$', 
+    Sale : "-35%",
   },
   {
     productId : "6",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '32.40$',
-    OldPrice : '35.00$', 
-    Sale : "-10%",
+    Price : '36.50$',
   },
   {
     productId : "2",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
     CategoryName : "Wellness Supplements",
-    Price : '18$',
-    OldPrice : '20$', 
-    Sale : "-14%",
+    Price : '13.90$',
+    OldPrice : '18.00$', 
+    Sale : "-20%",
   },
   {
     productId : "4",
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
     productName : "D3 10,000 IU",
     CategoryName : "Wellness Supplements",
-    Price : '23.90$',
-    OldPrice : '25.90$', 
-    Sale : "-14%",
+    Price : '8.60$',
   },
 ]
+
 const responsiveOptions = ref([
     {
         breakpoint: '1050px',
@@ -109,25 +107,27 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <h2 class="logoSecondaryColor my-2" style="letter-spacing: 2px;">Raspberry Ketone</h2>
             <p class="logoSecondaryColor my-2" style="letter-spacing: 2px;">Wellness Supplements</p>
             <div class="flex align-items-center md:justify-content-center sm:justify-content-center lg:justify-content-start justifyCenterMob">
-                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">22.99$</p>
+                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">7.20$</p>
                 <Rating v-model="RatingValue" readonly />
             </div>
-            <p class="w-10 my-3 darkGrey sm:m-auto md:m-auto lg:m-0 MargAutoMob textJustifyMob">Raspberry ketones are a natural compound found in raspberries. They have been
-                shown to have a number of health benefits, including: <br> 
-                ● Weight loss: Raspberry ketones can help to boost metabolism and burn fat. They
-                have been shown to help reduce the accumulation of fat around the abdominal
-                organs and enhance fat burning efficiency. <br>
-                ● Anti-obesity: Raspberry ketones can help to suppress appetite and reduce
-                cravings. They may also help to improve insulin sensitivity, which can help with
-                weight loss.<br>
-                ● Anti-inflammatory: Raspberry ketones have been shown to have anti-
-                inflammatory properties. This can help to reduce inflammation throughout the
-                body, which can improve overall health and well-being.<br>
-                ● Cardiovascular health: Raspberry ketones may help to improve cardiovascular
-                health. They have been shown to lower blood pressure and cholesterol levels.<br>
-                ● Other benefits: Raspberry ketones may also help to improve skin health, hair
-                growth, and cognitive function.
-            </p>
+            <ScrollPanel style="width: 100%; height: 200px">
+                <p class="w-10 my-3 darkGrey sm:m-auto md:m-auto lg:m-0 MargAutoMob textJustifyMob">Raspberry ketones are a natural compound found in raspberries. They have been
+                    shown to have a number of health benefits, including: <br> 
+                    ● Weight loss: Raspberry ketones can help to boost metabolism and burn fat. They
+                    have been shown to help reduce the accumulation of fat around the abdominal
+                    organs and enhance fat burning efficiency. <br>
+                    ● Anti-obesity: Raspberry ketones can help to suppress appetite and reduce
+                    cravings. They may also help to improve insulin sensitivity, which can help with
+                    weight loss.<br>
+                    ● Anti-inflammatory: Raspberry ketones have been shown to have anti-
+                    inflammatory properties. This can help to reduce inflammation throughout the
+                    body, which can improve overall health and well-being.<br>
+                    ● Cardiovascular health: Raspberry ketones may help to improve cardiovascular
+                    health. They have been shown to lower blood pressure and cholesterol levels.<br>
+                    ● Other benefits: Raspberry ketones may also help to improve skin health, hair
+                    growth, and cognitive function.
+                </p>
+            </ScrollPanel>
             <div class="flex FlexColumn sm:flex-column md:flex-column MargAutoMob lg:flex-row my-4 align-items-center lg:justify-content-between w-10 sm:m-auto md:m-auto lg:m-0">
                 <InputNumber v-model="QuantityValue" showButtons buttonLayout="horizontal" class="productDetails inputNumberr" style="width: 2rem"
                 decrementButtonClassName="p-button-secondary" incrementButtonClassName="p-button-secondary" incrementButtonIcon="pi pi-plus"
@@ -145,73 +145,52 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 <p>For adults, take one (1) capsule daily, preferably with a meal.</p>
             </div>
             <div class="w-10 text-center flex justify-content-center sm:m-auto md:m-auto lg:m-0 mgAuto" v-if="OptionsValue=='INGREDIENTS'">
-                <img src="../../assets/greenCoffeeIngredients.png" alt="">
+                <!-- <img src="../../assets/greenCoffeeIngredients.png" alt=""> -->
             </div>
         </div>
     </div>
 
     <!-- PRODUCT ICONS -->
     <div class="productIcons p-5 w-full flex flex-wrap justify-content-center mt-5">
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 scale
             </span>
-            <h2 class="productIconsFont">Weight Loss</h2>
+            <h3 class="productIconsFont">Weight Loss</h3>
         </div>
 
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 heart_check
             </span>
-            <h2 class="productIconsFont">Cardiovascular Health</h2>
+            <h3 class="productIconsFont">Cardiovascular Health</h3>
         </div>
 
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 immunology
             </span>
-            <h2 class="productIconsFont">Anti-inflammatory</h2>
+            <h3 class="productIconsFont">Anti-inflammatory</h3>
         </div>
 
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 dermatology
             </span>
-            <h2 class="productIconsFont">Hair Growth</h2>
+            <h3 class="productIconsFont">Hair Growth</h3>
         </div>
 
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 psychology
             </span>
-            <h2 class="productIconsFont">Cognitive Function Support</h2>
+            <h3 class="productIconsFont">Cognitive Function Support</h3>
         </div>
-
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 add_reaction
             </span>
-            <h2 class="productIconsFont">Skin Health</h2>
+            <h3 class="productIconsFont">Skin Health</h3>
         </div>
     </div>
 
@@ -223,16 +202,16 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
               <template #item="slotProps">
                 <div class="p-4 CARD m-auto" style="width: fit-content;">
                   <div class="ProductImage">
-                    <img :src="`../../../src/assets/${slotProps.data.productImage}`" class="productt" alt="">
+                    <img :src="slotProps.data.productImage" class="productt" alt="">
                     <span class="material-symbols-outlined appearOnHover">
                       visibility
                     </span>
-                    <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                    <h4 style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3" v-if="slotProps.data.Sale">{{ slotProps.data.Sale }}</h4>
                   </div>
                   <div class="px-2">
                       <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
                       <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.OldPrice">{{slotProps.data.OldPrice}}</span></p>
                       <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
                     </span> </h4>
@@ -271,6 +250,61 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             </span>
             <h2 class="productIconsFont">Questions?</h2>
             <p class="darkGrey w-full text-center m-auto">Email us at hello@lifeFormula.com and we’ll be happy to help you.</p>
+        </div>
+    </div>
+
+    <!-- Blog -->
+    <div class="Blog w-12 lg:w-9 m-auto padding5 sm:p-2 md:p-3 lg:p-5">
+        <div class="my-2">
+            <h2 class="text-center">Why Should You Consider Raspberry Ketones Supplements?</h2>
+            <p class="m-auto text-center p-2 productIconsFont">In the world of dietary supplements, a new contender has emerged that's been generating quite a buzz lately – <span style="color: rgba(255, 38, 0, 0.923);">Raspberry Ketones</span>. These natural compounds,
+                responsible for the distinctive aroma of raspberries, have garnered attention for their potential health benefits. While the hype can sometimes make it difficult to discern fact from fiction, it's 
+                important to take a closer look at the science behind Raspberry Ketones to determine whether they deserve a spot in your supplement routine.
+            </p>
+        </div>
+        <div class="my-4">
+            <h2 class="text-center my-2">What Are Raspberry Ketones?</h2>
+            <p class="m-auto text-center p-2 productIconsFont"><span style="color: rgba(255, 38, 0, 0.923);">Raspberry Ketones</span> are natural phenolic compounds found in red raspberries, peaches, grapes, and other fruit. Their distinct aroma
+                has made them popular in the fragrance and food industries. In recent times, they've gained popularity as a dietary supplement due
+                to claims of their potential benefits for weight loss and metabolism support.
+            </p>
+            <div class="my-4">
+                <h4>Understanding the Hype: Weight Loss Claims</h4>
+                <p class="m-auto text-justify p-2 productIconsFont">
+                    One of the primary reasons behind the excitement surrounding <span style="color: rgba(255, 38, 0, 0.923);">Raspberry Ketones</span> is their weight loss benefits. The idea 
+                    is that these compounds can help increase the breakdown of fat within cells, making it easier for the body to burn 
+                    stored fat for energy. This concept has led to Raspberry Ketones being considered a "miracle" fat-burning supplement.
+                    In addition to weight loss, raspberry ketones may also have other potential health benefits. Some studies have shown
+                    that they may help to improve blood sugar control, reduce inflammation, and protect against cancer. However, more 
+                    research is needed to confirm these findings.
+                </p>
+            </div>
+            <div class="my-3">
+                <h4>The Science Behind Raspberry Ketones</h4>
+                <p class="m-auto text-justify p-2 productIconsFont">
+                    Studies have suggested that <span style="color: rgba(255, 38, 0, 0.923);">Raspberry Ketones</span> help increase the breakdown of fat and regulate metabolism. Raspberry ketones work by 
+                    increasing the activity of adiponectin, a hormone that plays a role in metabolism. Adiponectin helps to regulate blood sugar levels
+                    and fat breakdown. Studies have shown that raspberry ketones can help to increase adiponectin levels in the body.
+                </p>
+            </div>
+            <div class="my-3">
+                <h4>The Importance of a Holistic Approach</h4>
+                <p class="m-auto text-justify p-2 productIconsFont">
+                    <span style="color: rgba(255, 38, 0, 0.923);">Raspberry Ketones</span> show promise in aiding weight loss, yet it's important to remember that no single supplement can
+                    replace the importance of a balanced diet and regular exercise. 
+                </p>
+            </div>
+            <div class="my-3">
+                <h4>Considerations and Caution</h4>
+                <p class="m-auto text-justify p-2 productIconsFont">
+                    Before adding any new supplement to your routine, it's essential to consult with a healthcare professional, especially if you have underlying health conditions or are taking medications. Here are some additional tips for taking raspberry ketones safely:
+                    Choose a high-quality product from a reputable manufacturer.
+                    Abide by the recommended dosage by the manufacturer.
+                    Take <span style="color: rgba(255, 38, 0, 0.923);">Raspberry Ketones</span> with food to reduce the risk of side effects.
+                </p>
+            </div>
+            <p class="m-auto text-center p-2 productIconsFont">As the field of nutrition and supplementation continues to evolve, staying informed and making well-informed decisions
+                 is key. Raspberry Ketones combined with a holistic approach to health and well-being hold promise of significant weight loss and enhanced metabolism.</p>
         </div>
     </div>
     </template>
@@ -324,10 +358,28 @@ font-family: 'Bricolage Grotesque', sans-serif !important;
     margin: 1.5vh auto;
 }    
 }
+@media screen and (max-width : 750px){
+.productIcons{
+    flex-wrap: nowrap !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}    
+.iconDiv{
+    margin: 0 !important;
+    padding: 0 !important;
+    margin: 2vh auto !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+}
+
 @media screen and (max-width : 575px){
     .FlexColumnMob{
         flex-direction: column !important;
         padding: 1vh !important;
+    }
+    .padding5{
+        padding: 3vh !important;
     }
     .MargAutoMob{
         width: 100% !important;
