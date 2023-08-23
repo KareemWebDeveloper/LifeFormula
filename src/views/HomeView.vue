@@ -105,7 +105,7 @@ onMounted(() => {
       <div class="carousel-item active" style="position: relative;">
         <img src="../assets/steptodown.com664231.jpg" class="d-block w-100" alt="...">
         <div class="kimo w-6 text-center ResponsiveCarouselPg" style="position: absolute; top: 36%; left: 22%; transform: translate(-50%, -50%);">
-          <img src="../assets/Life fourmla Logo versions (4).png" class="w-1 noneResp" alt="">
+          <img src="../assets/FormulaGreenLogo.png" class="w-1 noneResp" alt="">
           <p class="mt-2 text-lg lg:text-3xl kanitFont font-bold logoSecondaryColor">Experience the Life Formula Difference</p>
         </div>
         <h4 style="position: absolute; top: 42%; left: 22%; transform: translate(-50%, -50%);"
