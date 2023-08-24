@@ -132,7 +132,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 </span>
                 </h5>
             </div>
-            <p class="sm:text-center md:text-center lg:text-left">Price : {{(QuantityValue * 18.99).toFixed(2)}}$</p>
+            <p class="sm:text-center md:text-center lg:text-left">Price : {{(QuantityValue * 13.90).toFixed(2)}}$</p>
             <div class="w-10 my-5 flex justify-content-center align-items-center sm:m-auto md:m-auto lg:m-0 mgAuto mgtop">
                 <SelectButton v-model="OptionsValue" :options="options" class="productDetails" aria-labelledby="basic" />
             </div>

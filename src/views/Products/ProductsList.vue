@@ -9,6 +9,7 @@ import MultiSelect from 'primevue/multiselect';
 import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 import { useRouter } from 'vue-router';
+import ContactIcons from '@/components/ContactIcons.vue';
 const { push } = useRouter();
 function scrollToTop() {
   window.scrollTo({
@@ -157,6 +158,7 @@ watch(selectedCategories, () => {
 
 </script>
 <template>
+    <ContactIcons></ContactIcons>
 
 <Dialog v-model:visible="isDialogVisible" modal header="Sorry!" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
     <span class="material-symbols-outlined text-6xl  text-center m-auto flex justify-content-center cursor-pointer">

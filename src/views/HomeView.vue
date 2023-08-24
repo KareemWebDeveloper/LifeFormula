@@ -179,21 +179,21 @@ onMounted(() => {
   <img src="../assets/Product-5-1-1.png" class="lg:m-5 pr-3 lg:w-8 IconsImg" alt="">
   <div class="flex IconsColumn">
     <div class="flex flex-column">
-      <div class="flex flex-column justify-content-center" style="width: fit-content;">
+      <div class="flex flex-column justify-content-center m-auto" style="width: fit-content;">
         <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
           handshake
           </span>
           <h4 class="m-auto my-2 text-center w-full">Transparency</h4>
           <p class="lg:w-10 w-9 m-auto text-center darkGrey">At Life Formula, we are honest and open about the ingredients, manufacturing process, and testing procedures used to create our products.</p>
       </div>
-      <div class="flex flex-column justify-content-center" style="width: fit-content;">
+      <div class="flex flex-column justify-content-center m-auto" style="width: fit-content;">
         <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
           psychology
           </span>
           <h4 class="m-auto my-2 text-center">Empowerment</h4>
           <p class="lg:w-10 w-9 m-auto text-center darkGrey">At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake.</p>
       </div>
-      <div class="flex flex-column justify-content-center" style="width: fit-content;">
+      <div class="flex flex-column justify-content-center m-auto" style="width: fit-content;">
         <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
           price_check
           </span>

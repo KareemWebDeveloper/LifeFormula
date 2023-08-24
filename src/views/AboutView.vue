@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import Fieldset from 'primevue/fieldset';
+import ContactIcons from '@/components/ContactIcons.vue';
 </script>
 <template>
+  <ContactIcons></ContactIcons>
  <div class="w-full">
 
 <div class="hidden w-full lg:block AboutBg">
