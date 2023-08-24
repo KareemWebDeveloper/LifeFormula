@@ -148,62 +148,45 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
 
     <!-- PRODUCT ICONS -->
     <div class="productIcons p-5 w-full flex flex-wrap justify-content-center mt-5">
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 scale
             </span>
-            <h2 class="productIconsFont">Weight Loss</h2>
+            <h3 class="productIconsFont">Weight Loss</h3>
         </div>
 
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 heart_check
             </span>
-            <h2 class="productIconsFont">Cardiovascular Health</h2>
+            <h3 class="productIconsFont">Cardiovascular Health</h3>
         </div>
 
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
-            <span class="material-symbols-outlined text-white text-8xl iconnBorder">
-                ecg
-            </span>
-            <h2 class="productIconsFont">Lower Blood Pressure</h2>
-        </div>
-
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 glucose
             </span>
-            <h2 class="productIconsFont">Blood Sugar Regulation</h2>
+            <h3 class="productIconsFont">Blood Sugar Regulation</h3>
         </div>
 
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
-                sports_gymnastics
+                ecg
             </span>
-            <h2 class="productIconsFont">Energy Boost</h2>
+            <h3 class="productIconsFont">Lower Blood Pressure</h3>
         </div>
 
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
+            <span class="material-symbols-outlined text-white text-8xl iconnBorder">
+                sports_martial_arts
+            </span>
+            <h3 class="productIconsFont">Energy Boost</h3>
         </div>
-
-        <div class="text-center mx-3 my-3 lg:mb-5">
+        <div class="text-center mx-3 my-3 lg:mb-5 w-3 iconDiv">
             <span class="material-symbols-outlined text-white text-8xl iconnBorder">
                 add_reaction
             </span>
-            <h2 class="productIconsFont">Skin Health</h2>
+            <h3 class="productIconsFont">Skin Health</h3>
         </div>
     </div>
 
