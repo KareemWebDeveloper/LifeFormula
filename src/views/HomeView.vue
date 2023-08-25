@@ -175,7 +175,7 @@ onMounted(() => {
 
   <!-- Best Selling Products for mobile -->
 <div class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
-  <Carousel :value="Featured" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="500px" 
+  <Carousel :value="Featured" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="530px" 
   containerClass="w-full" contentClass="flex align-items-center">
     <template #item="slotProps">
       <div class="p-4 CARD m-auto" style="width: fit-content;">
