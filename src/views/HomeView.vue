@@ -107,7 +107,7 @@ onMounted(() => {
         <img src="../assets/steptodown.com664231.jpg" class="d-block MobCarouselImg md:w-full lg:w-full" alt="...">
         <div class="kimo w-6 text-center ResponsiveCarouselPg" style="position: absolute; top: 36%; left: 22%; transform: translate(-50%, -50%);">
           <img src="../assets/FormulaGreenLogo.png" class="w-1 noneResp" alt="">
-          <p class="mt-2 text-lg lg:text-3xl kanitFont font-bold logoSecondaryColor">Experience the Life Formula Difference</p>
+          <p class="mt-2 text-lg lg:text-3xl kanitFont font-bold logoSecondaryColor" style="font-family: 'Kanit', sans-serif !important;">Experience the Life Formula Difference</p>
         </div>
         <h4 style="position: absolute; top: 42%; left: 22%; transform: translate(-50%, -50%);"
          class="p-3 text-center ResponsiveCarouselShopNow m-auto bg-white bluePrimary no-underline px-5 shopNow my-5 cursor-pointer"  @click="push('/products'); scrollToTop()">SHOP NOW</h4>
