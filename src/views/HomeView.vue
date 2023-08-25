@@ -107,7 +107,7 @@ onMounted(() => {
         <img src="../assets/steptodown.com664231.jpg" class="d-block MobCarouselImg md:w-full lg:w-full" alt="...">
         <div class="kimo w-6 text-center ResponsiveCarouselPg" style="position: absolute; top: 36%; left: 22%; transform: translate(-50%, -50%);">
           <img src="../assets/FormulaGreenLogo.png" class="w-1 noneResp" alt="">
-          <p class="mt-2 text-lg lg:text-3xl kanitFont font-bold logoSecondaryColor" style="font-family: 'Kanit', sans-serif !important;">Experience the Life Formula Difference</p>
+          <p class="mt-2 text-lg lg:text-3xl kanitFont font-bold logoSecondaryColor fontCarousel">Experience the Life Formula Difference</p>
         </div>
         <h4 style="position: absolute; top: 42%; left: 22%; transform: translate(-50%, -50%);"
          class="p-3 text-center ResponsiveCarouselShopNow m-auto bg-white bluePrimary no-underline px-5 shopNow my-5 cursor-pointer"  @click="push('/products'); scrollToTop()">SHOP NOW</h4>
@@ -246,7 +246,7 @@ onMounted(() => {
   <img src="../assets/advertisement.png" class="noneForMob w-full h-8rem lg:h-full" alt="">
   <img src="../assets/LifeFourmlaLogo.png" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);" class="w-2 noneForMob" alt="">
   <div style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%);" class="sm:w-10 md:w-9 w-full Mobtop50">
-    <h3 class="text-center cursor-pointer aboutUs text-xl lg:text-2xl" style="color: #00405a; text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.79);" @click="push('/about'); scrollToTop()">ABOUT US</h3>
+    <h3 class="text-center cursor-pointer aboutUs fontCarousel text-xl lg:text-2xl" style="color: #00405a; text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.79);" @click="push('/about'); scrollToTop()">ABOUT US</h3>
     <p class="text-white text-center hidden MobWidth100 MobBlock w-9 text-sm lg:text-lg m-auto lg:flex" style="text-shadow: 0px 0px 4px black;">Ready to take the first step towards a healthier you? Explore our wide range of products and embark on your wellness journey.</p>
   </div>
 </div>
@@ -603,9 +603,13 @@ onMounted(() => {
 }
 
 @media screen and (max-width : 576px){
+  @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+  .fontCarousel{
+    font-family: 'Courgette', cursive !important;
+    font-size: 17px !important;
+  }
   .aboutUs{
     color: white !important;
-    font-family: 'Kanit', sans-serif !important;
     text-shadow: 0px 1px 4px black !important;
   }
   .aboutUs:hover{
