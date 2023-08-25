@@ -83,6 +83,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <ContactIcons></ContactIcons>
 
 <Dialog v-model:visible="isDialogVisible" modal header="Sorry!" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
     <span class="material-symbols-outlined text-6xl  text-center m-auto flex justify-content-center cursor-pointer">
@@ -99,22 +100,22 @@ onMounted(() => {
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <!-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active" style="position: relative;">
-        <img src="../assets/steptodown.com664231.jpg" class="d-block w-100" alt="...">
+        <img src="../assets/steptodown.com664231.jpg" class="d-block MobCarouselImg md:w-full lg:w-full" alt="...">
         <div class="kimo w-6 text-center ResponsiveCarouselPg" style="position: absolute; top: 36%; left: 22%; transform: translate(-50%, -50%);">
           <img src="../assets/FormulaGreenLogo.png" class="w-1 noneResp" alt="">
           <p class="mt-2 text-lg lg:text-3xl kanitFont font-bold logoSecondaryColor">Experience the Life Formula Difference</p>
         </div>
         <h4 style="position: absolute; top: 42%; left: 22%; transform: translate(-50%, -50%);"
-         class="p-3 text-center ResponsiveCarouselShopNow m-auto bg-white bluePrimary no-underline px-5 shopNow my-5 cursor-pointer">SHOP NOW</h4>
+         class="p-3 text-center ResponsiveCarouselShopNow m-auto bg-white bluePrimary no-underline px-5 shopNow my-5 cursor-pointer"  @click="push('/products'); scrollToTop()">SHOP NOW</h4>
       </div>
       <div class="carousel-item" style="position: relative;">
-        <img src="../assets/hth8.jpg" class="d-block w-100" alt="...">
+        <img src="../assets/hth8.jpg" class="d-block MobCarouselImg md:w-full lg:w-full" alt="...">
         <div class="kimo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-          <h4 class="p-3 text-center m-auto bg-white bluePrimary no-underline px-5 shopNow my-5 cursor-pointer">SHOP NOW</h4>
+          <h4 class="p-3 text-center m-auto bg-white bluePrimary no-underline px-5 shopNow my-5 cursor-pointer"  @click="push('/products'); scrollToTop()">SHOP NOW</h4>
         </div>
       </div>
     </div>
@@ -129,18 +130,18 @@ onMounted(() => {
   </div>
 
   <!-- best selling heading -->
-  <div class="w-full py-5" style="background-color: #f2f4f7ec;">
+  <div class="w-full py-3" style="background-color: #f2f4f7ec;">
     <div class="w-full">
-      <div class="p-5">
-        <div class="headingg flex" style="align-items: center;">
-        <span class="material-symbols-outlined ml-3 text-4xl greenLogoColor">
+      <div class="px-5 py-3">
+        <div class="headingg flex Mob-JustifyCenter" style="align-items: center;">
+        <span class="material-symbols-outlined ml-3 Mob-left0 text-4xl greenLogoColor">
           ecg
         </span>
-        <h4 class="mx-2 greenLogoColor mt-2">Our Products</h4>
+        <h4 class="mx-2 greenLogoColor mt-2 Mob-TextCenter">Our Products</h4>
       </div>
-      <div class="w-full flex align-items-center">
+      <div class="w-full flex align-items-center IconsColumn">
         <h1 class="mx-4" style="color: #00405a; letter-spacing: 2px;">Featured</h1>
-        <hr style="width: 75%; height: 0.3vh; background-color: black;">
+        <hr class="w-full" style="width: 75%; height: 0.3vh; background-color: black;">
       </div>
     </div>
   </div>
@@ -148,7 +149,7 @@ onMounted(() => {
   <!-- best selling heading end-->
 
   <!-- best selling card-->
-<div class="m-auto" style="width: 88%;">
+<div class="m-auto noneForMob" style="width: 88%;">
   <Carousel :value="Featured" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
     <template #item="slotProps">
       <div class="p-4 CARD m-auto" style="width: fit-content;">
@@ -171,8 +172,33 @@ onMounted(() => {
     </template>
 </Carousel>
 </div>
-<ContactIcons></ContactIcons>
-  
+
+  <!-- Best Selling Products for mobile -->
+<div class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
+  <Carousel :value="Featured" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="500px" 
+  containerClass="w-full" contentClass="flex align-items-center">
+    <template #item="slotProps">
+      <div class="p-4 CARD m-auto" style="width: fit-content;">
+        <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
+          <img :src="slotProps.data.productImage" class="productt" alt="">
+          <span class="material-symbols-outlined appearOnHover">
+            visibility
+          </span>
+          <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+        </div>
+        <div class="px-2">
+            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
+            <h3 class=" my-2">{{slotProps.data.productName}}</h3>
+            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+              shopping_cart
+          </span> </h4>
+        </div>
+      </div>
+    </template>
+</Carousel>
+</div>
+
 </div>
 
 <div class="flex lg:flex-row md:flex-column sm:flex-column p-4 py-5 w-full Icons" style="background-color: #f2f4f765;">
@@ -184,21 +210,21 @@ onMounted(() => {
           handshake
           </span>
           <h4 class="m-auto my-2 text-center w-full">Transparency</h4>
-          <p class="lg:w-10 w-9 m-auto text-center darkGrey">At Life Formula, we are honest and open about the ingredients, manufacturing process, and testing procedures used to create our products.</p>
+          <p class="w-11 w-9 m-auto text-center darkGrey">At Life Formula, we are honest and open about the ingredients, manufacturing process, and testing procedures used to create our products.</p>
       </div>
       <div class="flex flex-column justify-content-center m-auto" style="width: fit-content;">
         <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
           psychology
           </span>
           <h4 class="m-auto my-2 text-center">Empowerment</h4>
-          <p class="lg:w-10 w-9 m-auto text-center darkGrey">At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake.</p>
+          <p class="w-11 m-auto text-center darkGrey">At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake.</p>
       </div>
       <div class="flex flex-column justify-content-center m-auto" style="width: fit-content;">
         <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
           price_check
           </span>
           <h4 class="m-auto my-2 text-center">Affordability</h4>
-          <p class="lg:w-10 w-9 m-auto text-center darkGrey">At Life Formula, we aim to make our products accessible to the widest range of customers by offering competitive prices</p>
+          <p class="w-11 m-auto text-center darkGrey">At Life Formula, we aim to make our products accessible to the widest range of customers by offering competitive prices</p>
       </div>
 
     </div>
@@ -215,12 +241,13 @@ onMounted(() => {
   </div>
 </div>
 
-<div class="relative">
-  <img src="../assets/advertisement.png" class="w-full h-8rem lg:h-full" alt="">
-  <img src="../assets/LifeFourmlaLogo.png" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);" class="w-2" alt="">
-  <div style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%);" class="sm:w-10 md:w-9">
-    <h3 class="text-center cursor-pointer aboutUs text-lg lg:text-2xl" style="color: #00405a; text-shadow: 0px 1px 4px white;" @click="push('/about'); scrollToTop()">ABOUT US</h3>
-    <p class="text-white text-center hidden w-8 text-lg m-auto lg:flex">Ready to take the first step towards a healthier you? Explore our wide range of products and embark on your wellness journey.</p>
+<div class="relative cursor-pointer" @click="push('/about'); scrollToTop()">
+  <img src="../assets/MobileAdvertise.png" class="hidden MobBlock w-full lg:h-full" alt="">
+  <img src="../assets/advertisement.png" class="noneForMob w-full h-8rem lg:h-full" alt="">
+  <img src="../assets/LifeFourmlaLogo.png" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);" class="w-2 noneForMob" alt="">
+  <div style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%);" class="sm:w-10 md:w-9 w-full Mobtop50">
+    <h3 class="text-center cursor-pointer aboutUs text-xl lg:text-2xl" style="color: #00405a; text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.79);" @click="push('/about'); scrollToTop()">ABOUT US</h3>
+    <p class="text-white text-center hidden MobWidth100 MobBlock w-9 text-sm lg:text-lg m-auto lg:flex" style="text-shadow: 0px 0px 4px black;">Ready to take the first step towards a healthier you? Explore our wide range of products and embark on your wellness journey.</p>
   </div>
 </div>
 
@@ -232,7 +259,7 @@ onMounted(() => {
     </span>OUR CUSTOMERS FEEDBACKS</h3>
   <div class="Reviews flex flex-wrap lg:flex-nowrap justify-content-center">
     <div class="p-5 reviewCard relative">
-        <h3>Seif Tarek</h3>
+        <h3>Sophia Smith</h3>
         <div class="rating my-3">
           <i class="fa-solid fa-star nocolor"></i>
           <i class="fa-solid fa-star nocolor"></i>
@@ -244,7 +271,7 @@ onMounted(() => {
         <img src="../assets/user.png" class="absolute w-2" style="top: -30px; left: 20px;"  alt="">
     </div>
     <div class="p-5 reviewCard relative">
-        <h3>Ahmed Farid</h3>
+        <h3>Daniel Wild</h3>
         <div class="rating my-3">
           <i class="fa-solid fa-star nocolor"></i>
           <i class="fa-solid fa-star nocolor"></i>
@@ -256,7 +283,7 @@ onMounted(() => {
         <img src="../assets/user.png" class="absolute w-2" style="top: -30px; left: 20px;"  alt="">
     </div>
     <div class="p-5 reviewCard relative">
-        <h3>Kareem Ayman</h3>
+        <h3>Casey Murphy</h3>
         <div class="rating my-3">
           <i class="fa-solid fa-star nocolor"></i>
           <i class="fa-solid fa-star nocolor"></i>
@@ -277,9 +304,9 @@ onMounted(() => {
 
 <div class="w-full py-5" style="background-color: #f2f4f7bc;">
   <!-- FAQ HEADER -->
-  <h3 class="flex align-items-center justify-content-center bluePrimary"><span class="material-symbols-outlined mx-1 text-6xl">contact_support</span> FREQUENTLY ASKED QUESTIONS</h3>
+  <h3 class="flex align-items-center justify-content-center bluePrimary text-center fontSizeMob"><span class="material-symbols-outlined text-4xl lg:text-6xl">contact_support</span> FREQUENTLY ASKED QUESTIONS</h3>
   <h1 class="flex justify-content-center text-center" style="letter-spacing: 4px;">You've Got Any Questions?</h1>
-  <p class="text-center w-11 lg:w-8 m-auto my-3 mb-5">
+  <p class="text:justify lg:text-center w-11 lg:w-8 m-auto my-3 mb-4 textJustifyMob">
     At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake</p>
   <!-- FAQ CONTENT -->
   <div class="w-full flex lg:flex-row sm:flex-column md:flex-column justify-content-center px-3 align-items-center FAQ" id="FAQ">
@@ -397,7 +424,7 @@ onMounted(() => {
   </div>
     </div>
     <div class="w-full m-auto flex justify-content-center">
-      <router-link to="/products" class="p-3 px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4">SHOP NOW</router-link>
+      <router-link to="/products"  @click="scrollToTop()" class="p-3 px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4">SHOP NOW</router-link>
     </div>
 </div>
 </template>
@@ -576,6 +603,13 @@ onMounted(() => {
 }
 
 @media screen and (max-width : 576px){
+  .noneForMob{
+    display: none !important;
+  }
+  .MobCarouselImg{
+    width: 170%; 
+    overflow: hidden !important;
+  }
   .Icons{
     display: flex !important;
     flex-direction: column !important;
@@ -604,5 +638,32 @@ onMounted(() => {
   .accordion{
     width: 90% !important;
   }
+  .Mob-TextCenter{
+    text-align: center !important;
+  }
+  .Mob-JustifyCenter{
+    justify-content: center !important;
+  }
+ .Mob-left0{
+   margin-left : 0 !important;
+ }
+ .MobBlock{
+   display: block !important;
+ }
+ .Mobtop50{
+   top: 50% !important;
+ }
+ .MobWidth100{
+  width: 100% !important;
+ }
+ .fontSizeMob{
+  font-size: 17px;
+ }
+ .textJustifyMob{
+  text-align: justify !important;
+ }
+ .marginBottomMob{
+  margin-bottom: 1vh !important;
+ }
 }
 </style>

@@ -31,18 +31,7 @@ const categories = ref([
 ])
 
 let Products = ref([
-  {
-    productId : 1 ,
-    productImage : "https://github.com/KareemWebDeveloper/LifeFormulaImages/blob/main/Images/D3-50000.jpg?raw=true",
-    productName : "D3 50,000 IU",
-    productDescription : "Vitamin D3 is a nutrient that is essential for many bodily functions, including bone health, immune function, and muscle function. It is also important for the absorption of calcium and phosphorus",
-    CategoryName : "Wellness Supplements",
-    Price : '28.50$',
-    // OldPrice : '32.00$', 
-    // Sale : "-13%",
-    Rating : 0
-  },
-  {
+{
     productId : 3 ,
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
     productName : "Raspberry ketone",
@@ -52,8 +41,8 @@ let Products = ref([
     OldPrice : '13.00$', 
     Sale : "-35%",
     Rating : 0
-  },
-  {
+},
+{
     productId : 2 ,
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
     productName : "Green coffee",
@@ -63,7 +52,7 @@ let Products = ref([
     OldPrice : '18.00$', 
     Sale : "-20%",
     Rating : 0
-  },
+},
   {
     productId : 4,
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
@@ -86,6 +75,17 @@ let Products = ref([
     // Sale : "-12%",
     Rating : 0
   },
+  {
+    productId : 1 ,
+    productImage : "https://github.com/KareemWebDeveloper/LifeFormulaImages/blob/main/Images/D3-50000.jpg?raw=true",
+    productName : "D3 50,000 IU",
+    productDescription : "Vitamin D3 is a nutrient that is essential for many bodily functions, including bone health, immune function, and muscle function. It is also important for the absorption of calcium and phosphorus",
+    CategoryName : "Wellness Supplements",
+    Price : '28.50$',
+    // OldPrice : '32.00$', 
+    // Sale : "-13%",
+    Rating : 0
+},
   {
     productId : 6,
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
@@ -173,8 +173,9 @@ watch(selectedCategories, () => {
 
 <div style="background-color: #f2f4f76b;" class="pb-5">
     <div class="relative">
-        <img src="../../assets/Model2.jpg" class="w-full mb-4 fadeinup animation-duration-1000 animation-iteration-1" alt="">
-        <div v-if="Slogan" class="SloganResponsive" style="position: absolute; top: 50%; right: 10%; text-align: center;">
+        <img src="../../assets/Model2.jpg" class="noneForMob w-full mb-4 fadeinup animation-duration-1000 animation-iteration-1" alt="">
+        <img src="../../assets/mobileModel2.png" class="hidden MobBlock w-full mb-4 fadeinup animation-duration-1000 animation-iteration-1" alt="">
+        <div v-if="Slogan" class="SloganResponsive noneForMob" style="position: absolute; top: 50%; right: 10%; text-align: center;">
             <span class="material-symbols-outlined lg:text-7xl md:text-2xl sm:text-lg text-white text-center m-auto fadein animation-duration-2000 animation-iteration-1">spa</span>
             <h1 class="fadein animation-duration-2000 animation-iteration-1 text-white hidden lg:flex justify-content-center">Shaping a healthier future!</h1>
             <h1 class="fadein animation-duration-2000 animation-iteration-1 text-white text-sm lg:hidden text-center">Shaping a healthier future!</h1>
@@ -182,13 +183,10 @@ watch(selectedCategories, () => {
             <p style="color: rgba(0, 0, 0, 0.663);" class="fadein animation-duration-3000 animation-iteration-1 lg:hidden text-xs text-center">Empowering wellness .. One supplement at a time</p>
         </div>
     </div>
-    <!-- <div class="card flex justify-content-center">
-        <Breadcrumb :home="home" :model="items" />
-    </div> -->
     <div class="flex p-2 px-5 align-items-center">
         <span class="material-symbols-outlined text-7xl mx-1">relax</span>
         <h1 class="darkGrey" style="width: fit-content;">Our Supplements</h1>
-        <hr class="sm:hidden lg:flex md:flex ml-2" style="width: 60%; height: 0.3vh; background-color: black;">
+        <hr class="sm:hidden lg:flex md:flex ml-2 noneForMob" style="width: 60%; height: 0.3vh; background-color: black;">
     </div>
     <div class="sm:w-full md:w-full p-2 m-auto fadeindown animation-duration-1000 animation-iteration-1" style="width: 87% !important;">
         <div v-if="loading" class="w-full flex sm:flex-column md:flex-column lg:flex-row flex-wrap">

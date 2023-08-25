@@ -1,19 +1,28 @@
+<script setup lang="ts">
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+</script>
 <template>
     <footer>
       <div class="Upp">
         <div class="shops">
             <h4>Products</h4>
-            <RouterLink to="/products" class="links">Vitamins</RouterLink>
-            <RouterLink to="/products" class="links">Supplements</RouterLink>
-            <RouterLink to="/products" class="links">Shop by Category</RouterLink>
-            <RouterLink to="/products" class="links">Best Selling</RouterLink>
+            <RouterLink to="/products" @click="scrollToTop" class="links">Vitamins</RouterLink>
+            <!-- <RouterLink to="/products" class="links">Supplements</RouterLink> -->
+            <RouterLink to="/products" @click="scrollToTop" class="links">Shop by Category</RouterLink>
+            <RouterLink to="/products" @click="scrollToTop" class="links">Best Selling</RouterLink>
         </div> 
         <div class="shops">
             <h4>INFORMATION</h4>
-            <RouterLink to="/about" class="links">About Us</RouterLink>
+            <RouterLink to="/about" @click="scrollToTop" class="links">About Us</RouterLink>
             <!-- <RouterLink to="" class="links">FAQ</RouterLink> -->
-            <RouterLink to="" class="links">privacy policy</RouterLink>
-            <RouterLink to="" class="links">Terms & condition</RouterLink>
+            <RouterLink to="" @click="scrollToTop" class="links">privacy policy</RouterLink>
+            <RouterLink to="" @click="scrollToTop" class="links">Terms & condition</RouterLink>
         </div> 
         <div class="shops">
             <h4>CUSTOMER SERVICE</h4>

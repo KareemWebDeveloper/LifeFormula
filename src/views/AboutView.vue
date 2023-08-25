@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import Fieldset from 'primevue/fieldset';
 import ContactIcons from '@/components/ContactIcons.vue';
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
 </script>
 <template>
   <ContactIcons></ContactIcons>
@@ -42,8 +48,8 @@ import ContactIcons from '@/components/ContactIcons.vue';
         </div>
     </template>
     <img src="../assets/LifeFourmlaLogo.png" class="w-5 m-auto flex justify-content-center pr-3 mb-2" alt="">
-      <p class="text-center w-12 m-auto">
-        Welcome to <span class="greenLogoColor text-xl">Life Formula</span>, where commitment to wellness comes first. Our journey began with a passion for making a positive impact
+      <p class="text-justify w-12 m-auto text-sm">
+        Welcome to <span class="greenLogoColor text-xl">Life Formula</span> , where commitment to wellness comes first. Our journey began with a passion for making a positive impact
          on people's lives through premium vitamins and supplements. Drawing upon our extensive expertise in the realm of importation, distribution, and personalized customer consultation within the vitamins and nutritional supplements sector, we have cultivated a resolute belief that everyone deserves access to products that promote a healthier and happier life.
       </p>
   </Fieldset>
@@ -70,7 +76,7 @@ import ContactIcons from '@/components/ContactIcons.vue';
 
 <div class="w-11 m-auto">
 
-  <div class="w-full flex lg:flex-row flexColumnn sm:flex-column md:flex-column align-items-center p-5 textCenterResp">
+  <div class="w-full flex lg:flex-row flexColumnn sm:flex-column md:flex-column align-items-center p-5 paddingMob textCenterResp">
     <div>
       <div class="flex align-items-center flexColumnn">
         <h1 class="margAuto">Our Mission and Values </h1>
@@ -83,7 +89,7 @@ import ContactIcons from '@/components/ContactIcons.vue';
   </div>
 
 
-  <div class="w-full flex align-items-center lg:flex-row flexColumnRev sm:flex-column-reverse md:flex-column-reverse p-5 textCenterResp">
+  <div class="w-full flex align-items-center lg:flex-row flexColumnRev sm:flex-column-reverse md:flex-column-reverse p-5 paddingMob textCenterResp">
     <img src="../assets/aboutUs.jpg" class="w-5 imageHoverr width75" style="border-radius: 20%;" alt="">
     <div class="px-5 padding0">
       <h1 class="margAuto">Quality Assurance <span class="material-symbols-outlined text-6xl">
@@ -95,7 +101,7 @@ import ContactIcons from '@/components/ContactIcons.vue';
   </div>
 
   
-  <div class="w-full flex align-items-center lg:flex-row flexColumnn sm:flex-column md:flex-column p-5 textCenterResp">
+  <div class="w-full flex align-items-center lg:flex-row flexColumnn sm:flex-column md:flex-column p-5 paddingMob textCenterResp">
     <div class="px-5 padding0">
       <div class="flex align-items-center flexColumnn">
         <h1 class="mt-2 margAuto">Transparency and Empowerment</h1>
@@ -112,7 +118,7 @@ import ContactIcons from '@/components/ContactIcons.vue';
       Ready to take the first step towards a healthier you? Explore our wide range of products and embark on your wellness journey.
     </p>
     <div class="w-full m-auto flex justify-content-center">
-      <router-link to="/products" class="p-3 px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4">SHOP NOW</router-link>
+      <router-link to="/products" class="p-3 px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4" @click="scrollToTop()">SHOP NOW</router-link>
     </div>
   </div>
 </div>
@@ -162,12 +168,18 @@ import ContactIcons from '@/components/ContactIcons.vue';
   .textCenterMob{
     text-align: center !important;
   }
+  .justifyyMob{
+    text-align: justify !important;
+  }
   .flexColumnn{
     display: flex;
     flex-direction: column !important;
   }
   .flexColumnRev{
     flex-direction: column-reverse !important;
+  }
+  .paddingMob{
+    padding: 2vh 0 !important;
   }
 }
 </style>
