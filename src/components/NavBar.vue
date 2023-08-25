@@ -16,7 +16,7 @@ function scrollToTop() {
 <template>
     <div class="NavBarrr w-full fixed">
         <nav class="bg-white w-full hidden lg:flex justify-content-around align-items-center p-3">
-            <img src="../assets/LifeFourmlaLogo.png" style="width: 12%; cursor: pointer;" alt="" @click="push('/')">
+            <img src="../assets/LifeFourmlaLogo.png" style="width: 12%; cursor: pointer;" alt="" @click="push('/'); scrollToTop()">
                 <div>
                     <router-link to="/" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">Home</router-link> 
                     <router-link to="/about" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">About Us</router-link> 
@@ -41,7 +41,7 @@ function scrollToTop() {
             <span class="material-symbols-outlined text-4xl cursor-pointer" @click="visible = true" >
                 menu
             </span>
-            <img src="../assets/LifeFourmlaLogo.png" class="md:w-4 sm:w-5 logo" alt="">
+            <img src="../assets/LifeFourmlaLogo.png" class="md:w-4 sm:w-5 logo" @click="push('/'); scrollToTop()" alt="">
         </div>
         <div class="flex align-items-center">
             <span class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
