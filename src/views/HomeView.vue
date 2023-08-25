@@ -603,6 +603,15 @@ onMounted(() => {
 }
 
 @media screen and (max-width : 576px){
+  .aboutUs{
+    color: white !important;
+    font-family: 'Kanit', sans-serif !important;
+    text-shadow: 0px 1px 4px black !important;
+  }
+  .aboutUs:hover{
+    color: rgba(0, 77, 192, 0.81) !important;
+    text-shadow: 0px 1px 4px rgb(255, 255, 255) !important;
+  }
   .noneForMob{
     display: none !important;
   }
