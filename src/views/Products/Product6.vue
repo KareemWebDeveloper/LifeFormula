@@ -34,7 +34,7 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '36.50$',
+    Price : '74.99$',
   },
   {
     productId : "2",
@@ -115,7 +115,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <h2 class="logoSecondaryColor my-2" style="letter-spacing: 2px;">MFS</h2>
             <p class="logoSecondaryColor my-2" style="letter-spacing: 2px;">Fertility Supplements</p>
             <div class="flex align-items-center md:justify-content-center sm:justify-content-center lg:justify-content-start justifyCenterMob">
-                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">36.50$</p>
+                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">74.99$</p>
                 <Rating v-model="RatingValue" readonly />
             </div>
             <p class="w-10 my-3 darkGrey sm:m-auto md:m-auto lg:m-0 MargAutoMob textJustifyMob">Life Formula's MFS is a natural supplement that can help men with fertility problems. It
@@ -136,7 +136,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 </span>
                 </h5>
             </div>
-            <p class="sm:text-center md:text-center lg:text-left">Price : {{(QuantityValue * 36.50).toFixed(2)}}$</p>
+            <p class="sm:text-center md:text-center lg:text-left">Price : {{(QuantityValue * 74.99).toFixed(2)}}$</p>
             <div class="w-10 MobWidth100 my-5 flex justify-content-center align-items-center sm:m-auto md:m-auto lg:m-0 mgAuto mgtop">
                 <SelectButton v-model="OptionsValue" :options="options" class="productDetails" aria-labelledby="basic" />
             </div>
@@ -170,6 +170,37 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 <h2 class="productIconsFont">Improved Spermatogenesis</h2>
             </div>
     </div>
+
+        <!-- Shipping buying icons  -->
+        <div class="p-5 w-full flex flex-wrap justify-content-center FlexColumnMob" style="background-color: #f2f4f7d8;">
+            <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+                <span class="material-symbols-outlined text-7xl">
+                    local_shipping
+                </span>
+                <h2 class="productIconsFont">Fast Shipping</h2>
+                <p class="darkGrey w-full text-center m-auto">Delivered within 2-3 business days for a flat rate of $6.99 and free shipping over $59.</p>
+            </div>
+            <div class="hidden lg:flex">
+                <Divider layout="vertical" />
+            </div>
+            <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+                <span class="material-symbols-outlined text-7xl">
+                    currency_exchange
+                </span>
+                <h2 class="productIconsFont">Easy Returns</h2>
+                <p class="darkGrey w-full text-center m-auto">If you’re not satisfied, you can return the product anytime within 30 days.</p>
+            </div>
+            <div class="hidden lg:flex">
+                <Divider layout="vertical" />
+            </div>
+            <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+                <span class="material-symbols-outlined text-7xl">
+                    forward_to_inbox
+                </span>
+                <h2 class="productIconsFont">Questions?</h2>
+                <p class="darkGrey w-full text-center m-auto">Email us at Info@lifeformula.us and we’ll be happy to help you.</p>
+            </div>
+        </div>
 
     <!-- PRODUCTS YOU MAY ALSO LIKE -->
     <div class="p-5 paddingMob">
@@ -223,37 +254,6 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
               </template>
           </Carousel>
           </div>
-</div>
-
-    <!-- Shipping buying icons  -->
-    <div class="p-5 w-full flex flex-wrap justify-content-center FlexColumnMob" style="background-color: #f2f4f7d8;">
-        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
-            <span class="material-symbols-outlined text-7xl">
-                local_shipping
-            </span>
-            <h2 class="productIconsFont">Fast Shipping</h2>
-            <p class="darkGrey w-full text-center m-auto">Delivered within 2-3 business days for a flat rate of $6.99 and free shipping over $59.</p>
-        </div>
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
-            <span class="material-symbols-outlined text-7xl">
-                currency_exchange
-            </span>
-            <h2 class="productIconsFont">Easy Returns</h2>
-            <p class="darkGrey w-full text-center m-auto">If you’re not satisfied, you can return the product anytime within 30 days.</p>
-        </div>
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
-            <span class="material-symbols-outlined text-7xl">
-                forward_to_inbox
-            </span>
-            <h2 class="productIconsFont">Questions?</h2>
-            <p class="darkGrey w-full text-center m-auto">Email us at hello@lifeFormula.com and we’ll be happy to help you.</p>
-        </div>
     </div>
     </template>
 <style>

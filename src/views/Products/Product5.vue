@@ -35,7 +35,7 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '36.50$',
+    Price : '74.99$',
   },
   {
     productId : "2",
@@ -116,7 +116,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <h2 class="logoSecondaryColor my-2" style="letter-spacing: 2px;">WFS PLUS</h2>
             <p class="logoSecondaryColor my-2" style="letter-spacing: 2px;">Fertility Supplements</p>
             <div class="flex align-items-center md:justify-content-center sm:justify-content-center lg:justify-content-start justifyCenterMob">
-                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">36.50$</p>
+                <p class="greenLogoColor mr-4 mb-0 text-xl pt-1">74.99$</p>
                 <Rating v-model="RatingValue" readonly />
             </div>
             <p class="w-10 my-3 darkGrey sm:m-auto md:m-auto lg:m-0 MargAutoMob textJustifyMob">Life Formula's WFS MAX is a natural supplement that can help women with fertility
@@ -144,7 +144,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 </span>
                 </h5>
             </div>
-            <p class="sm:text-center md:text-center lg:text-left">Price : {{(QuantityValue * 36.50).toFixed(2)}}$</p>
+            <p class="sm:text-center md:text-center lg:text-left">Price : {{(QuantityValue * 74.99).toFixed(2)}}$</p>
             <div class="w-10 MobWidth100 my-5 flex justify-content-center align-items-center sm:m-auto md:m-auto lg:m-0 mgAuto mgtop">
                 <SelectButton v-model="OptionsValue" :options="options" class="productDetails" aria-labelledby="basic" />
             </div>
@@ -188,60 +188,6 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             </div>
     </div>
 
-    <!-- PRODUCTS YOU MAY ALSO LIKE -->
-    <div class="p-5 paddingMob">
-        <h2 class="px-5 py-3 textCenterMob">Products You May Also Like</h2>
-        <div class="m-auto noneForMob" style="width: 88%;">
-            <Carousel :value="Featured" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
-              <template #item="slotProps">
-                <div class="p-4 CARD m-auto" style="width: fit-content;">
-                  <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-                    <img :src="slotProps.data.productImage" class="productt" alt="">
-                    <span class="material-symbols-outlined appearOnHover">
-                      visibility
-                    </span>
-                    <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
-                  </div>
-                  <div class="px-2">
-                      <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
-                      <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
-                      <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
-                        shopping_cart
-                    </span> </h4>
-                  </div>
-                </div>
-              </template>
-          </Carousel>
-          </div>
-          
-            <!-- Best Selling Products for mobile -->
-          <div class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
-            <Carousel :value="Featured" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="500px" 
-            containerClass="w-full" contentClass="flex align-items-center">
-              <template #item="slotProps">
-                <div class="p-4 CARD m-auto" style="width: fit-content;">
-                  <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-                    <img :src="slotProps.data.productImage" class="productt" alt="">
-                    <span class="material-symbols-outlined appearOnHover">
-                      visibility
-                    </span>
-                    <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
-                  </div>
-                  <div class="px-2">
-                      <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
-                      <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
-                      <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
-                        shopping_cart
-                    </span> </h4>
-                  </div>
-                </div>
-              </template>
-          </Carousel>
-          </div>
-    </div>
-
     <!-- Shipping buying icons  -->
     <div class="p-5 w-full flex flex-wrap justify-content-center FlexColumnMob" style="background-color: #f2f4f7d8;">
         <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
@@ -269,9 +215,63 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 forward_to_inbox
             </span>
             <h2 class="productIconsFont">Questions?</h2>
-            <p class="darkGrey w-full text-center m-auto">Email us at hello@lifeFormula.com and we’ll be happy to help you.</p>
+            <p class="darkGrey w-full text-center m-auto">Email us at Info@lifeformula.us and we’ll be happy to help you.</p>
         </div>
     </div>
+
+        <!-- PRODUCTS YOU MAY ALSO LIKE -->
+    <div class="p-5 paddingMob">
+        <h2 class="px-5 py-3 textCenterMob">Products You May Also Like</h2>
+        <div class="m-auto noneForMob" style="width: 88%;">
+            <Carousel :value="Featured" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
+                <template #item="slotProps">
+                <div class="p-4 CARD m-auto" style="width: fit-content;">
+                    <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
+                    <img :src="slotProps.data.productImage" class="productt" alt="">
+                    <span class="material-symbols-outlined appearOnHover">
+                        visibility
+                    </span>
+                    <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                    </div>
+                    <div class="px-2">
+                        <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
+                        <h3 class=" my-2">{{slotProps.data.productName}}</h3>
+                        <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                        <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+                        shopping_cart
+                    </span> </h4>
+                    </div>
+                </div>
+                </template>
+            </Carousel>
+            </div>
+            
+            <!-- Best Selling Products for mobile -->
+            <div class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
+            <Carousel :value="Featured" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="500px" 
+            containerClass="w-full" contentClass="flex align-items-center">
+                <template #item="slotProps">
+                <div class="p-4 CARD m-auto" style="width: fit-content;">
+                    <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
+                    <img :src="slotProps.data.productImage" class="productt" alt="">
+                    <span class="material-symbols-outlined appearOnHover">
+                        visibility
+                    </span>
+                    <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                    </div>
+                    <div class="px-2">
+                        <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
+                        <h3 class=" my-2">{{slotProps.data.productName}}</h3>
+                        <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                        <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+                        shopping_cart
+                    </span> </h4>
+                    </div>
+                </div>
+                </template>
+            </Carousel>
+            </div>
+        </div>
     </template>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Artifika&family=Bricolage+Grotesque:opsz@10..48&family=Secular+One&display=swap');

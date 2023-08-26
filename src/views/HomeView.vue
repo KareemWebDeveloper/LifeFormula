@@ -31,7 +31,7 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '36.50$',
+    Price : '74.99$',
   },
   {
     productId : "2",
@@ -137,7 +137,7 @@ onMounted(() => {
         <span class="material-symbols-outlined ml-3 Mob-left0 text-4xl greenLogoColor">
           ecg
         </span>
-        <h4 class="mx-2 greenLogoColor mt-2 Mob-TextCenter">Our Products</h4>
+        <h4 class="mx-2 greenLogoColor mt-2 Mob-TextCenter" id="Featured">Our Products</h4>
       </div>
       <div class="w-full flex align-items-center IconsColumn">
         <h1 class="mx-4" style="color: #00405a; letter-spacing: 2px;">Featured</h1>
@@ -164,6 +164,8 @@ onMounted(() => {
             <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
             <h3 class=" my-2">{{slotProps.data.productName}}</h3>
             <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+            <!-- <p class="text-sm my-0" style="color: rgba(14, 0, 0);">Save 10% when buying 3 bottles </p>
+            <p class="text-sm" style="color: rgba(14, 0, 0);">Save 15% when buying 6 bottles </p> -->
             <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
               shopping_cart
           </span> </h4>
@@ -304,12 +306,12 @@ onMounted(() => {
 
 <div class="w-full py-5" style="background-color: #f2f4f7bc;">
   <!-- FAQ HEADER -->
-  <h3 class="flex align-items-center justify-content-center bluePrimary text-center fontSizeMob"><span class="material-symbols-outlined text-4xl lg:text-6xl">contact_support</span> FREQUENTLY ASKED QUESTIONS</h3>
+  <h3 class="flex align-items-center justify-content-center bluePrimary text-center fontSizeMob" id="FAQ"><span class="material-symbols-outlined text-4xl lg:text-6xl">contact_support</span> FREQUENTLY ASKED QUESTIONS</h3>
   <h1 class="flex justify-content-center text-center" style="letter-spacing: 4px;">You've Got Any Questions?</h1>
   <p class="text:justify lg:text-center w-11 lg:w-8 m-auto my-3 mb-4 textJustifyMob">
     At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake</p>
   <!-- FAQ CONTENT -->
-  <div class="w-full flex lg:flex-row sm:flex-column md:flex-column justify-content-center px-3 align-items-center FAQ" id="FAQ">
+  <div class="w-full flex lg:flex-row sm:flex-column md:flex-column justify-content-center px-3 align-items-center FAQ">
   <div style="width: 45%;" class="flex align-items-center md:w-7 sm:w-8 faqImg">
     <img src="../assets/vitaminsFaq.png" class="w-full" alt="faq">
   </div>

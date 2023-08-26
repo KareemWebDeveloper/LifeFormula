@@ -34,7 +34,7 @@ const Featured = [
     productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
     productName : "MFS",
     CategoryName : "Fertility Supplements",
-    Price : '36.50$',
+    Price : '74.99$',
   },
   {
     productId : "2",
@@ -174,91 +174,6 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             </div>
     </div>
 
-    <!-- PRODUCTS YOU MAY ALSO LIKE -->
-    <div class="p-5 paddingMob">
-        <h2 class="px-5 py-3 textCenterMob">Products You May Also Like</h2>
-        <div class="m-auto noneForMob" style="width: 88%;">
-            <Carousel :value="Featured" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
-              <template #item="slotProps">
-                <div class="p-4 CARD m-auto" style="width: fit-content;">
-                  <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-                    <img :src="slotProps.data.productImage" class="productt" alt="">
-                    <span class="material-symbols-outlined appearOnHover">
-                      visibility
-                    </span>
-                    <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
-                  </div>
-                  <div class="px-2">
-                      <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
-                      <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
-                      <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
-                        shopping_cart
-                    </span> </h4>
-                  </div>
-                </div>
-              </template>
-          </Carousel>
-          </div>
-          
-            <!-- Best Selling Products for mobile -->
-          <div class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
-            <Carousel :value="Featured" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="500px" 
-            containerClass="w-full" contentClass="flex align-items-center">
-              <template #item="slotProps">
-                <div class="p-4 CARD m-auto" style="width: fit-content;">
-                  <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-                    <img :src="slotProps.data.productImage" class="productt" alt="">
-                    <span class="material-symbols-outlined appearOnHover">
-                      visibility
-                    </span>
-                    <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
-                  </div>
-                  <div class="px-2">
-                      <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
-                      <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-                      <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
-                      <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
-                        shopping_cart
-                    </span> </h4>
-                  </div>
-                </div>
-              </template>
-          </Carousel>
-          </div>
-</div>
-
-    <!-- Shipping buying icons  -->
-    <div class="p-5 w-full flex flex-wrap justify-content-center FlexColumnMob" style="background-color: #f2f4f7d8;">
-        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
-            <span class="material-symbols-outlined text-7xl">
-                local_shipping
-            </span>
-            <h2 class="productIconsFont">Fast Shipping</h2>
-            <p class="darkGrey w-full text-center m-auto">Delivered within 2-3 business days for a flat rate of $6.99 and free shipping over $59.</p>
-        </div>
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
-            <span class="material-symbols-outlined text-7xl">
-                currency_exchange
-            </span>
-            <h2 class="productIconsFont">Easy Returns</h2>
-            <p class="darkGrey w-full text-center m-auto">If you’re not satisfied, you can return the product anytime within 30 days.</p>
-        </div>
-        <div class="hidden lg:flex">
-            <Divider layout="vertical" />
-        </div>
-        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
-            <span class="material-symbols-outlined text-7xl">
-                forward_to_inbox
-            </span>
-            <h2 class="productIconsFont">Questions?</h2>
-            <p class="darkGrey w-full text-center m-auto">Email us at hello@lifeFormula.com and we’ll be happy to help you.</p>
-        </div>
-    </div>
-
     <!-- Blog -->
     <div class="Blog w-12 lg:w-9 m-auto padding5 sm:p-2 md:p-3 lg:p-5">
         <div class="my-2">
@@ -301,6 +216,91 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 health status, and lifestyle.</p>
         </div>
     </div>
+
+    <!-- Shipping buying icons  -->
+    <div class="p-5 w-full flex flex-wrap justify-content-center FlexColumnMob" style="background-color: #f2f4f7d8;">
+        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+            <span class="material-symbols-outlined text-7xl">
+                local_shipping
+            </span>
+            <h2 class="productIconsFont">Fast Shipping</h2>
+            <p class="darkGrey w-full text-center m-auto">Delivered within 2-3 business days for a flat rate of $6.99 and free shipping over $59.</p>
+        </div>
+        <div class="hidden lg:flex">
+            <Divider layout="vertical" />
+        </div>
+        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+            <span class="material-symbols-outlined text-7xl">
+                currency_exchange
+            </span>
+            <h2 class="productIconsFont">Easy Returns</h2>
+            <p class="darkGrey w-full text-center m-auto">If you’re not satisfied, you can return the product anytime within 30 days.</p>
+        </div>
+        <div class="hidden lg:flex">
+            <Divider layout="vertical" />
+        </div>
+        <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+            <span class="material-symbols-outlined text-7xl">
+                forward_to_inbox
+            </span>
+            <h2 class="productIconsFont">Questions?</h2>
+            <p class="darkGrey w-full text-center m-auto">Email us at Info@lifeformula.us and we’ll be happy to help you.</p>
+        </div>
+    </div>
+
+        <!-- PRODUCTS YOU MAY ALSO LIKE -->
+        <div class="p-5 paddingMob">
+            <h2 class="px-5 py-3 textCenterMob">Products You May Also Like</h2>
+            <div class="m-auto noneForMob" style="width: 88%;">
+                <Carousel :value="Featured" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
+                  <template #item="slotProps">
+                    <div class="p-4 CARD m-auto" style="width: fit-content;">
+                      <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
+                        <img :src="slotProps.data.productImage" class="productt" alt="">
+                        <span class="material-symbols-outlined appearOnHover">
+                          visibility
+                        </span>
+                        <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                      </div>
+                      <div class="px-2">
+                          <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
+                          <h3 class=" my-2">{{slotProps.data.productName}}</h3>
+                          <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                          <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+                            shopping_cart
+                        </span> </h4>
+                      </div>
+                    </div>
+                  </template>
+              </Carousel>
+              </div>
+              
+                <!-- Best Selling Products for mobile -->
+              <div class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
+                <Carousel :value="Featured" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="500px" 
+                containerClass="w-full" contentClass="flex align-items-center">
+                  <template #item="slotProps">
+                    <div class="p-4 CARD m-auto" style="width: fit-content;">
+                      <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
+                        <img :src="slotProps.data.productImage" class="productt" alt="">
+                        <span class="material-symbols-outlined appearOnHover">
+                          visibility
+                        </span>
+                        <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+                      </div>
+                      <div class="px-2">
+                          <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
+                          <h3 class=" my-2">{{slotProps.data.productName}}</h3>
+                          <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+                          <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+                            shopping_cart
+                        </span> </h4>
+                      </div>
+                    </div>
+                  </template>
+              </Carousel>
+              </div>
+        </div>
     </template>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Artifika&family=Bricolage+Grotesque:opsz@10..48&family=Secular+One&display=swap');

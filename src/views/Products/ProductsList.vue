@@ -70,7 +70,7 @@ let Products = ref([
     productName : "WFS PLUS",
     productDescription : "Life Formula's WFS MAX is a natural supplement that can help women with fertility problems. It contains ingredients that improve insulin sensitivity and ovulation, two important factors for conception",
     CategoryName : "Fertility Supplements",
-    Price : '36.50$',
+    Price : '74.99$',
     // OldPrice : '38.99$', 
     // Sale : "-12%",
     Rating : 0
@@ -92,7 +92,7 @@ let Products = ref([
     productName : "MFS",
     productDescription : "Life Formula's MFS is a natural supplement that can help men with fertility problems. It contains ingredients that support sperm count, motility, and morphology.",
     CategoryName : "Fertility Supplements",
-    Price : '36.50$',
+    Price : '74.99$',
     // OldPrice : '39.99$', 
     // Sale : "-17%",
     Rating : 0

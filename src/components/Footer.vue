@@ -15,7 +15,7 @@ function scrollToTop() {
             <RouterLink to="/products" @click="scrollToTop" class="links">Vitamins</RouterLink>
             <!-- <RouterLink to="/products" class="links">Supplements</RouterLink> -->
             <RouterLink to="/products" @click="scrollToTop" class="links">Shop by Category</RouterLink>
-            <RouterLink to="/products" @click="scrollToTop" class="links">Best Selling</RouterLink>
+            <RouterLink :to="{ name: 'home', hash: '#Featured' }" @click="scrollToTop" class="links">Best Selling</RouterLink>
         </div> 
         <div class="shops">
             <h4>INFORMATION</h4>
@@ -29,7 +29,7 @@ function scrollToTop() {
             <!-- <RouterLink to="" class="links">Search Terms</RouterLink> -->
             <RouterLink to="" class="links">Shipping policy</RouterLink>
             <RouterLink to="" class="links">Contact Us</RouterLink>
-            <RouterLink :to="{ name: 'home', hash: 'FAQ' }" class="links">Help & FAQs</RouterLink>
+            <RouterLink :to="{ name: 'home', hash: '#FAQ' }" class="links">Help & FAQs</RouterLink>
         </div> 
         <div class="newsletter my-3">
             <!-- <h4>Registration</h4> -->
