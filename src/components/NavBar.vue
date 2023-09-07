@@ -46,9 +46,6 @@ function scrollToTop() {
   });
 }
 
-const openContactUsForm = () => {
-    isDialogVisible.value = true
-}
 const sendMail = (req : any) => {
     console.log(req);
     loading.value = true
@@ -134,8 +131,8 @@ const sendMail = (req : any) => {
                     <span class="material-symbols-outlined text-4xl mx-2 cursor-pointer colorHover fontHover" @click="push('/cart'); scrollToTop()">
                         shopping_cart
                     </span>
-                    <span class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
-                        favorite
+                    <span @click="push('/login'); scrollToTop()" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
+                        login
                     </span>
                 </div>
         </nav>
@@ -160,8 +157,8 @@ const sendMail = (req : any) => {
             <span class="material-symbols-outlined text-4xl mx-2 cursor-pointer colorHover fontHover" @click="push('/cart'); scrollToTop()">
                 shopping_cart
             </span>
-            <span class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
-                favorite
+            <span @click="push('/login'); scrollToTop()" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
+                login
             </span>
         </div>
         </nav>
@@ -177,7 +174,7 @@ const sendMail = (req : any) => {
             </router-link> 
             <router-link to="/about" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">diversity_1</span>About Us</router-link> 
             <router-link to="/products" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">shopping_basket</span>Shop</router-link> 
-            <router-link to="/" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">contact_phone</span>Contact Us</router-link> 
+            <router-link to="/" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop(); isDialogVisible = true" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">contact_phone</span>Contact Us</router-link> 
         </div>
     </Sidebar>
 </template>

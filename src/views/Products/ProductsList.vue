@@ -240,7 +240,7 @@ watch(selectedCategories, () => {
                             <InputText v-model="SearchValue" class="font-bold" placeholder="Search Products" />
                         </span>
                         <span class="p-float-label mx-3 font-light w-full sm:my-4 md:my-4 mb-0 lg:my-1 FilterResponsiveSelect">
-                            <MultiSelect id="ms-cities" v-model="selectedCategories" :options="categories" optionLabel="name" :maxSelectedLabels="3" class="w-full md:w-20rem" />
+                            <MultiSelect id="ms-cities" v-model="selectedCategories" filter :options="categories" optionLabel="name" :maxSelectedLabels="3" class="w-full md:w-20rem" />
                             <label for="ms-cities">Select Product Categories</label>
                         </span>
                     </div>
@@ -462,6 +462,7 @@ watch(selectedCategories, () => {
 }
 .FilterResponsiveSelect{
     margin-bottom: 1.5vh !important;
+    margin-top: 3vh !important;
 }
 .justifyStart{
     justify-content: start !important;
