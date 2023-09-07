@@ -124,7 +124,7 @@ const sendMail = (req : any) => {
     padding: 1.9vh !important;
     font-size: 45px !important;
 }
-.formkit-input{
+.ContactUsForm .formkit-input{
     padding: 1.8vh;
     margin: auto;
     border: none;
@@ -134,10 +134,10 @@ const sendMail = (req : any) => {
     background: none;
     border: 2px solid rgba(0, 0, 0, 0.696);
 }
-.formkit-input::placeholder{
+.ContactUsForm .formkit-input::placeholder{
     color: rgba(0, 0, 0, 0.79);
 }
-.formkit-input:focus{
+.ContactUsForm .formkit-input:focus{
     outline: none;
     border: 2px solid #009a33;
     box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.442);
@@ -147,21 +147,21 @@ const sendMail = (req : any) => {
     margin: 2vh auto;
     width: 100%;
 }
-.formkit-wrapper{
+.ContactUsForm .formkit-wrapper{
     padding:  1vh;
 }
-.formkit-messages{
+.ContactUsForm .formkit-messages{
     list-style: none;
     padding: 0;
 }
-.formkit-message{
+.ContactUsForm .formkit-message{
     color: white;
     background-color: rgba(255, 0, 0, 0.684);
     padding: 1.5vh;
     margin: 1vh 2vh;
     border-radius: 3px;
 }
-.submitBtn{
+.ContactUsForm .submitBtn{
     background-color: white;
     color: black;
     margin: 2vh auto;
@@ -172,7 +172,7 @@ const sendMail = (req : any) => {
     border-radius: 8px;
     transition-duration: 0.2s;
 }
-.submitBtn:hover{
+.ContactUsForm .submitBtn:hover{
     background-color: #009a33 !important;
     color: white !important;
 }
