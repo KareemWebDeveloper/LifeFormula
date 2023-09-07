@@ -24,34 +24,34 @@ const router = createRouter({
       component: () => import('../views/Products/ProductsList.vue')
     },
     {
-      path: '/products/1',
-      name: 'product_view1',
-      component: () => import('../views/Products/Product1.vue')
+      path: '/products/:id',
+      name: 'product_view',
+      component: () => import('../views/Products/ProductDetails.vue')
     },
     {
-      path: '/products/2',
-      name: 'product_view2',
-      component: () => import('../views/Products/Product2.vue')
+      path: '/login',
+      name: 'login_register',
+      component: () => import('../views/LoginView.vue')
     },
     {
-      path: '/products/3',
-      name: 'product_view3',
-      component: () => import('../views/Products/Product3.vue')
+      path: '/payment',
+      name: 'payment_checkOut',
+      component: () => import('../views/paymentCheckOut.vue')
     },
     {
-      path: '/products/4',
-      name: 'product_view4',
-      component: () => import('../views/Products/Product4.vue')
+      path: '/cart',
+      name: 'cart',
+      component: () => import('../views/Cart.vue')
     },
     {
-      path: '/products/5',
-      name: 'product_view5',
-      component: () => import('../views/Products/Product5.vue')
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/UserProfle.vue')
     },
     {
-      path: '/products/6',
-      name: 'product_view6',
-      component: () => import('../views/Products/Product6.vue')
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashBoard.vue')
     },
   ]
 })

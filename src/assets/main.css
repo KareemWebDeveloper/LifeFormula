@@ -44,3 +44,10 @@
 .logoSecondaryColor{
   color: #00405a !important;
 }
+.material-symbols-colored {
+  font-variation-settings:
+  'FILL' 100,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 48
+}

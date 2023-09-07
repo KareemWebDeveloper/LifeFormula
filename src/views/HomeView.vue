@@ -6,14 +6,90 @@ import Carousel from 'primevue/carousel';
 import ContactIcons from '@/components/ContactIcons.vue';
 import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
-import {ref , onMounted} from 'vue'
+import { ref, onMounted, onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
+import { AES, enc } from 'crypto-js';
+
 const { push } = useRouter();
 function scrollToTop() {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   });
+}
+const FeaturedProducts = ref([])
+
+let token = localStorage.getItem('LF_Token')
+const Authenticated = ref(false)
+
+const cartLoading = ref(false)
+
+const addToCart = (productId : number) => {
+    isDialogVisible.value = true
+    cartLoading.value = true
+    const ProductFound = FeaturedProducts.value.find((product : any) => product.id == productId);
+    const newProductObject : any = {
+        product : ProductFound
+    }
+    console.log(ProductFound);
+    
+    if(Authenticated.value == true){
+        let request = {
+            product_id : productId ,
+            quantity : 1
+        }
+        axios.post('https://api-lifeformula.com/api/addToCart',request).then((result) => {
+            console.log(result.data.message);
+            cartLoading.value = false
+         }).catch((err) => {
+            console.log(err);
+         });
+
+    }
+    else{
+        let localCart = localStorage.getItem('lf_cart');
+        if(localCart){
+            newProductObject.quantity = 1
+            let decryptedCart = AES.decrypt(localCart , 'EncryptionKey_liformula24').toString(enc.Utf8)
+            let parsedCart = JSON.parse(decryptedCart) 
+            for (let index = 0; index < parsedCart.length; index++) {
+                const item = parsedCart[index];
+                if(item.id == productId){
+                    return
+                }
+            }
+            cartLoading.value = false
+            parsedCart.push(newProductObject)
+            parsedCart = JSON.stringify(parsedCart)
+            let encryptedCart = AES.encrypt(parsedCart , 'EncryptionKey_liformula24').toString()
+            localStorage.setItem('lf_cart',encryptedCart)
+        }
+        else{
+            cartLoading.value = false
+            let cart : any = []
+            newProductObject.quantity = 1
+            cart.push(newProductObject);
+            cart = JSON.stringify(cart)
+            let encryptedCart = AES.encrypt(cart , 'EncryptionKey_liformula24').toString()
+            localStorage.setItem('lf_cart',encryptedCart)
+        }
+    }
+}
+
+onBeforeMount(() => {
+  if(token){
+    Authenticated.value = true
+    let decrypted_token = AES.decrypt(token , 'EncryptionKey_liformula24').toString(enc.Utf8)        
+    axios.defaults.headers.common['Authorization'] = `Bearer ${decrypted_token}`
+  }
+  getFeaturedProducts();
+})
+
+const getFeaturedProducts = async () => {
+  let response = await axios.get('https://api-lifeformula.com/api/featured');
+  FeaturedProducts.value = response.data.Featured as any
+  console.log(FeaturedProducts.value);
 }
 
 const Featured = [
@@ -85,16 +161,25 @@ onMounted(() => {
 <template>
   <ContactIcons></ContactIcons>
 
-<Dialog v-model:visible="isDialogVisible" modal header="Sorry!" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
-    <span class="material-symbols-outlined text-6xl  text-center m-auto flex justify-content-center cursor-pointer">
-        login
+  <Dialog v-model:visible="isDialogVisible" modal header="Thank You!" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
+    <div v-if="cartLoading" class="flex w-full justify-content-center">
+        <div  class="m-auto text-center loadingio-spinner-double-ring-cm1ltjai5mu"><div class="ldio-ujurhm9bi0c">
+            <div></div>
+            <div></div>
+            <div><div></div></div>
+            <div><div></div></div>
+        </div>
+        </div>
+    </div>
+    <span v-else class="material-symbols-outlined text-6xl text-center my-2 m-auto flex justify-content-center cursor-pointer">
+        task_alt
     </span>
-    <h4 class="text-center p-2">Please Login First So You Can Add To Cart!</h4>
+    <h4 class="text-center p-2 my-2">Product Added To Cart Successfully!</h4>
     <template #footer>
-        <Button label="No" icon="pi pi-times" @click="isDialogVisible = false" text />
-        <Button label="Yes" icon="pi pi-check" @click="isDialogVisible = false" autofocus />
+        <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart')" text />
+        <Button class="textSmMob mt-2" label="Continue Shopping" icon="pi pi-shopping-bag" @click="isDialogVisible = false" autofocus />
     </template>
-</Dialog>    
+</Dialog>
 
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -149,24 +234,24 @@ onMounted(() => {
   <!-- best selling heading end-->
 
   <!-- best selling card-->
-<div class="m-auto noneForMob" style="width: 88%;">
-  <Carousel :value="Featured" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
+<div v-if="FeaturedProducts.length > 0" class="m-auto noneForMob" style="width: 88%;">
+  <Carousel :value="FeaturedProducts" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
     <template #item="slotProps">
       <div class="p-4 CARD m-auto" style="width: fit-content;">
-        <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-          <img :src="slotProps.data.productImage" class="productt" alt="">
+        <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
+          <img :src="slotProps.data.image" class="productt" alt="">
           <span class="material-symbols-outlined appearOnHover">
             visibility
           </span>
-          <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+          <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
         </div>
         <div class="px-2">
-            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
-            <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
+            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
+            <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
+            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }}$ <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">{{slotProps.data.old_price}}$</span></p>
             <!-- <p class="text-sm my-0" style="color: rgba(14, 0, 0);">Save 10% when buying 3 bottles </p>
             <p class="text-sm" style="color: rgba(14, 0, 0);">Save 15% when buying 6 bottles </p> -->
-            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
               shopping_cart
           </span> </h4>
         </div>
@@ -176,23 +261,23 @@ onMounted(() => {
 </div>
 
   <!-- Best Selling Products for mobile -->
-<div class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
-  <Carousel :value="Featured" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="530px" 
+<div v-if="FeaturedProducts.length > 0" class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
+  <Carousel :value="FeaturedProducts" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="530px" 
   containerClass="w-full" contentClass="flex align-items-center">
     <template #item="slotProps">
       <div class="p-4 CARD m-auto" style="width: fit-content;">
-        <div class="ProductImage" @click="push(`/products/${slotProps.data.productId}`); scrollToTop()">
-          <img :src="slotProps.data.productImage" class="productt" alt="">
+        <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
+          <img :src="slotProps.data.image" class="productt" alt="">
           <span class="material-symbols-outlined appearOnHover">
             visibility
           </span>
-          <h4 v-if="slotProps.data.Sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">{{ slotProps.data.Sale }}</h4>
+          <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
         </div>
         <div class="px-2">
-            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.CategoryName}}</p>
-            <h3 class=" my-2">{{slotProps.data.productName}}</h3>
-            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.Price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.OldPrice" class="mx-2">{{slotProps.data.OldPrice}}</span></p>
-            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="isDialogVisible = true">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
+            <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 2).join(' ')}}</h3>
+            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }}$ <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">{{slotProps.data.old_price}}$</span></p>
+            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
               shopping_cart
           </span> </h4>
         </div>
