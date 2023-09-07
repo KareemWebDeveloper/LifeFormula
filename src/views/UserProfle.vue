@@ -162,7 +162,7 @@ const logout = () => {
             </div>
             <div v-if="OptionsValue == 'Reset Password'">
                 <p class="text-center GrotesqueFont">Reset your password from here</p>
-                <div class="py-4" style="background: url('../../src/assets/bggGredient2.jpg') fixed ; background-size: cover; background-color: rgba(255, 255, 255, 0.911); background-blend-mode: multiply; border-radius: 10px;">
+                <div class="py-4" style="background: url('https://github.com/KareemWebDeveloper/LifeFormulaImages/blob/main/Images/bggGredient2.jpg?raw=true') fixed ; background-size: cover; background-color: rgba(255, 255, 255, 0.911); background-blend-mode: multiply; border-radius: 10px;">
                     <p class="formkit-message text-center my-2 mt-4 w-8 m-auto" v-if="isResetPwErrorVisible">{{ ResetPwErrorMsg }}</p>
                     <FormKit type="form" :actions="false" @submit="resetPw">
                         <div class="mt-3">
