@@ -154,7 +154,7 @@ const sendMail = (req : any) => {
             <span v-if="Authenticated" @click="push('/profile')" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
                 account_circle
             </span>
-            <span v-else class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
+            <span v-else @click="push('/login')" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
                 account_circle
             </span>
             <span class="material-symbols-outlined text-4xl mx-2 cursor-pointer colorHover fontHover" @click="push('/cart'); scrollToTop()">
