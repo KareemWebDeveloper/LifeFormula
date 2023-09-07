@@ -28,7 +28,12 @@ const logout = () => {
     localStorage.removeItem('LF_Token');
     location.reload()
 }
-
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
 const loginSubmitHandler = (req : any) => {
     loading.value = true
     console.log(req);
@@ -39,6 +44,7 @@ const loginSubmitHandler = (req : any) => {
         localStorage.setItem('LF_Token',encryptedToken)
         loading.value = false
         push('/').then(() => {
+            scrollToTop()
             location.reload()
         })
     }).catch((error) => {
@@ -61,6 +67,7 @@ const registerSubmitHandler = (req : any) => {
         localStorage.setItem('LF_Token',encryptedToken)
         loading.value = false
         push('/').then(() => {
+            scrollToTop()
             location.reload()
         })
     }).catch((error) => {
@@ -81,7 +88,7 @@ const registerSubmitHandler = (req : any) => {
             </div>
         </div>
         <div v-else class="slidedown animation-iteration-1 animation-duration-1000 lg:p-5 md:p-4 sm:p-3 padding1 lg:w-7 md:w-9 sm:w-10 widthFull my-5 m-auto flex flex-column justify-content-center" style="background-color: rgba(255, 255, 255, 0.591); border-radius: 5px;">
-            <h1 class="text-center font21 padding1 fontt lg:pt-5">Welcome To Life Formula</h1>
+            <h1 class="text-center font21 padding1 fontt my-2 lg:pt-5">Welcome To Life Formula</h1>
             <div class="flex justify-content-center">
                 <SelectButton v-model="OptionsValue" :options="options" class="productDetails" aria-labelledby="basic" />
             </div>
@@ -160,8 +167,8 @@ const registerSubmitHandler = (req : any) => {
     border-radius: 3px;
     width: 100%;
     font-size: 13px;
-    background: none;
-    border: 2px solid rgba(0, 0, 0, 0.696);
+    border: 1.4px solid rgba(0, 0, 0, 0.696);
+    background-color: rgba(255, 255, 255, 0.723);
 }
 .formkit-input::placeholder{
     color: rgba(0, 0, 0, 0.79);
@@ -170,7 +177,6 @@ const registerSubmitHandler = (req : any) => {
     outline: none;
     border: 2px solid #009a33;
     box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.442);
-
 }
 .formkit-form{
     margin: 2vh auto;
