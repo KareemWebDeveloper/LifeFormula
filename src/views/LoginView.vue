@@ -161,7 +161,7 @@ const registerSubmitHandler = (req : any) => {
     width: 100%;
     font-size: 13px;
     background: none;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.696);
+    border: 2px solid rgba(0, 0, 0, 0.696);
 }
 .formkit-input::placeholder{
     color: rgba(0, 0, 0, 0.79);
