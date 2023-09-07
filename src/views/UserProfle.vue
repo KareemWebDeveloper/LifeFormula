@@ -106,7 +106,7 @@ const logout = () => {
                 <p v-if="!hasShippingInfo" class="text-center GrotesqueFont">please complete your shipping info so you can be able to complete your orders</p>
                 <p v-else class="text-center GrotesqueFont">You can edit your profile info from here</p>
                 <hr>
-                <div class="py-4" style="background: url('../../src/assets/bggGredient2.jpg') fixed ; background-size: cover; background-color: rgba(255, 255, 255, 0.911); background-blend-mode: multiply; border-radius: 10px;">
+                <div class="py-4" style="background: url('https://github.com/KareemWebDeveloper/LifeFormulaImages/blob/main/Images/bggGredient2.jpg?raw=true') fixed ; background-size: cover; background-color: rgba(255, 255, 255, 0.911); background-blend-mode: multiply; border-radius: 10px;">
                     <p class="formkit-message text-center my-2 mt-4 w-8 m-auto" v-if="isErrorVisible">{{ ErrorMsg }}</p>
                     <FormKit type="form" :actions="false" v-model="userInfo.userDetails" @submit="submitProfileInfo">
                         <div class="mt-3">
