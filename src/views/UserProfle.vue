@@ -267,6 +267,9 @@ label{
     .widthFull{
         width: 100% !important;
     }
+    .width80{
+        width: 80% !important;
+    }
     .formkit-form{
         margin: 2vh auto;
         width: 95% !important;
