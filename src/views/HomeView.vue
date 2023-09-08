@@ -48,7 +48,7 @@ const addToCart = (productId : number) => {
 
     }
     else{
-        let localCart = localStorage.getItem('lf_cart');
+        let localCart = localStorage.getItem('LF-Cart');
         if(localCart){
             newProductObject.quantity = 1
             let decryptedCart = AES.decrypt(localCart , 'EncryptionKey_liformula24').toString(enc.Utf8)
@@ -64,7 +64,7 @@ const addToCart = (productId : number) => {
             parsedCart.push(newProductObject)
             parsedCart = JSON.stringify(parsedCart)
             let encryptedCart = AES.encrypt(parsedCart , 'EncryptionKey_liformula24').toString()
-            localStorage.setItem('lf_cart',encryptedCart)
+            localStorage.setItem('LF-Cart',encryptedCart)
         }
         else{
             cartLoading.value = false
@@ -73,7 +73,7 @@ const addToCart = (productId : number) => {
             cart.push(newProductObject);
             cart = JSON.stringify(cart)
             let encryptedCart = AES.encrypt(cart , 'EncryptionKey_liformula24').toString()
-            localStorage.setItem('lf_cart',encryptedCart)
+            localStorage.setItem('LF-Cart',encryptedCart)
         }
     }
 }

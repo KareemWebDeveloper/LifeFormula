@@ -116,7 +116,7 @@ const RemoveFromCart = async(cartId : number , productId : number) => {
         let UpdatedCart = CartItems.value.filter((item:any) => item.product.id !== productId);
         CartItems.value = UpdatedCart
         UpdatedCart = AES.encrypt(UpdatedCart , 'EncryptionKey_liformula24').toString()
-        localStorage.setItem('lf_cart',JSON.stringify(UpdatedCart))
+        localStorage.setItem('LF-Cart',JSON.stringify(UpdatedCart))
     }
     location.reload()
 }
@@ -130,7 +130,7 @@ const getUserCart = async () => {
         }, 600);
     }
     else{
-        let localCart = localStorage.getItem('lf_cart');
+        let localCart = localStorage.getItem('LF-Cart');
         if(localCart){
             let decryptedCart = AES.decrypt(localCart , 'EncryptionKey_liformula24').toString(enc.Utf8)
             let parsedCart = JSON.parse(decryptedCart) 
