@@ -107,18 +107,19 @@ const updateTotal = () => {
 }
 
 
-const RemoveFromCart = async(cartId : number , productId : number) => {
+const RemoveFromCart = (cartId : number , productId : number) => {
     if(Authenticated.value == true){
-        let response = await axios.delete(`https://api-lifeformula.com/api/cart/delete/${cartId}`)
-        console.log(response.data.message);        
+        axios.delete(`https://api-lifeformula.com/api/cart/delete/${cartId}`).then((result) => {
+            location.reload()            
+        })
     }
     else{
         let UpdatedCart = CartItems.value.filter((item:any) => item.product.id !== productId);
         CartItems.value = UpdatedCart
         UpdatedCart = AES.encrypt(UpdatedCart , 'EncryptionKey_liformula24').toString()
+        localStorage.removeItem('LF-Cart')
         localStorage.setItem('LF-Cart',JSON.stringify(UpdatedCart))
     }
-    location.reload()
 }
 
 const getUserCart = async () => {
@@ -127,7 +128,7 @@ const getUserCart = async () => {
         CartItems.value = response.data.cart
         setTimeout(() => {
             updateTotal()
-        }, 600);
+        }, 1800);
     }
     else{
         let localCart = localStorage.getItem('LF-Cart');

@@ -24,7 +24,6 @@ function scrollToTop() {
         top: 0,
         behavior: 'smooth'
     });
-    location.reload()
 }
 
 const loading = ref(true)
