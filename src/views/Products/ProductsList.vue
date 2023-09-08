@@ -80,7 +80,8 @@ const addToCart = (productId : number) => {
             let parsedCart = JSON.parse(decryptedCart) 
             for (let index = 0; index < parsedCart.length; index++) {
                 const item = parsedCart[index];
-                if(item.id == productId){
+                if(item.product.id == productId){
+                    cartLoading.value = false
                     return
                 }
             }
@@ -192,7 +193,7 @@ watch(selectedCategories, () => {
         <h4 class="text-center p-2 my-2">Product Added To Cart Successfully!</h4>
     </div>
     <template #footer>
-        <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart')" text />
+        <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart'); scrollToTop()" text />
         <Button class="textSmMob mt-2" label="Continue Shopping" icon="pi pi-shopping-bag" @click="isDialogVisible = false" autofocus />
     </template>
 </Dialog>    
@@ -468,7 +469,7 @@ watch(selectedCategories, () => {
     justify-content: start !important;
 }
 }
-@media screen and (max-width : 450px){
+@media screen and (max-width : 480px){
     .headerResp{
         flex-direction: column !important;
         width: 100% !important;

@@ -98,10 +98,11 @@ const cartLoading = ref(false)
 const addToCart = (productId : number) => {
     isDialogVisible.value = true
     cartLoading.value = true
-    let ProductFound : any = FeaturedProducts.value.find((product : any) => product.id == productId);
+    let ProductFound : any = Product.value;
     ProductFound = {
         product : ProductFound
     }
+    console.log(ProductFound);
     
     if(Authenticated.value == true){
         let request = {
@@ -124,7 +125,8 @@ const addToCart = (productId : number) => {
             let parsedCart = JSON.parse(decryptedCart) 
             for (let index = 0; index < parsedCart.length; index++) {
                 const item = parsedCart[index];
-                if(item.id == productId){
+                if(item.product.id == productId){
+                     cartLoading.value = false
                     return
                 }
             }
@@ -172,7 +174,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
     </span>
     <h4 class="text-center p-2 my-2">Product Added To Cart Successfully!</h4>
     <template #footer>
-        <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart')" text />
+        <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart'); scrollToTop()" text />
         <Button class="textSmMob mt-2" label="Continue Shopping" icon="pi pi-shopping-bag" @click="isDialogVisible = false" autofocus />
     </template>
 </Dialog>
@@ -313,7 +315,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                         <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
                         <h3 class=" my-2">{{slotProps.data.name}}</h3>
                         <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }}$ <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">{{slotProps.data.old_price}}$</span></p>
-                        <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(ProductId)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+                        <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
                     </span> </h4>
                     </div>
@@ -337,9 +339,9 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                     </div>
                     <div class="px-2">
                         <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
-                        <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}}}</h3>
+                        <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
                         <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">-{{slotProps.data.old_price}}%</span></p>
-                        <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(ProductId)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+                        <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
                     </span> </h4>
                     </div>

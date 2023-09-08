@@ -41,6 +41,10 @@ const checkOut = async() => {
             userShippingInfo.value = response.data.userDetails
             loadingShippingInfo.value = false
         }
+        else if(response.data.userDetails == null){            
+            loadingShippingInfo.value = false
+            hasShippingInfo.value = false
+        }
         checkOutDialog.value = true
 
     }
@@ -131,6 +135,8 @@ const getUserCart = async () => {
             let decryptedCart = AES.decrypt(localCart , 'EncryptionKey_liformula24').toString(enc.Utf8)
             let parsedCart = JSON.parse(decryptedCart) 
             CartItems.value = parsedCart
+            console.log(CartItems.value );
+            
         }
     }
 }
@@ -161,8 +167,8 @@ onBeforeMount(() => {
                 point_of_sale
             </span>
             <h4 class="text-center p-2 my-2">Welcome, {{ userInfo.name }}</h4>
-            <p class="GrotesqueFont text-xl text-center">Please confirm your shipping info before Submitting checkout</p>
-            <p v-if="!hasShippingInfo" class="GrotesqueFont text-xl my-3 text-center">Fill Your Shipping Info</p>
+            <p class="GrotesqueFont text-xl text-center my-3">Please confirm your shipping info before Submitting checkout</p>
+            <!-- <p v-if="!hasShippingInfo" class="GrotesqueFont text-xl my-3 text-center">Your didn't complete filling your shipping address, please complete it so you can be able to complete your order</p> -->
             <div v-if="hasShippingInfo" class="surface-100 p-3 w-10 m-auto widthFull" style="border-radius: 5px;">
                     <span class="material-symbols-outlined text-4xl m-auto flex justify-content-center">
                         contact_mail
@@ -177,7 +183,7 @@ onBeforeMount(() => {
         </div>
         <template #footer>
             <Button class="textSmMob mt-2" label="Edit your info" icon="pi pi-user-edit" @click="push('/profile')" text />
-            <Button class="textSmMob mt-2" label="Continue For Checkout" icon="pi pi-shopping-bag" @click="OpenPaymentDialog(); checkOutDialog = false" autofocus />
+            <Button v-if="hasShippingInfo" class="textSmMob mt-2" label="Continue For Checkout" icon="pi pi-shopping-bag" @click="OpenPaymentDialog(); checkOutDialog = false" autofocus />
         </template>
     </Dialog>    
 

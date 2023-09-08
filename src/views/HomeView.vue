@@ -55,7 +55,8 @@ const addToCart = (productId : number) => {
             let parsedCart = JSON.parse(decryptedCart) 
             for (let index = 0; index < parsedCart.length; index++) {
                 const item = parsedCart[index];
-                if(item.id == productId){
+                if(item.product.id == productId){
+                    cartLoading.value = false
                     return
                 }
             }
@@ -695,6 +696,9 @@ onMounted(() => {
     font-family: 'Courgette', cursive !important;
     font-size: 17px !important;
   }
+  .textSmMob{
+    font-size: 13px !important;
+}
   .aboutUs{
     color: white !important;
     text-shadow: 0px 1px 4px black !important;
