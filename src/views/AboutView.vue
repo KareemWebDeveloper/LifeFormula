@@ -49,7 +49,7 @@ function scrollToTop() {
     </template>
     <img src="../assets/LifeFourmlaLogo.png" class="w-5 m-auto flex justify-content-center pr-3 mb-2" alt="">
       <p class="text-justify w-12 m-auto text-sm">
-        Welcome to <span class="greenLogoColor text-xl">Life Formula</span> , where commitment to wellness comes first. Our journey began with a passion for making a positive impact
+        Welcome to <span class="greenLogoColor text-xl">Life Formula</span>, where commitment to wellness comes first. Our journey began with a passion for making a positive impact
          on people's lives through premium vitamins and supplements. Drawing upon our extensive expertise in the realm of importation, distribution, and personalized customer consultation within the vitamins and nutritional supplements sector, we have cultivated a resolute belief that everyone deserves access to products that promote a healthier and happier life.
       </p>
   </Fieldset>

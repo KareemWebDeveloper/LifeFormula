@@ -42,7 +42,7 @@ const getProduct = async () => {
     Product.value = response.data.product as any    
     Product.value.product_icons = JSON.parse(Product.value.product_icons)  
     items.value = [
-        {label: 'Products'},
+        {label: 'products' , route: '/products', to:'/products'},
         {label: Product.value.categoryName},
         {label: Product.value.name},
     ];  
@@ -92,7 +92,8 @@ const responsiveOptions = ref([
 const home = ref({
     icon: 'pi pi-home',
     to: '/',
-});
+},
+);
 
 const cartLoading = ref(false)
 const addToCart = (productId : number) => {

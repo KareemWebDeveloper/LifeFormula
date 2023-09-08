@@ -12,7 +12,7 @@ function scrollToTop() {
       <div class="Upp">
         <div class="shops">
             <h4>Products</h4>
-            <RouterLink to="/products" @click="scrollToTop" class="links">Vitamins</RouterLink>
+            <RouterLink to="/products" @click="scrollToTop" class="links">All Products</RouterLink>
             <!-- <RouterLink to="/products" class="links">Supplements</RouterLink> -->
             <RouterLink to="/products" @click="scrollToTop" class="links">Shop by Category</RouterLink>
             <RouterLink :to="{ name: 'home', hash: '#Featured' }" @click="scrollToTop" class="links">Best Selling</RouterLink>
