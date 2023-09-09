@@ -157,7 +157,11 @@ watch(selectedCategories, () => {
         Products.value = productTmp
       }
       if(selectedCategories.value.length == 0) {
+        loading.value = true
         Products.value = productTmp
+        setTimeout(() => {
+            loading.value = false
+        }, 500);
       }
       else{
         let filteredCategories = productTmp
@@ -168,7 +172,11 @@ watch(selectedCategories, () => {
         console.log(element.name);
         
         });
+        loading.value = true
         Products.value = filteredCategories
+        setTimeout(() => {
+            loading.value = false
+        }, 500);
       }
 });
 
