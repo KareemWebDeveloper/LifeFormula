@@ -170,7 +170,6 @@ watch(selectedCategories, () => {
           product.categoryName.toLowerCase().includes(element.name.toLowerCase())
         );
         console.log(element.name);
-        
         });
         loading.value = true
         Products.value = filteredCategories
@@ -228,13 +227,13 @@ watch(selectedCategories, () => {
             <div v-for="i in 3" key="i" class="p-2 lg:w-4 sm:w-full md-w-full responsivee">
                 <div class="p-4 border-1 mx-2 surface-border surface-card border-round">
                     <div class="flex flex-column align-items-center gap-3 py-2">
-                        <Skeleton class="w-11 shadow-2 border-round h-12rem surface-500" />
-                        <Skeleton class="w-7 border-round h-1rem surface-500" />
-                        <Skeleton class="w-6rem border-round h-1rem surface-500" />
-                        <Skeleton class="w-6rem border-round h-1rem surface-500" />
+                        <Skeleton class="w-11 shadow-2 border-round h-12rem surface-400" />
+                        <Skeleton class="w-7 border-round h-1rem surface-400" />
+                        <Skeleton class="w-6rem border-round h-1rem surface-400" />
+                        <Skeleton class="w-6rem border-round h-1rem surface-400" />
                     </div>
                     <div class="flex align-items-center justify-content-center py-2">
-                        <Skeleton class="w-12rem border-round h-3rem surface-500" />
+                        <Skeleton class="w-12rem border-round h-3rem surface-400" />
                     </div>
                 </div>
             </div>

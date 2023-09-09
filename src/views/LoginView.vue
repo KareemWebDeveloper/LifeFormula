@@ -82,9 +82,9 @@ const registerSubmitHandler = (req : any) => {
     <div class="bgImg h-full p-5 padding1 paddingTop login">
         <div v-if="Authenticated" class="my-5 flex flex-column justify-content-center align-items-center" style="margin: 20vh auto !important;">
             <h1>You are already logged in!</h1>
-            <div class="flex w-8">
-                    <h4 @click="logout()"  style="border-radius: 10px;" class="flex w-4 align-items-center justify-content-center width80 p-3 cursor-pointer px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4"><span class="material-symbols-outlined text-4xl mx-2">logout</span> Logout</h4>
-                    <h4 @click="push('/')" class="flex align-items-center justify-content-center width80 p-3 w-4 cursor-pointer px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4"><span class="material-symbols-outlined text-4xl mx-2">home</span>Home Page</h4>
+            <div class="flex Column w-8">
+                    <h4 @click="logout()"  style="border-radius: 10px;" class="flex width90 w-4 align-items-center justify-content-center width80 p-3 cursor-pointer px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4"><span class="material-symbols-outlined text-4xl mx-2">logout</span> Logout</h4>
+                    <h4 @click="push('/')" class="flex align-items-center width90 justify-content-center width80 p-3 w-4 cursor-pointer px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4"><span class="material-symbols-outlined text-4xl mx-2">home</span>Home Page</h4>
             </div>
         </div>
         <div v-else class="slidedown animation-iteration-1 animation-duration-1000 lg:p-5 md:p-4 sm:p-3 padding1 lg:w-7 md:w-9 sm:w-10 widthFull my-5 m-auto flex flex-column justify-content-center" style="background-color: rgba(255, 255, 255, 0.591); border-radius: 5px;">
@@ -233,6 +233,14 @@ label{
     .formkit-form{
         width: 95% !important;
 
+    }
+    .Column{
+        flex-direction: column !important;
+        margin: auto !important;
+        width: 95% !important;
+    }
+    .width90{
+        width: 90% !important;
     }
     .marginBtm{
         margin-bottom: 5vh !important;
