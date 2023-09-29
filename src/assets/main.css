@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities; */
 @import url('https://fonts.googleapis.com/css2?family=Artifika&family=Secular+One&display=swap');
-@import url('primevue/resources/themes/mdc-light-indigo/theme.css');
 *{
   margin: 0;
   padding: 0;
