@@ -54,6 +54,26 @@ const router = createRouter({
       component: () => import('../views/DashBoard.vue')
     },
     {
+      path: '/dashboard/products/add',
+      name: 'products_add',
+      component: () => import('../views/Products/AddProducts.vue')
+    },
+    {
+      path: '/dashboard/products/edit',
+      name: 'products_edit',
+      component: () => import('../views/Products/editProducts.vue')
+    },
+    {
+      path: '/dashboard/categories',
+      name: 'categories',
+      component: () => import('../views/catgories/categories.vue')
+    },
+    {
+      path: '/dashboard/users',
+      name: 'user_roles',
+      component: () => import('../views/users/userRoles.vue')
+    },
+    {
       path: '/terms&conditions',
       name: 'termsConditions',
       component: () => import('../views/TermsConditions.vue')
