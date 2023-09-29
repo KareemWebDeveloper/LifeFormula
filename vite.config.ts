@@ -10,7 +10,7 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
-      external: ['primevue/config'],
+      external: ['primevue/config' , 'primevue/resources/themes/lara-light-indigo/theme.css' , 'primevue/resources/primevue.css'],
     },
   },
   resolve: {
