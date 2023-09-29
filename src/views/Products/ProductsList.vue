@@ -182,30 +182,31 @@ watch(selectedCategories, () => {
 </script>
 <template>
     <ContactIcons></ContactIcons>
-
-<Dialog v-model:visible="isDialogVisible" modal header="Thank You!" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
-    <div v-if="cartLoading" class="flex w-full justify-content-center">
-        <div  class="m-auto text-center loadingio-spinner-double-ring-cm1ltjai5mu"><div class="ldio-ujurhm9bi0c">
-            <div></div>
-            <div></div>
-            <div><div></div></div>
-            <div><div></div></div>
+<div class="lifeFormula">
+    <Dialog v-model:visible="isDialogVisible" modal header="Thank You!" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
+        <div v-if="cartLoading" class="flex w-full justify-content-center">
+            <div  class="m-auto text-center loadingio-spinner-double-ring-cm1ltjai5mu"><div class="ldio-ujurhm9bi0c">
+                <div></div>
+                <div></div>
+                <div><div></div></div>
+                <div><div></div></div>
+            </div>
+            </div>
         </div>
+        <div v-else>
+            <span class="material-symbols-outlined text-6xl greenLogoColor text-center my-2 m-auto flex justify-content-center cursor-pointer">
+                task_alt
+            </span>
+            <h4 class="text-center p-2 my-2">Product Added To Cart Successfully!</h4>
         </div>
-    </div>
-    <div v-else>
-        <span class="material-symbols-outlined text-6xl greenLogoColor text-center my-2 m-auto flex justify-content-center cursor-pointer">
-            task_alt
-        </span>
-        <h4 class="text-center p-2 my-2">Product Added To Cart Successfully!</h4>
-    </div>
-    <template #footer>
-        <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart'); scrollToTop()" text />
-        <Button class="textSmMob mt-2" label="Continue Shopping" icon="pi pi-shopping-bag" @click="isDialogVisible = false" autofocus />
-    </template>
-</Dialog>    
+        <template #footer>
+            <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart'); scrollToTop()" text />
+            <Button class="textSmMob mt-2" label="Continue Shopping" icon="pi pi-shopping-bag" @click="isDialogVisible = false" autofocus />
+        </template>
+    </Dialog>    
+</div>
 
-<div style="background-color: #f2f4f76b;" class="pb-5">
+<div style="background-color: #f2f4f76b;" class="pb-5 lifeFormula">
     <div class="relative">
         <img src="../../assets/Model2.jpg" class="noneForMob w-full mb-4 fadeinup animation-duration-1000 animation-iteration-1" alt="">
         <img src="../../assets/mobileModel2.png" class="hidden MobBlock w-full mb-4 fadeinup animation-duration-1000 animation-iteration-1" alt="">
@@ -314,19 +315,19 @@ watch(selectedCategories, () => {
 </template>
 <style>
 
-.p-component, .p-component * {
+.lifeFormula .p-component, .lifeFormula .p-component * {
     box-sizing: border-box !important;
 }
 
-.p-hidden {
+.lifeFormula .p-hidden {
     display: none !important;
 }
 
-.p-hidden-space {
+.lifeFormula .p-hidden-space {
     visibility: hidden !important;
 }
 
-.p-hidden-accessible {
+.lifeFormula .p-hidden-accessible {
     border: 0 !important;
     clip: rect(0 0 0 0) !important;
     height: 1px !important;
@@ -337,12 +338,12 @@ watch(selectedCategories, () => {
     width: 1px !important;
 }
 
-.p-hidden-accessible input,
-.p-hidden-accessible select {
+.lifeFormula .p-hidden-accessible input,
+.lifeFormula .p-hidden-accessible select {
     transform: scale(0) !important;
 }
 
-.p-reset {
+.lifeFormula .p-reset {
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
@@ -352,13 +353,13 @@ watch(selectedCategories, () => {
     list-style: none !important;
 }
 
-.p-disabled, .p-disabled * {
-    cursor: default !important !important;
+.lifeFormula .p-disabled, .lifeFormula .p-disabled * {
+    cursor: default !important;
     pointer-events: none !important;
     user-select: none !important;
 }
 
-.p-component-overlay {
+.lifeFormula .p-component-overlay {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -366,15 +367,15 @@ watch(selectedCategories, () => {
     height: 100% !important;
 }
 
-.p-overflow-hidden {
+.lifeFormula .p-overflow-hidden {
     overflow: hidden !important;
 }
 
-.p-unselectable-text {
+.lifeFormula .p-unselectable-text {
     user-select: none !important;
 }
 
-.p-scrollbar-measure {
+.lifeFormula .p-scrollbar-measure {
     width: 100px !important;
     height: 100px !important;
     overflow: scroll !important;
@@ -391,15 +392,15 @@ watch(selectedCategories, () => {
   100% { opacity: 1 !important; }
 }
 
-input[type="button"],
-input[type="submit"],
-input[type="reset"],
-input[type="file"]::-webkit-file-upload-button,
-button {
+.lifeFormula input[type="button"],
+.lifeFormula input[type="submit"],
+.lifeFormula input[type="reset"],
+.lifeFormula input[type="file"]::-webkit-file-upload-button,
+.lifeFormula button {
     border-radius: 0 !important;
 }
 
-.p-link {
+.lifeFormula .p-link {
 	text-align: left !important;
 	background-color: transparent !important;
 	margin: 0 !important;
@@ -409,68 +410,67 @@ button {
     user-select: none !important;
 }
 
-.p-link:disabled {
+.lifeFormula .p-link:disabled {
 	cursor: default !important;
 }
-
 /* Non vue overlay animations */
-.p-connected-overlay {
+.lifeFormula .p-connected-overlay {
     opacity: 0 !important;
     transform: scaleY(0.8) !important;
     transition: transform .12s cubic-bezier(0, 0, 0.2, 1), opacity .12s cubic-bezier(0, 0, 0.2, 1) !important;
 }
 
-.p-connected-overlay-visible {
+.lifeFormula .p-connected-overlay-visible {
     opacity: 1 !important;
     transform: scaleY(1) !important;
 }
 
-.p-connected-overlay-hidden {
+.lifeFormula .p-connected-overlay-hidden {
     opacity: 0 !important;
     transform: scaleY(1) !important;
     transition: opacity .1s linear !important;
 }
 
 /* Vue based overlay animations */
-.p-connected-overlay-enter-from {
+.lifeFormula .p-connected-overlay-enter-from {
     opacity: 0 !important;
     transform: scaleY(0.8) !important;
 }
 
-.p-connected-overlay-leave-to {
+.lifeFormula .p-connected-overlay-leave-to {
     opacity: 0 !important;
 }
 
-.p-connected-overlay-enter-active {
+.lifeFormula .p-connected-overlay-enter-active {
     transition: transform .12s cubic-bezier(0, 0, 0.2, 1), opacity .12s cubic-bezier(0, 0, 0.2, 1) !important;
 }
 
-.p-connected-overlay-leave-active {
+.lifeFormula .p-connected-overlay-leave-active {
     transition: opacity .1s linear !important;
 }
 
 /* Toggleable Content */
-.p-toggleable-content-enter-from,
-.p-toggleable-content-leave-to {
+.lifeFormula .p-toggleable-content-enter-from,
+.lifeFormula .p-toggleable-content-leave-to {
     max-height: 0 !important;
 }
 
-.p-toggleable-content-enter-to,
-.p-toggleable-content-leave-from {
+.lifeFormula .p-toggleable-content-enter-to,
+.lifeFormula .p-toggleable-content-leave-from {
     max-height: 1000px !important;
 }
 
-.p-toggleable-content-leave-active {
+.lifeFormula .p-toggleable-content-leave-active {
     overflow: hidden !important;
     transition: max-height 0.45s cubic-bezier(0, 1, 0, 1) !important;
 }
 
-.p-toggleable-content-enter-active {
+.lifeFormula .p-toggleable-content-enter-active {
     overflow: hidden !important;
     transition: max-height 1s ease-in-out !important;
 }
 
-.p-sr-only {
+.lifeFormula .p-sr-only {
     border: 0 !important;
     clip: rect(1px, 1px, 1px, 1px) !important;
     clip-path: inset(50%) !important;
@@ -480,21 +480,21 @@ button {
     padding: 0 !important;
     position: absolute !important;
     width: 1px !important;
-    word-wrap: normal !important !important;
+    word-wrap: normal !important;
 }
 
-.p-badge {
+.lifeFormula .p-badge {
     display: inline-block !important;
     border-radius: 10px !important;
     text-align: center !important;
     padding: 0 .5rem !important;
 }
 
-.p-overlay-badge {
+.lifeFormula .p-overlay-badge {
     position: relative !important;
 }
 
-.p-overlay-badge .p-badge {
+.lifeFormula .p-overlay-badge .p-badge {
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
@@ -503,7 +503,7 @@ button {
     margin: 0 !important;
 }
 
-.p-badge-dot {
+.lifeFormula .p-badge-dot {
     width: .5rem !important;
     min-width: .5rem !important;
     height: .5rem !important;
@@ -511,11 +511,12 @@ button {
     padding: 0 !important;
 }
 
-.p-badge-no-gutter {
+.lifeFormula .p-badge-no-gutter {
     padding: 0 !important;
     border-radius: 50% !important;
 }
-.p-button {
+
+.lifeFormula .p-button {
     margin: 0 !important;
     display: inline-flex !important;
     cursor: pointer !important;
@@ -527,63 +528,64 @@ button {
     position: relative !important;
 }
 
-.p-button-label {
+.lifeFormula .p-button-label {
     flex: 1 1 auto !important;
 }
 
-.p-button-icon-right {
+.lifeFormula .p-button-icon-right {
     order: 1 !important;
 }
 
-.p-button:disabled {
+.lifeFormula .p-button:disabled {
     cursor: default !important;
 }
 
-.p-button-icon-only {
+.lifeFormula .p-button-icon-only {
     justify-content: center !important;
 }
 
-.p-button-icon-only .p-button-label {
+.lifeFormula .p-button-icon-only .p-button-label {
     visibility: hidden !important;
     width: 0 !important;
     flex: 0 0 auto !important;
 }
 
-.p-button-vertical {
+.lifeFormula .p-button-vertical {
     flex-direction: column !important;
 }
 
-.p-button-icon-bottom {
+.lifeFormula .p-button-icon-bottom {
     order: 2 !important;
 }
 
-.p-buttonset .p-button {
+.lifeFormula .p-buttonset .p-button {
     margin: 0 !important;
 }
 
-.p-buttonset .p-button:not(:last-child) {
+.lifeFormula .p-buttonset .p-button:not(:last-child) {
     border-right: 0 none !important;
 }
 
-.p-buttonset .p-button:not(:first-of-type):not(:last-of-type) {
+.lifeFormula .p-buttonset .p-button:not(:first-of-type):not(:last-of-type) {
     border-radius: 0 !important;
 }
 
-.p-buttonset .p-button:first-of-type {
+.lifeFormula .p-buttonset .p-button:first-of-type {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
 }
 
-.p-buttonset .p-button:last-of-type {
+.lifeFormula .p-buttonset .p-button:last-of-type {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
 }
 
-.p-buttonset .p-button:focus {
+.lifeFormula .p-buttonset .p-button:focus {
     position: relative !important;
     z-index: 1 !important;
 }
-.p-checkbox {
+
+.lifeFormula .p-checkbox {
     display: inline-flex !important;
     cursor: pointer !important;
     user-select: none !important;
@@ -591,65 +593,66 @@ button {
     position: relative !important;
 }
 
-.p-checkbox.p-checkbox-disabled {
+.lifeFormula .p-checkbox.p-checkbox-disabled {
     cursor: default !important;
 }
 
-.p-checkbox-box {
+.lifeFormula .p-checkbox-box {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
 }
 
-.p-colorpicker-panel .p-colorpicker-color {
+.lifeFormula .p-colorpicker-panel .p-colorpicker-color {
      background: transparent url("./images/color.png") no-repeat left top !important; 
 }
 
-.p-colorpicker-panel .p-colorpicker-hue {
+.lifeFormula .p-colorpicker-panel .p-colorpicker-hue {
     background: transparent url("./images/hue.png") no-repeat left top !important; 
 }
-.p-inputtext {
+
+.lifeFormula .p-inputtext {
     margin: 0 !important;
 }
 
-.p-fluid .p-inputtext {
+.lifeFormula .p-fluid .p-inputtext {
     width: 100% !important;
 }
 
 /* InputGroup */
-.p-inputgroup {
+.lifeFormula .p-inputgroup {
     display: flex !important;
     align-items: stretch !important;
     width: 100% !important;
 }
 
-.p-inputgroup-addon {
+.lifeFormula .p-inputgroup-addon {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
-.p-inputgroup .p-float-label {
+.lifeFormula .p-inputgroup .p-float-label {
     display: flex !important;
     align-items: stretch !important;
     width: 100% !important;
 }
 
-.p-inputgroup .p-inputtext,
-.p-fluid .p-inputgroup .p-inputtext,
-.p-inputgroup .p-inputwrapper,
-.p-fluid .p-inputgroup .p-input {
+.lifeFormula .p-inputgroup .p-inputtext,
+.lifeFormula .p-fluid .p-inputgroup .p-inputtext,
+.lifeFormula .p-inputgroup .p-inputwrapper,
+.lifeFormula .p-fluid .p-inputgroup .p-input {
     flex: 1 1 auto !important;
     width: 1% !important;
 }
 
 /* Floating Label */
-.p-float-label {
+.lifeFormula .p-float-label {
     display: block !important;
     position: relative !important;
 }
 
-.p-float-label label {
+.lifeFormula .p-float-label label {
     position: absolute !important;
     pointer-events: none !important;
     top: 50% !important;
@@ -659,63 +662,63 @@ button {
     line-height: 1 !important;
 }
 
-.p-float-label textarea ~ label {
+.lifeFormula .p-float-label textarea ~ label {
     top: 1rem !important;
 }
 
-.p-float-label input:focus ~ label,
-.p-float-label input.p-filled ~ label,
-.p-float-label textarea:focus ~ label,
-.p-float-label textarea.p-filled ~ label,
-.p-float-label .p-inputwrapper-focus ~ label,
-.p-float-label .p-inputwrapper-filled ~ label {
+.lifeFormula .p-float-label input:focus ~ label,
+.lifeFormula .p-float-label input.p-filled ~ label,
+.lifeFormula .p-float-label textarea:focus ~ label,
+.lifeFormula .p-float-label textarea.p-filled ~ label,
+.lifeFormula .p-float-label .p-inputwrapper-focus ~ label,
+.lifeFormula .p-float-label .p-inputwrapper-filled ~ label {
     top: -.75rem !important;
     font-size: 12px !important;
 }
 
-.p-float-label .input:-webkit-autofill ~ label {
+.lifeFormula .p-float-label .input:-webkit-autofill ~ label {
     top: -20px !important;
     font-size: 12px !important;
 }
 
-.p-float-label .p-placeholder,
-.p-float-label input::placeholder,
-.p-float-label .p-inputtext::placeholder {
+.lifeFormula .p-float-label .p-placeholder,
+.lifeFormula .p-float-label input::placeholder,
+.lifeFormula .p-float-label .p-inputtext::placeholder {
     opacity: 0 !important;
     transition-property: all !important;
     transition-timing-function: ease !important;
 }
 
-.p-float-label .p-focus .p-placeholder,
-.p-float-label input:focus::placeholder,
-.p-float-label .p-inputtext:focus::placeholder {
+.lifeFormula .p-float-label .p-focus .p-placeholder,
+.lifeFormula .p-float-label input:focus::placeholder,
+.lifeFormula .p-float-label .p-inputtext:focus::placeholder {
     opacity: 1 !important;
     transition-property: all !important;
     transition-timing-function: ease !important;
 }
 
-.p-input-icon-left,
-.p-input-icon-right {
+.lifeFormula .p-input-icon-left,
+.lifeFormula .p-input-icon-right {
     position: relative !important;
     display: inline-block !important;
 }
 
-.p-input-icon-left > i,
-.p-input-icon-left > svg,
-.p-input-icon-right > i,
-.p-input-icon-right > svg {
+.lifeFormula .p-input-icon-left > i,
+.lifeFormula .p-input-icon-left > svg,
+.lifeFormula .p-input-icon-right > i,
+.lifeFormula .p-input-icon-right > svg {
     position: absolute !important;
     top: 50% !important;
     margin-top: -.5rem !important;
 }
 
-.p-fluid .p-input-icon-left,
-.p-fluid .p-input-icon-right {
+.lifeFormula .p-fluid .p-input-icon-left,
+.lifeFormula .p-fluid .p-input-icon-right {
     display: block !important;
     width: 100% !important;
 }
 
-.p-radiobutton {
+.lifeFormula .p-radiobutton {
     position: relative !important;
     display: inline-flex !important;
     cursor: pointer !important;
@@ -723,17 +726,17 @@ button {
     vertical-align: bottom !important;
 }
 
-.p-radiobutton.p-radiobutton-disabled {
+.lifeFormula .p-radiobutton.p-radiobutton-disabled {
     cursor: default !important;
 }
 
-.p-radiobutton-box {
+.lifeFormula .p-radiobutton-box {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
 }
 
-.p-radiobutton-icon {
+.lifeFormula .p-radiobutton-icon {
     -webkit-backface-visibility: hidden !important;
     backface-visibility: hidden !important;
     transform: translateZ(0) scale(.1) !important;
@@ -741,16 +744,16 @@ button {
     visibility: hidden !important;
 }
 
-.p-radiobutton-box.p-highlight .p-radiobutton-icon {
+.lifeFormula .p-radiobutton-box.p-highlight .p-radiobutton-icon {
     transform: translateZ(0) scale(1.0, 1.0) !important;
     visibility: visible !important;
 }
-.p-ripple {
+
+.lifeFormula .p-ripple {
     overflow: hidden !important;
     position: relative !important;
 }
-
-.p-ink {
+.lifeFormula .p-ink {
     display: block !important;
     position: absolute !important;
     background: rgba(255, 255, 255, 0.5) !important;
@@ -759,12 +762,12 @@ button {
     pointer-events: none !important;
 }
 
-.p-ink-active {
+.lifeFormula .p-ink-active {
     animation: ripple 0.4s linear !important;
 }
 
-.p-ripple-disabled .p-ink {
-    display: none !important !important;
+.lifeFormula .p-ripple-disabled .p-ink {
+    display: none !important;
 }
 
 @keyframes ripple {
@@ -774,29 +777,29 @@ button {
     }
 }
 
-.p-tooltip {
+.lifeFormula .p-tooltip {
     position:absolute !important;
     display:none !important;
     padding: .25em .5rem !important;
     max-width: 12.5rem !important;
 }
 
-.p-tooltip.p-tooltip-right,
-.p-tooltip.p-tooltip-left {
+.lifeFormula .p-tooltip.p-tooltip-right,
+.lifeFormula .p-tooltip.p-tooltip-left {
     padding: 0 .25rem !important;
 }
 
-.p-tooltip.p-tooltip-top,
-.p-tooltip.p-tooltip-bottom {
+.lifeFormula .p-tooltip.p-tooltip-top,
+.lifeFormula .p-tooltip.p-tooltip-bottom {
     padding:.25em 0 !important;
 }
 
-.p-tooltip .p-tooltip-text {
+.lifeFormula .p-tooltip .p-tooltip-text {
    white-space: pre-line !important;
    word-break: break-word !important;
 }
 
-.p-tooltip-arrow {
+.lifeFormula .p-tooltip-arrow {
     position: absolute !important;
     width: 0 !important;
     height: 0 !important;
@@ -804,39 +807,37 @@ button {
     border-style: solid !important;
 }
 
-.p-tooltip-right .p-tooltip-arrow {
+.lifeFormula .p-tooltip-right .p-tooltip-arrow {
     top: 50% !important;
     left: 0 !important;
     margin-top: -.25rem !important;
     border-width: .25em .25em .25em 0 !important;
 }
 
-.p-tooltip-left .p-tooltip-arrow {
+.lifeFormula .p-tooltip-left .p-tooltip-arrow {
     top: 50% !important;
     right: 0 !important;
     margin-top: -.25rem !important;
     border-width: .25em 0 .25em .25rem !important;
 }
 
-.p-tooltip.p-tooltip-top {
+.lifeFormula .p-tooltip.p-tooltip-top {
     padding: .25em 0 !important;
 }
 
-.p-tooltip-top .p-tooltip-arrow {
+.lifeFormula .p-tooltip-top .p-tooltip-arrow {
     bottom: 0 !important;
     left: 50% !important;
     margin-left: -.25rem !important;
     border-width: .25em .25em 0 !important;
 }
 
-.p-tooltip-bottom .p-tooltip-arrow {
+.lifeFormula .p-tooltip-bottom .p-tooltip-arrow {
     top: 0 !important;
     left: 50% !important;
     margin-left: -.25rem !important;
     border-width: 0 .25em .25rem !important;
 }
-
-
 
 
 @keyframes ldio-ujurhm9bi0c {
