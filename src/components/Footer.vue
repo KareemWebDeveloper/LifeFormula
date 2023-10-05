@@ -5,6 +5,16 @@ function scrollToTop() {
     behavior: 'smooth'
   });
 }
+const reload = () => {
+setTimeout(() => {
+      location.reload()
+  }, 300);
+}
+
+const contactUs = () => {
+    let contactButton = document.getElementById('contactUsButton');
+    contactButton!.click();
+}
 
 </script>
 <template>
@@ -21,15 +31,15 @@ function scrollToTop() {
             <h4>INFORMATION</h4>
             <RouterLink to="/about" @click="scrollToTop" class="links">About Us</RouterLink>
             <!-- <RouterLink to="" class="links">FAQ</RouterLink> -->
-            <RouterLink :to="{ name: 'termsConditions', hash: '#privacy' }" @click="scrollToTop" class="links">privacy policy</RouterLink>
-            <RouterLink :to="{ name: 'termsConditions', hash: '#terms' }" @click="scrollToTop" class="links">Terms & condition</RouterLink>
+            <RouterLink :to="{ name: 'termsConditions', hash: '#privacy' }" @click="reload" class="links">privacy policy</RouterLink>
+            <RouterLink :to="{ name: 'termsConditions', hash: '#terms' }" @click="reload" class="links">Terms & condition</RouterLink>
         </div> 
         <div class="shops">
             <h4>CUSTOMER SERVICE</h4>
             <!-- <RouterLink to="" class="links">Search Terms</RouterLink> -->
-            <RouterLink :to="{ name: 'termsConditions', hash: '#shipping' }" class="links">Shipping policy</RouterLink>
-            <RouterLink to="" class="links">Contact Us</RouterLink>
-            <RouterLink :to="{ name: 'home', hash: '#FAQ' }" class="links">Help & FAQs</RouterLink>
+            <RouterLink :to="{ name: 'termsConditions', hash: '#shipping' }" @click="reload" class="links">Shipping policy</RouterLink>
+            <RouterLink to="" class="links" @click="contactUs">Contact Us</RouterLink>
+            <RouterLink :to="{ name: 'home', hash: '#FAQ' }" @click="reload" class="links">Help & FAQs</RouterLink>
         </div> 
         <div class="newsletter my-3">
             <!-- <h4>Registration</h4> -->

@@ -266,7 +266,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                 </p>
             </div>
             <div v-else-if="QuantityValue > 1">
-                <p style="color: rgba(224, 8, 8, 0.875);" >Sorry this product is out of stock right now!</p>
+                <p style="color: rgba(224, 8, 8, 0.875);" class="my-2" >Sorry this product is out of stock right now!</p>
             </div>
             <div class="w-10 my-5 MobWidth100 flex justify-content-center align-items-center sm:m-auto md:m-auto lg:m-0 mgAuto mgtop">
                 <SelectButton v-model="OptionsValue" :options="options" class="productDetails" aria-labelledby="basic" />
@@ -351,7 +351,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
         </div>
                 <!-- Shipping buying icons  -->
                 <div class="p-5 w-full flex flex-wrap justify-content-center FlexColumnMob" style="background-color: #f2f4f7d8;">
-                    <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+                    <div class="w-11 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
                         <span class="material-symbols-outlined text-7xl">
                             local_shipping
                         </span>
@@ -361,7 +361,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                     <div class="hidden lg:flex">
                         <Divider layout="vertical" />
                     </div>
-                    <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+                    <div class="w-11 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
                         <span class="material-symbols-outlined text-7xl">
                             currency_exchange
                         </span>
@@ -371,7 +371,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                     <div class="hidden lg:flex">
                         <Divider layout="vertical" />
                     </div>
-                    <div class="w-5 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
+                    <div class="w-11 lg:w-3 flex flex-column justify-content-center text-center mx-2 my-3 mgAuto">
                         <span class="material-symbols-outlined text-7xl">
                             forward_to_inbox
                         </span>

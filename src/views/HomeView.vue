@@ -116,10 +116,12 @@ const isDialogVisible = ref(false)
 onMounted(() => {
       const anchor = window.location.hash;
       if (anchor) {
-        const element = document.querySelector(anchor);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+        setTimeout(() => {
+          const element = document.querySelector(anchor);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 1500);
       }
 });
 </script>
@@ -356,7 +358,7 @@ onMounted(() => {
 
 <div class="w-full py-5" style="background-color: #f2f4f7bc;">
   <!-- FAQ HEADER -->
-  <h3 class="flex align-items-center justify-content-center bluePrimary text-center fontSizeMob" id="FAQ"><span class="material-symbols-outlined text-4xl lg:text-6xl">contact_support</span> FREQUENTLY ASKED QUESTIONS</h3>
+  <h3 class="flex align-items-center justify-content-center bluePrimary text-center fontSizeMob" ><span class="material-symbols-outlined text-4xl lg:text-6xl">contact_support</span> FREQUENTLY ASKED QUESTIONS</h3>
   <h1 class="flex justify-content-center text-center" style="letter-spacing: 4px;">You've Got Any Questions?</h1>
   <p class="text:justify lg:text-center w-11 lg:w-8 m-auto my-3 mb-4 textJustifyMob">
     At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake</p>
@@ -365,7 +367,7 @@ onMounted(() => {
   <div style="width: 45%;" class="flex align-items-center md:w-7 sm:w-8 faqImg">
     <img src="../assets/vitaminsFaq.png" class="w-full" alt="faq">
   </div>
-  <div style="width: 45%;" class="sm:w-full md:w-full accordion">
+  <div style="width: 45%;" class="sm:w-full md:w-full accordion" id="FAQ">
     <Accordion :activeIndex="0">
       <AccordionTab>
         <template #header>

@@ -14,11 +14,16 @@ const getContent = () => {
 }
 onMounted(() => {
       const anchor = window.location.hash;
+      console.log(anchor);
+      
       if (anchor) {
+          setTimeout(() => {
         const element = document.querySelector(anchor);
+        console.log(element);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+              element.scrollIntoView({ behavior: 'smooth' });
         }
+        }, 2500);
       }
 });
 onBeforeMount(() => {
@@ -34,39 +39,16 @@ onBeforeMount(() => {
        
             </div>
             <h1 class="my-3 mt-5" id="privacy">Privacy Policy</h1>
-            <!-- <div class="surface-100 paddingMobX py-4 px-3" style="border-radius: 8px;">
-                <p class="GrotesqueFont">
-                    We collect personal information from you when you create an account, place an order, or contact us. We use this 
-                    information to provide you with the products and services you have requested, to communicate with you, and to improve
-                    our website. We may also share your information with third-party service providers who help us operate our website or
-                    process payments.
-                </p>
-                <p class="GrotesqueFont">
-                    We will not sell or share your personal information with third parties for their marketing purposes without your 
-                    consent. We will only retain your personal information for as long as necessary to provide you with the products 
-                    and services you have requested or to comply with applicable laws and regulations.
-                </p>
-                <p class="GrotesqueFont">
-                    You have the right to access, correct, or delete your personal information. You can also opt out of receiving marketing communications from us.
-                    To exercise these rights, please contact us at <span class="text-xl mx-2 GrotesqueFont">info@lifeformula.us</span> 
-                </p>
-                <p class="GrotesqueFont">
-                    We take the security of your personal information seriously. We use appropriate security measures to protect your information from unauthorized access, use, or disclosure.
-                    By using this website, you agree to the terms and conditions of this Privacy Policy. If you do not agree to these terms and conditions, please do not use this website.
-                    We may update this Privacy Policy from time to time. The most current version of the Privacy Policy will be posted on this website. You should check this Privacy Policy 
-                    periodically for changes. Your continued use of this website after any changes to this Privacy Policy will constitute your acceptance of those changes.
-                </p>
-            </div> -->
-            <div v-html="termsConditionsContent.privacy_policy" v-if="termsConditionsContent.privacy_policy" class="surface-100 paddingMobX py-4 px-3" style="border-radius: 8px;">
+            <div v-html="termsConditionsContent.privacy_policy" v-if="termsConditionsContent.privacy_policy" class="surface-100 paddingMobX py-5 px-3" style="border-radius: 8px;">
             </div>
 
             <h1 class="my-3 mt-5" id="shipping">Shipping & Returns</h1>
-            <ol class="surface-100 p-5" style="border-radius: 8px;">
+            <ol class="surface-100 py-5 paddingMobX md:px-5" style="border-radius: 8px;">
                 <h3 class="mb-4 text-center">Shipping Policies</h3>
                 <div v-html="termsConditionsContent.shipping_policies" v-if="termsConditionsContent.shipping_policies" class="paddingMobX py-1 px-3" style="border-radius: 8px;">
                 </div>
             </ol>
-            <div class="surface-100 p-5" style="border-radius: 8px;">
+            <div class="surface-100 py-5 paddingMobX md:px-5" style="border-radius: 8px;">
                 <h3 class="my-5 text-center" id="returns">Returns Policies</h3>
                 <div v-html="termsConditionsContent.returns_policies" v-if="termsConditionsContent.returns_policies" class="paddingMobX py-1 px-3" style="border-radius: 8px;">
                 </div>
@@ -88,7 +70,7 @@ onBeforeMount(() => {
         padding: 2vh !important;
     }
     .paddingMobX{
-        padding: 1vh 2vh !important;
+        padding: 3vh 1vh !important;
     }
     .paddingMobX2{
         padding: 1vh 3vh !important;
