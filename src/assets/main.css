@@ -41,6 +41,10 @@
 .border-radius {
   border-radius: 8px !important;
 }
+.grey{
+  color: grey;
+}
+
 .logoSecondaryColor{
   color: #00405a !important;
 }

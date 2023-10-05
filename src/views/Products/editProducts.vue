@@ -100,6 +100,13 @@ const getProducts = async () => {
     productTmp = products.value
 }
 
+const calcOldPrice = () => {
+    if(updateProduct.value.price && updateProduct.value.sale){
+        let saleAmount = updateProduct.value.price * (updateProduct.value.sale / 100)
+        updateProduct.value.old_price = (parseFloat(updateProduct.value.price) + saleAmount).toFixed(2)
+    }
+}
+
 let token = localStorage.getItem('LF_Token')
 onBeforeMount(() => {
     if(!token){
@@ -128,7 +135,11 @@ const updateActiveProduct = () => {
         updateLoading.value = false
         ProductUpdatedSuccessfully.value = true
         setTimeout(() => {
+            ProductUpdatedSuccessfully.value = false
             isDialogVisible.value = false
+            setTimeout(() => {
+                location.reload()
+            }, 300);
         }, 2500);
     }).catch((error) => {
         console.log(error);
@@ -169,9 +180,9 @@ const updateActiveProduct = () => {
             <div class="px-2">
                 <p style="color: grey;" class="text-sm my-2">{{updateProduct.categoryName}}</p>
                 <h3 class=" my-2">{{updateProduct.name}}</h3>
-                <p class="text-sm greenLogoColor my-2">{{ updateProduct.price }}$ <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="updateProduct.old_price">{{updateProduct.old_price}}$</span></p>
-                <ScrollPanel style="width: 95%; height: 150px">
-                    <p class="text-sm fontt text-justify">{{ updateProduct.product_description }}</p>
+                <p class="text-sm greenLogoColor my-2">${{ updateProduct.price }} <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="updateProduct.old_price">${{updateProduct.old_price}}</span></p>
+                <ScrollPanel style="width: 100%; height: 150px">
+                    <p v-html="updateProduct.product_description" class="text-sm w-11 fontt text-justify"></p>
                 </ScrollPanel>
             </div>
         </div>
@@ -189,7 +200,7 @@ const updateActiveProduct = () => {
                     <!-- <span class="material-symbols-outlined text-3xl">vpn_key</span> -->
                     <label for="count" class="px-1 fontt">Product Count</label>
                 </div>
-                <FormKit type="number" number="integer" id="count" label="Product Count" placeholder="Enter your product count" name="count" validation="required|min:1" />
+                <FormKit type="number" number="integer" id="count" label="Product Count" placeholder="Enter your product count" name="count" validation="required|min:0" />
             </div>
 
             <div class="mt-3">
@@ -223,7 +234,11 @@ const updateActiveProduct = () => {
                     <!-- <span class="material-symbols-outlined text-3xl">vpn_key</span> -->
                     <label for="sale" class="px-1 fontt">Product Sale <span class="text-sm">( Optional )</span></label>
                 </div>
-                <FormKit type="number" id="sale" label="Product Sale" placeholder="Enter your product sale" name="sale" validation="min:1" />
+                <FormKit type="number" id="sale" label="Product Sale" placeholder="Enter your product sale" name="sale" validation="min:0" />
+            </div>
+
+            <div class="flex justify-content-center m-auto">
+                <Button type="button" class="submitBtn w-5" label="Calculate Old Price" @click="calcOldPrice" />
             </div>
 
             <div class="mt-3">
@@ -231,7 +246,7 @@ const updateActiveProduct = () => {
                     <!-- <span class="material-symbols-outlined text-3xl">vpn_key</span> -->
                     <label for="count" class="px-1 fontt">Product Old Price <span class="text-sm">( Optional )</span></label>
                 </div>
-                <FormKit type="text" id="count" label="Old Price" placeholder="Enter your old price" name="old_price" validation="number|min:1" />
+                <FormKit type="text" id="count" label="Old Price" placeholder="Enter your old price" name="old_price" validation="number|min:0" />
             </div>
             
             <div class="mt-3">
@@ -271,7 +286,9 @@ const updateActiveProduct = () => {
                     <!-- <span class="material-symbols-outlined text-3xl">vpn_key</span> -->
                     <label for="description" class="px-1 fontt">Product Description</label>
                 </div>
-                <FormKit type="textarea" rows="5" id="description" label="Product description" placeholder="describe your product" name="product_description" validation="required" />
+                <div class="card">
+                    <Editor id="articlee" v-model="updateProduct.product_description" editorStyle="height: 320px" />
+                </div>
             </div>
 
             <div class="mt-3">
@@ -361,7 +378,7 @@ const updateActiveProduct = () => {
                         <div class="px-2">
                             <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
                             <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
-                            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }}$ <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.old_price">{{slotProps.data.old_price}}$</span></p>
+                            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }}$ <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.old_price">${{slotProps.data.old_price}}</span></p>
                             <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center">EDIT PRODUCT <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                                     edit
                                 </span> </h4>

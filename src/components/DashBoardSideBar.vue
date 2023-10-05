@@ -28,10 +28,11 @@ function scrollToTop() {
                 Dashboard
             </router-link> 
             <!-- <h6 class="flex fontt align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">diversity_1</span>Add Products</h6>  -->
-            <router-link to="/dashboard/products/edit" class="flex fontt align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">spa</span>Products</router-link> 
+            <router-link to="/dashboard/products/edit" class="flex fontt align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">spa</span>Edit Products</router-link> 
             <router-link to="/dashboard/products/add" class="flex fontt align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">post_add</span>Add Products</router-link> 
             <router-link to="/dashboard/categories" class="flex fontt align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">category</span>Categories</router-link> 
             <router-link to="/dashboard/users" class="flex fontt align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">manage_accounts</span>User Roles</router-link> 
+            <router-link to="/dashboard/terms-conditions" class="flex fontt align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">policy</span>Policies</router-link> 
             <router-link to="/dashboard/orders" class="flex fontt align-items-center my-3 no-underline colorHover" @click="scrollToTop(); isDialogVisible = true" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">view_list</span>Orders</router-link> 
         </div>
     </Sidebar>

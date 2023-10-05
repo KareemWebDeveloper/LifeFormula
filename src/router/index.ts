@@ -74,9 +74,19 @@ const router = createRouter({
       component: () => import('../views/users/userRoles.vue')
     },
     {
+      path: '/dashboard/terms-conditions',
+      name: 'manage_terms_conditions',
+      component: () => import('../views/ContentManagement/terms&conditions.vue')
+    },
+    {
       path: '/terms&conditions',
       name: 'termsConditions',
       component: () => import('../views/TermsConditions.vue')
+    },
+    {
+      path: '/blog',
+      name: 'blog',
+      component: () => import('../views/Blog.vue')
     },
   ]
 })

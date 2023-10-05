@@ -10,32 +10,22 @@ import { AES, enc } from 'crypto-js';
 import DashBoardSideBar from '@/components/DashBoardSideBar.vue'
 
 const { push } = useRouter();
-let OptionsValue = ref('Create');
-const options = ref(['Create','Update']);
 const product_article = ref()
+const ProductForm = ref()
 const Featured = ref(false)
 const loading = ref(false)
 const ProductSaved = ref(false)
 const isErrorVisible = ref(false)
 const ErrorMsg = ref()
+const product_description = ref()
 const categories = ref([])
 
-const templateIconsJson = `{
-  "product_icons": [
-    {
-      "icon_name": "icon1",
-      "icon_title": "Icon 1"
-    },
-    {
-      "icon_name": "icon2",
-      "icon_title": "Icon 2"
-    },
-    {
-      "icon_name": "icon3",
-      "icon_title": "Icon 3"
-    }
-  ]
-}`
+const templateIconsJson = `{ "product_icons": [ <br>
+    { "icon_name": "heart_check", "icon_title": "Cardiovascular Health" },<br>
+    { "icon_name": "sports_gymnastics", "icon_title": "Energy Boost" },<br>
+    { "icon_name": "immunology", "icon_title": "Antioxidant" }<br>
+]}`
+
 
 const checkUserRole = async () => {
     let response = await axios.get('https://api-lifeformula.com/api/userRole');
@@ -64,10 +54,19 @@ onBeforeMount(() => {
         getCategories()
     }
 })
+
+const calcOldPrice = () => {
+    if(ProductForm.value.price && ProductForm.value.sale){
+        let saleAmount = ProductForm.value.price * (ProductForm.value.sale / 100)
+        ProductForm.value.old_price = (parseFloat(ProductForm.value.price) + saleAmount).toFixed(2)
+    }
+}
+
 const createProduct = (req : any) => {
     loading.value = true
     req.featured = Featured.value;
     req.product_article = product_article.value
+    req.product_description = product_description.value
     req.price = parseFloat(req.price)
     if(req.old_price){
         req.old_price = parseFloat(req.old_price)
@@ -76,11 +75,12 @@ const createProduct = (req : any) => {
     axios.post("https://api-lifeformula.com/api/products/create",req).then((response) => {
         console.log(response);
         loading.value = false
+        isErrorVisible.value = false
         ProductSaved.value = true
         window.scrollTo(0,50)
         setTimeout(() => {
             location.reload();
-        }, 5000);
+        }, 4000);
     }).catch((error) => {
         isErrorVisible.value = true
         console.log(error.response);
@@ -99,25 +99,24 @@ const createProduct = (req : any) => {
             <!-- Error Message -->
 
             <p class="formkit-message text-center my-2 mt-4 w-8 m-auto" v-if="isErrorVisible">{{ ErrorMsg }}</p>
-
-            <p v-if="ProductSaved" class="p-3 text-white px-3 w-6 text-center m-auto" style="border-radius: 10px; background-color: rgb(2, 156, 2);">Product Saved Successfully!</p>
+            <p v-if="ProductSaved" class="animate-width animation-duration-2000 animation-iteration-1 p-3 text-white px-3 w-6 text-center m-auto" style="border-radius: 10px; background-color: rgb(2, 156, 2);">Product Saved Successfully!</p>
             <!-- Create and Update Products -->
             <div v-if="categories.length > 0">
-                <FormKit type="form" :actions="false" @submit="createProduct">
+                <FormKit type="form" v-model="ProductForm" :actions="false" @submit="createProduct">
                     <div class="mt-3">
                         <div class="flex align-items-center justify-content-center">
                             <!-- <span class="material-symbols-outlined text-3xl">alternate_email</span> -->
                             <label for="namee" class="px-1 fontt">Product Name</label>
                         </div>
-                        <FormKit id="namee" type="text" label="ProductName" placeholder="Enter your product name" name="name" validation="required" />
+                        <FormKit id="namee" type="text" label="Product name" placeholder="Enter your product name" name="name" validation="required" />
                     </div>
-    
+
                     <div class="mt-3">
                         <div class="flex align-items-center justify-content-center">
                             <!-- <span class="material-symbols-outlined text-3xl">vpn_key</span> -->
                             <label for="count" class="px-1 fontt">Product Count</label>
                         </div>
-                        <FormKit type="number" number="integer" id="count" label="Product Count" placeholder="Enter your product count" name="count" validation="required|min:1" />
+                        <FormKit type="number" number="integer" id="count" label="Product count" placeholder="Enter your product count" name="count" validation="required|min:0" />
                     </div>
 
                     <div class="mt-3">
@@ -143,7 +142,7 @@ const createProduct = (req : any) => {
                             <label for="Category" class="px-1 fontt">Product Category</label>
                         </div>
                         <!-- <FormKit type="number" id="Category" label="Product Category" placeholder="Enter your product count" name="category_id" validation="required" /> -->
-                        <FormKit type="select" label="Product Category" id="Category" name="category_id" placeholder="Choose your product category" :options="categories" />
+                        <FormKit type="select" label="Product category" id="Category" name="category_id" placeholder="Choose your product category" :options="categories" />
                     </div>
 
                     <div class="mt-3">
@@ -152,6 +151,9 @@ const createProduct = (req : any) => {
                             <label for="sale" class="px-1 fontt">Product Sale <span class="text-sm">( Optional )</span></label>
                         </div>
                         <FormKit type="number" id="sale" label="Product Sale" placeholder="Enter your product sale" name="sale" validation="min:1" />
+                    </div>
+                    <div class="flex justify-content-center m-auto">
+                        <Button type="button" class="submitBtn w-5" label="Calculate Old Price" @click="calcOldPrice" />
                     </div>
 
                     <div class="mt-3">
@@ -192,14 +194,16 @@ const createProduct = (req : any) => {
                             <!-- <span class="material-symbols-outlined text-3xl">vpn_key</span> -->
                             <label for="howTo" class="px-1 fontt">How To Take It</label>
                         </div>
-                        <FormKit type="textarea" rows="3" id="howTo" label="Product Count" placeholder="describe how to take it" name="how_to_take_it" validation="required" />
+                        <FormKit type="textarea" rows="3" id="howTo" label="How to take it field" placeholder="describe how to take it" name="how_to_take_it" validation="required" />
                     </div>
                     <div class="mt-3">
                         <div class="flex align-items-center justify-content-center">
                             <!-- <span class="material-symbols-outlined text-3xl">vpn_key</span> -->
                             <label for="description" class="px-1 fontt">Product Description</label>
                         </div>
-                        <FormKit type="textarea" rows="3" id="description" label="Product description" placeholder="describe your product" name="product_description" validation="required" />
+                        <div class="card">
+                            <Editor id="articlee" v-model="product_description" editorStyle="height: 320px" />
+                        </div>
                     </div>
 
                     <div class="mt-3">
@@ -208,7 +212,10 @@ const createProduct = (req : any) => {
                             <label for="iconss" class="px-1 fontt">Product Icons</label>
                         </div>
                         <p class="text-sm text-center">edit this product icons template and add your icons</p>
-                        {{ templateIconsJson }}
+                        <p v-html="templateIconsJson">
+
+                        </p>
+                        <!-- {{ templateIconsJson }} -->
                         <FormKit type="textarea" rows="3" id="iconss" placeholder="enter your product icons" label="Product Icons" name="product_icons" validation="required" />
                     </div>
                     <div class="mt-3">
@@ -229,7 +236,7 @@ const createProduct = (req : any) => {
                         </div>
                         <a class="text-sm text-center m-auto flex justify-content-center my-2" target="_blank" href="https://github.com/KareemWebDeveloper/LifeFormulaImages/blob/main/Images">copy image url from here</a>
 
-                        <FormKit type="text" id="ingImg" label="Product Count" placeholder="Enter your product ingredients image" name="ingredients_image" validation="" />
+                        <FormKit type="text" id="ingImg" label="Ingredients Image" placeholder="Enter your product ingredients image" name="ingredients_image" validation="" />
                     <!-- </div>
 
                     <div class="mt-3"> -->
@@ -237,7 +244,7 @@ const createProduct = (req : any) => {
                             <!-- <span class="material-symbols-outlined text-3xl">vpn_key</span> -->
                             <label for="ingText" class="px-1 fontt">Ingredients Description</label>
                         </div>
-                        <FormKit type="textarea" rows="3" id="ingText" label="Product Count" placeholder="Enter your product ingredients description" name="ingredients_text" validation="" />
+                        <FormKit type="textarea" rows="3" id="ingText" label="Ingredients Description" placeholder="Enter your product ingredients description" name="ingredients_text" validation="" />
                     </div>
 
                     <div class="my-3 flex align-items-center justify-content-center">
@@ -246,6 +253,7 @@ const createProduct = (req : any) => {
                     </div>
 
                     <Button type="submit" class="submitBtn" label="Create Product" :loading="loading" />
+                    <Button type="reset" class="submitBtn" label="Reset Form" />
                 </FormKit>
             </div>
         </div>

@@ -3,6 +3,7 @@ import DataView from 'primevue/dataview';
 import { ref , onMounted , onBeforeMount , watch } from 'vue';
 import Skeleton from 'primevue/skeleton';
 import Breadcrumb from 'primevue/breadcrumb';
+import ScrollPanel from 'primevue/scrollpanel';
 import InputText from 'primevue/inputtext';
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'   // optional
 import MultiSelect from 'primevue/multiselect';
@@ -23,15 +24,17 @@ function scrollToTop() {
   });
 }
 const isDialogVisible = ref(false)
+const isOutOfStock = ref(false)
 const selectedCategories : Ref<Array<any>> = ref([])
 const loading = ref(true)
 const Slogan = ref(false)
 const layout : Ref<layoutType> = ref('grid')
 const SearchValue = ref()
+const dialogHeader = ref('Thank You!')
 let productTmp : any = []
 
 const Products = ref();
-const categories = ref([]);
+const categories: Ref<any> = ref([]);
 const Authenticated = ref(false)
 const cartLoading = ref(false)
 let token = localStorage.getItem('LF_Token')
@@ -44,15 +47,25 @@ const getProducts = async () => {
 
 const getCategories = async () => {
     let response = await axios.get('https://api-lifeformula.com/api/categories');
-    categories.value = response.data.Categories.map((obj : any) => {
+    let responseCategories = response.data.Categories.map((obj : any) => {
         return { name: obj.name, code: obj.id };
     });
-    console.log(categories.value);
+    console.log(responseCategories);
+    categories.value.push({name : 'Select All' , code : 0} as any)
+    responseCategories.forEach((category : any) => {
+        categories.value.push(category)
+    });
 }
 
-const addToCart = (productId : number) => {
+const addToCart = (productId : number , productCount : number) => {
     isDialogVisible.value = true
     cartLoading.value = true
+    if(productCount == 0){
+        dialogHeader.value = 'Sorry'
+        isOutOfStock.value = true
+        cartLoading.value = false
+        return
+    }
     const ProductFound = Products.value.find((product : any) => product.id == productId);
     const newProductObject : any = {
         product : ProductFound
@@ -152,7 +165,8 @@ watch(SearchValue, () => {
       }
 });
 watch(selectedCategories, () => {
-    //   console.log('myValue changed');   
+
+        
       if(SearchValue.value == '' || SearchValue.value == undefined){
         Products.value = productTmp
       }
@@ -166,6 +180,14 @@ watch(selectedCategories, () => {
       else{
         let filteredCategories = productTmp
         selectedCategories.value.forEach((element) => {
+            if(element.name == 'Select All'){
+                loading.value = true
+                setTimeout(() => {
+                    loading.value = false
+                }, 500);
+                Products.value = productTmp
+                return
+            }
             filteredCategories = filteredCategories.filter((product : any) =>
           product.categoryName.toLowerCase().includes(element.name.toLowerCase())
         );
@@ -179,11 +201,16 @@ watch(selectedCategories, () => {
       }
 });
 
+const contactUs = () => {
+    isDialogVisible.value = false
+    let contactButton = document.getElementById('contactUsButton');
+    contactButton!.click();
+}
 </script>
 <template>
     <ContactIcons></ContactIcons>
 <div class="lifeFormula">
-    <Dialog v-model:visible="isDialogVisible" modal header="Thank You!" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
+    <Dialog v-model:visible="isDialogVisible" modal :header="dialogHeader" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
         <div v-if="cartLoading" class="flex w-full justify-content-center">
             <div  class="m-auto text-center loadingio-spinner-double-ring-cm1ltjai5mu"><div class="ldio-ujurhm9bi0c">
                 <div></div>
@@ -193,6 +220,12 @@ watch(selectedCategories, () => {
             </div>
             </div>
         </div>
+        <div v-else-if="isOutOfStock">
+            <span class="material-symbols-outlined text-6xl text-center my-2 m-auto flex justify-content-center cursor-pointer" style="color: rgba(224, 8, 8, 0.875);">
+                error
+            </span>
+            <h4 class="text-center p-2 my-2">This Product is out of stock right now</h4>
+        </div>
         <div v-else>
             <span class="material-symbols-outlined text-6xl greenLogoColor text-center my-2 m-auto flex justify-content-center cursor-pointer">
                 task_alt
@@ -200,8 +233,11 @@ watch(selectedCategories, () => {
             <h4 class="text-center p-2 my-2">Product Added To Cart Successfully!</h4>
         </div>
         <template #footer>
-            <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart'); scrollToTop()" text />
-            <Button class="textSmMob mt-2" label="Continue Shopping" icon="pi pi-shopping-bag" @click="isDialogVisible = false" autofocus />
+            <Button class="textSmMob mt-2" label="Contact Us" icon="pi pi-comment" @click="contactUs()" autofocus />
+            <div v-if="!cartLoading && !isOutOfStock">
+                <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart'); scrollToTop()" text />
+                <Button class="textSmMob mt-2" label="Continue Shopping" icon="pi pi-shopping-bag" @click="isDialogVisible = false" autofocus />
+            </div>
         </template>
     </Dialog>    
 </div>
@@ -248,7 +284,7 @@ watch(selectedCategories, () => {
                             <i class="pi pi-search" />
                             <InputText v-model="SearchValue" class="font-bold" placeholder="Search Products" />
                         </span>
-                        <span class="p-float-label mx-3 font-light w-full sm:my-4 md:my-4 mb-0 lg:my-1 FilterResponsiveSelect">
+                        <span class="filterSelect p-float-label mx-3 font-light w-full sm:my-4 md:my-4 mb-0 lg:my-1 FilterResponsiveSelect">
                             <MultiSelect id="ms-cities" v-model="selectedCategories" filter :options="categories" optionLabel="name" :maxSelectedLabels="3" class="w-full md:w-20rem" />
                             <label for="ms-cities">Select Product Categories</label>
                         </span>
@@ -267,10 +303,10 @@ watch(selectedCategories, () => {
                             <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
                         </div>
                         <div class="px-2">
-                            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
-                            <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
-                            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }}$ <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.old_price">{{slotProps.data.old_price}}$</span></p>
-                            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+                            <p style="color: grey;" class="text-sm my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.categoryName}}</p>
+                            <h3 class=" my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
+                            <p @click="push(`/products/${slotProps.data.id}`); scrollToTop()" class="text-sm my-2" :class="{'greenLogoColor' : slotProps.data.old_price , 'grey' : !slotProps.data.old_price}">${{ slotProps.data.price }} <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.old_price">${{slotProps.data.old_price}}</span></p>
+                            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id , slotProps.data.count)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                                     shopping_cart
                                 </span> </h4>
                             </div>
@@ -291,13 +327,17 @@ watch(selectedCategories, () => {
                                 <div class="flex flex-column">
                                     <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
                                     <h3 class=" my-2">{{slotProps.data.name}}</h3>    
-                                    <p class="lg:w-10 text-justify sm:w-full md:w-full responsivee none" v-if="slotProps.data.product_description.length > 300">{{slotProps.data.product_description.substring(0, 250)}} ... <RouterLink :to="`/products/${slotProps.data.id}`" @click="scrollToTop()">See More</RouterLink></p>
-                                    <p class="lg:w-10 text-justify sm:w-full md:w-full responsivee none" v-else>{{slotProps.data.product_description}}</p>
+                                    <!-- <p class="lg:w-10 text-justify sm:w-full md:w-full responsivee none" v-if="slotProps.data.product_description.length > 300">{{slotProps.data.product_description.substring(0, 250)}} ... <RouterLink :to="`/products/${slotProps.data.id}`" @click="scrollToTop()">See More</RouterLink></p> -->
+                                    <!-- <p class="lg:w-10 text-justify sm:w-full md:w-full responsivee none" v-else>{{slotProps.data.product_description}}</p> -->
+                                    <ScrollPanel style="width: 95%; height: 160px">
+                                        <div v-html="slotProps.data.product_description" class="lg:w-10 text-justify sm:w-full md:w-full responsivee none">
+                                        </div>
+                                    </ScrollPanel>
                                 </div>
                                 <div class="flex flex-column align-items-center justifyStart sm:justify-content-start md:justify-content-start lg:justify-content-center">
-                                    <p class="text-md greenLogoColor my-2">{{ slotProps.data.price }}$</p>
-                                    <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.old_price">{{slotProps.data.old_price}}$</span>
-                                    <span @click="addToCart(slotProps.data.id)" class="none material-symbols-outlined text-4xl CartHover text-white p-2 my-2 cursor-pointer"
+                                    <p class="text-md my-2" :class="{'greenLogoColor' : slotProps.data.old_price , 'grey' : !slotProps.data.old_price}">${{ slotProps.data.price }}</p>
+                                    <span style="color: grey; text-decoration: line-through;" class="mx-2" v-if="slotProps.data.old_price">${{slotProps.data.old_price}}</span>
+                                    <span @click="addToCart(slotProps.data.id , slotProps.data.count)" class="none material-symbols-outlined text-4xl CartHover text-white p-2 my-2 cursor-pointer"
                                      style="background-color: #00a650; border-radius: 50%;">
                                         shopping_cart
                                     </span>
@@ -314,6 +354,10 @@ watch(selectedCategories, () => {
 </div>
 </template>
 <style>
+
+.p-multiselect-header{
+    display: none !important;
+}
 
 @keyframes ldio-ujurhm9bi0c {
     0% { transform: rotate(0) }

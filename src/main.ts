@@ -8,12 +8,14 @@ import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap-vue/dist/bootstrap-vue.min.css'
 import PrimeVue from 'primevue/config';
 import "./assets/theme.css";
+import  VueGtag  from 'vue-gtag'
 // import 'primevue/resources/primevue.min.css'
 // import 'primevue/resources/primevue.css'
 import 'primeicons/primeicons.css';
 
 const app = createApp(App)
 
+app.use(VueGtag , {config : { id : 'G-3E6YZQ5RQM'}} , router)
 app.use(router)
 app.use(PrimeVue)
 app.use(plugin, defaultConfig)

@@ -115,6 +115,7 @@ const sendMail = (req : any) => {
                 <div>
                     <router-link to="/" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">Home</router-link> 
                     <router-link to="/about" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">About Us</router-link> 
+                    <router-link to="/blog" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">Blog</router-link> 
                     <router-link to="/products" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">Shop</router-link> 
                     <router-link to="/" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="isDialogVisible = true">Contact Us</router-link> 
                 </div>
@@ -173,6 +174,7 @@ const sendMail = (req : any) => {
                 Home
             </router-link> 
             <router-link to="/about" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">diversity_1</span>About Us</router-link> 
+            <router-link to="/blog" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">format_image_left</span>Blog</router-link> 
             <router-link to="/products" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">shopping_basket</span>Shop</router-link> 
             <router-link to="/" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop(); isDialogVisible = true" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">contact_phone</span>Contact Us</router-link> 
         </div>

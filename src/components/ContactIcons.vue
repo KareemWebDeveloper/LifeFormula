@@ -93,7 +93,7 @@ const sendMail = (req : any) => {
     </Dialog>
     <div style="z-index: 11; position: fixed; bottom: 5vh; right: 5vh;">
             <div class="">
-                <span class="ContactUs material-symbols-outlined" @click="openContactUsForm">
+                <span class="ContactUs material-symbols-outlined" id="contactUsButton" @click="openContactUsForm">
                     forward_to_inbox
                 </span>
             </div>

@@ -103,7 +103,7 @@ const updateTotal = () => {
         total += totalPrice
     });
     let estimatedTotal = document.getElementById('estimatedTotal')
-    estimatedTotal!.innerText = `Estimated Total : ${total.toFixed(2)}$`
+    estimatedTotal!.innerText = `Estimated Total : $${total.toFixed(2)}`
 }
 
 
@@ -244,18 +244,18 @@ onBeforeMount(() => {
                         <div class="flex justify-content-between mgMob">
                             <h4 class="GrotesqueFont logoSecondaryColor">{{ item.product.price }}$</h4>
                             <div>
-                                <h5 :id="`totaaal${item.product.id}`" class="GrotesqueFont logoSecondaryColor" v-if="item.quantity < 3 ">Total : {{ (item.product.price * item.quantity).toFixed(2) }}$</h5>
+                                <h5 :id="`totaaal${item.product.id}`" class="GrotesqueFont logoSecondaryColor" v-if="item.quantity < 3 ">Total : ${{ (item.product.price * item.quantity).toFixed(2) }}</h5>
                                 <h5 :id="`totaaal${item.product.id}`" class="GrotesqueFont logoSecondaryColor" v-else-if="item.quantity >= 3 && item.quantity < 6 && item.product.sale_on_3">
-                                Total : {{ ((item.quantity * item.product.price) - ( (item.quantity * item.product.price) * (item.product.sale_on_3 / 100) )).toFixed(2) }}$
+                                Total : ${{ ((item.quantity * item.product.price) - ( (item.quantity * item.product.price) * (item.product.sale_on_3 / 100) )).toFixed(2) }}
                                 </h5>
                                 <h5 :id="`totaaal${item.product.id}`" class="GrotesqueFont logoSecondaryColor" v-else-if="item.quantity >= 3 && item.quantity < 6 && item.product.sale_on_6">
-                                Total : {{ ((item.quantity * item.product.price) - ( (item.quantity * item.product.price) * (item.product.sale_on_6 / 100) )).toFixed(2) }}$
+                                Total : ${{ ((item.quantity * item.product.price) - ( (item.quantity * item.product.price) * (item.product.sale_on_6 / 100) )).toFixed(2) }}
                                 </h5>
                                 <h5 :id="`totaaal${item.product.id}`" class="GrotesqueFont logoSecondaryColor" v-else-if="item.quantity >= 3 && item.quantity < 6 && item.product.sale_on_9">
-                                Total : {{ ((item.quantity * item.product.price) - ( (item.quantity * item.product.price) * (item.product.sale_on_9 / 100) )).toFixed(2) }}$
+                                Total : ${{ ((item.quantity * item.product.price) - ( (item.quantity * item.product.price) * (item.product.sale_on_9 / 100) )).toFixed(2) }}
                                 </h5>
                                 <h5 :id="`totaaal${item.product.id}`" class="GrotesqueFont logoSecondaryColor" v-else>
-                                Total : {{ (item.quantity * item.product.price).toFixed(2)}}$ 
+                                Total : ${{ (item.quantity * item.product.price).toFixed(2)}} 
                                 </h5>
                                 <div class="flex align-items-center cursor-pointer dnoneMob" @click="RemoveFromCart(item.id , item.product.id)" style="">                                    
                                     <h5 class="GrotesqueFont mt-2 hover:text-cyan-900">Remove</h5>

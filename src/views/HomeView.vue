@@ -93,41 +93,6 @@ const getFeaturedProducts = async () => {
   console.log(FeaturedProducts.value);
 }
 
-const Featured = [
-  {
-    productId : "3",
-    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/Mockup%20with%20Golden%20Flip%20Top.jpg",
-    productName : "Raspberry ketone",
-    CategoryName : "Wellness Supplements",
-    Price : '7.20$',
-    OldPrice : '13.00$', 
-    Sale : "-35%",
-  },
-  {
-    productId : "6",
-    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/MFS.jpg",
-    productName : "MFS",
-    CategoryName : "Fertility Supplements",
-    Price : '74.99$',
-  },
-  {
-    productId : "2",
-    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/GreenCoffee.jpg",
-    productName : "Green coffee",
-    CategoryName : "Wellness Supplements",
-    Price : '13.90$',
-    OldPrice : '18.00$', 
-    Sale : "-20%",
-  },
-  {
-    productId : "4",
-    productImage : "https://raw.githubusercontent.com/KareemWebDeveloper/LifeFormulaImages/main/Images/D3-10000%20LQ.jpg",
-    productName : "D3 10,000 IU",
-    CategoryName : "Wellness Supplements",
-    Price : '8.60$',
-  },
-]
-
 const responsiveOptions = ref([
     {
         breakpoint: '1199px',
@@ -215,81 +180,8 @@ onMounted(() => {
     </button>
   </div>
 
-  <!-- best selling heading -->
-  <div class="w-full py-3" style="background-color: #f2f4f7ec;">
-    <div class="w-full">
-      <div class="px-5 py-3">
-        <div class="headingg flex Mob-JustifyCenter" style="align-items: center;">
-        <span class="material-symbols-outlined ml-3 Mob-left0 text-4xl greenLogoColor">
-          ecg
-        </span>
-        <h4 class="mx-2 greenLogoColor mt-2 Mob-TextCenter" id="Featured">Our Products</h4>
-      </div>
-      <div class="w-full flex align-items-center IconsColumn">
-        <h1 class="mx-4" style="color: #00405a; letter-spacing: 2px;">Featured</h1>
-        <hr class="w-full" style="width: 75%; height: 0.3vh; background-color: black;">
-      </div>
-    </div>
-  </div>
 
-  <!-- best selling heading end-->
-
-  <!-- best selling card-->
-<div v-if="FeaturedProducts.length > 0" class="m-auto noneForMob" style="width: 88%;">
-  <Carousel :value="FeaturedProducts" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
-    <template #item="slotProps">
-      <div class="p-4 CARD m-auto" style="width: fit-content;">
-        <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
-          <img :src="slotProps.data.image" class="productt" alt="">
-          <span class="material-symbols-outlined appearOnHover">
-            visibility
-          </span>
-          <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
-        </div>
-        <div class="px-2">
-            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
-            <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
-            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }}$ <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">{{slotProps.data.old_price}}$</span></p>
-            <!-- <p class="text-sm my-0" style="color: rgba(14, 0, 0);">Save 10% when buying 3 bottles </p>
-            <p class="text-sm" style="color: rgba(14, 0, 0);">Save 15% when buying 6 bottles </p> -->
-            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
-              shopping_cart
-          </span> </h4>
-        </div>
-      </div>
-    </template>
-</Carousel>
-</div>
-
-  <!-- Best Selling Products for mobile -->
-<div v-if="FeaturedProducts.length > 0" class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
-  <Carousel :value="FeaturedProducts" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="530px" 
-  containerClass="w-full" contentClass="flex align-items-center">
-    <template #item="slotProps">
-      <div class="p-4 CARD m-auto" style="width: fit-content;">
-        <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
-          <img :src="slotProps.data.image" class="productt" alt="">
-          <span class="material-symbols-outlined appearOnHover">
-            visibility
-          </span>
-          <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
-        </div>
-        <div class="px-2">
-            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
-            <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 2).join(' ')}}</h3>
-            <p class="text-sm greenLogoColor my-2">{{ slotProps.data.price }}$ <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">{{slotProps.data.old_price}}$</span></p>
-            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
-              shopping_cart
-          </span> </h4>
-        </div>
-      </div>
-    </template>
-</Carousel>
-</div>
-
-</div>
-
-<div class="flex lg:flex-row md:flex-column sm:flex-column p-4 py-5 w-full Icons" style="background-color: #f2f4f765;">
+<div class="flex lg:flex-row md:flex-column sm:flex-column p-1 md:p-4 py-5 w-full Icons" style="background-color: #f2f4f765;">
   <img src="../assets/Product-5-1-1.png" class="lg:m-5 pr-3 lg:w-8 IconsImg" alt="">
   <div class="flex IconsColumn">
     <div class="flex flex-column">
@@ -327,6 +219,78 @@ onMounted(() => {
       </div> -->
     </div>
   </div>
+</div>
+
+  <!-- best selling heading -->
+  <div class="w-full py-3" style="background-color: #f2f4f7ec;">
+    <div class="w-full">
+      <div class="px-5 py-3">
+        <div class="headingg flex Mob-JustifyCenter" style="align-items: center;">
+        <span class="material-symbols-outlined ml-3 Mob-left0 text-4xl greenLogoColor">
+          ecg
+        </span>
+        <h4 class="mx-2 greenLogoColor mt-2 Mob-TextCenter" id="Featured">Our Products</h4>
+      </div>
+      <div class="w-full flex align-items-center IconsColumn">
+        <h1 class="mx-4" style="color: #00405a; letter-spacing: 2px;">Featured</h1>
+        <hr class="w-full" style="width: 75%; height: 0.3vh; background-color: black;">
+      </div>
+    </div>
+  </div>
+
+  <!-- best selling heading end-->
+
+  <!-- best selling card-->
+<div v-if="FeaturedProducts.length > 0" class="m-auto noneForMob" style="width: 88%;">
+  <Carousel :value="FeaturedProducts" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
+    <template #item="slotProps">
+      <div class="p-4 CARD m-auto cursor-pointer" style="width: fit-content;">
+        <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
+          <img :src="slotProps.data.image" class="productt" alt="">
+          <span class="material-symbols-outlined appearOnHover">
+            visibility
+          </span>
+          <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
+        </div>
+        <div class="px-2">
+            <p style="color: grey;" class="text-sm my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.categoryName}}</p>
+            <h3 class=" my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
+            <p @click="push(`/products/${slotProps.data.id}`); scrollToTop()" class="text-sm my-2" :class="{'greenLogoColor' : slotProps.data.old_price , 'grey' : !slotProps.data.old_price}">${{ slotProps.data.price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">${{slotProps.data.old_price}}</span></p>
+            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+              shopping_cart
+          </span> </h4>
+        </div>
+      </div>
+    </template>
+</Carousel>
+</div>
+
+  <!-- Best Selling Products for mobile -->
+<div v-if="FeaturedProducts.length > 0" class="m-auto sm:hidden lg:hidden md:hidden" style="width: 100%;">
+  <Carousel :value="FeaturedProducts" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="530px" 
+  containerClass="w-full" contentClass="flex align-items-center">
+    <template #item="slotProps">
+      <div class="p-4 CARD m-auto cursor-pointer" style="width: fit-content;" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
+        <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
+          <img :src="slotProps.data.image" class="productt" alt="">
+          <span class="material-symbols-outlined appearOnHover">
+            visibility
+          </span>
+          <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
+        </div>
+        <div class="px-2">
+            <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
+            <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 2).join(' ')}}</h3>
+            <p class="text-sm my-2" :class="{'greenLogoColor' : slotProps.data.old_price , 'grey' : !slotProps.data.old_price}">${{ slotProps.data.price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">${{slotProps.data.old_price}}</span></p>
+            <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
+              shopping_cart
+          </span> </h4>
+        </div>
+      </div>
+    </template>
+</Carousel>
+</div>
+
 </div>
 
 <div class="relative cursor-pointer" @click="push('/about'); scrollToTop()">
