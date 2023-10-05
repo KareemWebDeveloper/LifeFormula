@@ -190,21 +190,21 @@ onMounted(() => {
           handshake
           </span>
           <h4 class="m-auto my-2 text-center w-full">Transparency</h4>
-          <p class="w-11 w-9 m-auto text-center darkGrey">At Life Formula, we are honest and open about the ingredients, manufacturing process, and testing procedures used to create our products.</p>
+          <p class="w-12 md:w-11 m-auto text-center darkGrey">At Life Formula, we are honest and open about the ingredients, manufacturing process, and testing procedures used to create our products.</p>
       </div>
       <div class="flex flex-column justify-content-center m-auto" style="width: fit-content;">
         <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
           psychology
           </span>
           <h4 class="m-auto my-2 text-center">Empowerment</h4>
-          <p class="w-11 m-auto text-center darkGrey">At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake.</p>
+          <p class="w-12 md:w-11 m-auto text-center darkGrey">At Life Formula, we encourage our customers to take control of their health and well-being by providing them with the information and resources they need to make informed decisions about their vitamin and supplement intake.</p>
       </div>
       <div class="flex flex-column justify-content-center m-auto" style="width: fit-content;">
         <span class="material-symbols-outlined text-8xl m-auto hoverIcon greenLogoColor">
           price_check
           </span>
           <h4 class="m-auto my-2 text-center">Affordability</h4>
-          <p class="w-11 m-auto text-center darkGrey">At Life Formula, we aim to make our products accessible to the widest range of customers by offering competitive prices</p>
+          <p class="w-12 md:w-11 m-auto text-center darkGrey">At Life Formula, we aim to make our products accessible to the widest range of customers by offering competitive prices</p>
       </div>
 
     </div>

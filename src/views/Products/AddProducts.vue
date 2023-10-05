@@ -95,7 +95,7 @@ const createProduct = (req : any) => {
 
     <div class="bgImg h-full p-5 padding1 paddingTop login">
         <div class="slidedown animation-iteration-1 animation-duration-1000 lg:p-5 md:p-4 sm:p-3 padding1 lg:w-7 md:w-9 sm:w-10 widthFull my-5 m-auto flex flex-column justify-content-center" style="background-color: rgba(114, 114, 114, 0.291); border-radius: 5px;">
-            <h1 class="text-center fontt font21 padding1 lg:pt-5">Welcome To Life Formula DashBoard</h1>
+            <h1 class="text-center font21 padding1 lg:pt-5">Add your product details</h1>
             <!-- Error Message -->
 
             <p class="formkit-message text-center my-2 mt-4 w-8 m-auto" v-if="isErrorVisible">{{ ErrorMsg }}</p>

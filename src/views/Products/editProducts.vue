@@ -357,12 +357,7 @@ const updateActiveProduct = () => {
                             <label for="ms-cities">Select Product Categories</label>
                         </span>
                     </div>
-                    <div class="flex align-items-center">
-                        <h4 class="fontt">Edit Products</h4>
-                        <span class="material-symbols-outlined text-4xl">
-                            ink_highlighter
-                        </span>
-                    </div>
+                    <Button type="button" label="Create" class="px-4" @click="push('/dashboard/products/add')" severity="success" icon="pi pi-plus" />
                 </div>
             </template>
             <template #grid="slotProps">
@@ -393,6 +388,19 @@ const updateActiveProduct = () => {
 @import url('https://fonts.googleapis.com/css2?family=Artifika&family=Bricolage+Grotesque:opsz@10..48&family=Secular+One&display=swap');
 .fontt{
     font-family: 'Bricolage Grotesque', sans-serif !important;
+}
+.greenHoverBg{
+    transition-duration: 0.2s;
+}
+.greenHoverBg:hover{
+background-color: #00a650 !important;
+color: white !important;
+}
+.greenHoverBg:hover h3{
+color: white !important;
+}
+.greenHoverBg:hover .icon{
+    color: white !important;
 }
 @keyframes ldio-ujurhm9bi0c {
     0% { transform: rotate(0) }

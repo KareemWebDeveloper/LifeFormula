@@ -92,11 +92,12 @@ function scrollToTop() {
   <div class="w-full flex align-items-center lg:flex-row flexColumnRev sm:flex-column-reverse md:flex-column-reverse p-5 paddingMob textCenterResp">
     <img src="../assets/aboutUs.jpg" class="w-5 imageHoverr width75" style="border-radius: 20%;" alt="">
     <div class="px-5 padding0">
-      <h1 class="margAuto">Quality Assurance <span class="material-symbols-outlined text-6xl">
+      <h1 class="margAuto">Empowerment <span class="material-symbols-outlined text-6xl">
         volunteer_activism
         </span></h1>
-      <p class="w-11 darkGrey margAuto width95 justifyy textCenterMob">With transparency as our cornerstone, we commit to delivering premium quality products that are formulated
-        in the USA. Our wide range of supplements are manufactured and packaged in an FDA-registered & inspected facility. </p>
+      <p class="w-11 darkGrey margAuto width95 justifyy textCenterMob">At Life Formula, we believe that everyone should have the power to take control
+         of their own health, and we provide customers with the tools and resources they need to do so. This includes offering a wide range of vitamins and supplements designed to help people achieve their health goals, and providing the information they need to choose the right products for them.
+      </p>
     </div>
   </div>
 
@@ -104,13 +105,26 @@ function scrollToTop() {
   <div class="w-full flex align-items-center lg:flex-row flexColumnn sm:flex-column md:flex-column p-5 paddingMob textCenterResp">
     <div class="px-5 padding0">
       <div class="flex align-items-center flexColumnn">
-        <h1 class="mt-2 margAuto">Transparency and Empowerment</h1>
+        <h1 class="mt-2 margAuto">Transparency</h1>
         <span class="material-symbols-outlined text-6xl mx-2">ecg_heart</span>
       </div>
       <p class="w-11 darkGrey margAuto width95 justifyy textCenterMob">We believe you deserve to know exactly what you're putting into your body. That's why we provide comprehensive
         information about each product's ingredients, sourcing, and benefits. </p>
       </div>
       <img src="../assets/aboutUs2.jpg" class="w-5 imageHoverr width75" style="border-radius: 20%;" alt="">
+  </div>
+  <div class="w-12 md:w-8 m-auto text-center my-5">
+    <div class="flex align-items-center my-2 justify-content-center m-auto">
+      <h1 class="mt-2">Affordability</h1>
+      <span class="material-symbols-outlined text-6xl mx-1">
+        monetization_on
+        </span>
+    </div>
+    <p>
+      At Life Formula, we believe that everyone should have access to high-quality vitamins and supplements, regardless
+       of their income. This is why we offer our products at affordable prices along with a variety of discounts and 
+       promotions to help our customers save money.
+    </p>
   </div>
   <div class="w-10 m-auto text-center my-5">
     <h1>Start Your Wellness Journey</h1>
@@ -147,7 +161,7 @@ function scrollToTop() {
     margin: auto !important;
   }
   .width95{
-    width: 93% !important;
+    width: 96% !important;
     margin: 2vh auto !important;
   }
   .width75{

@@ -10,16 +10,12 @@ const router = useRouter();
 const route = useRoute();
 
 const { push } = useRouter();
-let OptionsValue = ref('Create');
-const options = ref(['Create','Update']);
-const loading = ref(false)
-const ProductSaved = ref(false)
 const userInfo = ref()
-
-
+const userRole = ref()
 
 const checkUserRole = async () => {
     let response = await axios.get('https://api-lifeformula.com/api/userRole');
+    userRole.value = response.data.userRole
     if(response.data.userRole == 'user'){
         push('/')
     }
@@ -87,16 +83,29 @@ onMounted(() => {
     
 })
 
-
-
 </script>
 <template>
     <DashBoardSideBar></DashBoardSideBar>
     <div class="bgImg h-full p-5 padding1 paddingTop login dashboard">
         <div class="slidedown animation-iteration-1 animation-duration-1000 lg:p-5 md:p-4 sm:p-3 padding1 w-11 widthFull my-5 m-auto flex flex-column justify-content-center" style="background-color: rgba(255, 255, 255, 0.591); margin-top: 10vh !important; border-radius: 5px;">
             <div class="card p-3 flex flex-column align-items-center justify-content-center">
-                <h2 class="text-center py-3 fontt">Welcome {{ userInfo.name.split(' ').slice(0, 1).join(' ') }}, to your admin panel</h2>
-                <p class="fontt">you can navigate to any page in the admin panel by clicking on the widgets icon on the left of the page</p>
+                <h2 class="text-center py-3">Welcome {{ userInfo.name.split(' ').slice(0, 1).join(' ') }}, to your admin panel</h2>
+                <p class="fontt text-center">you can navigate to any page in the admin panel by clicking on the widgets icon on the left of the page</p>
+                <p class="mt-5 mb-3">Most Commonly Used</p>
+                <div class="flex mb-5 flex-wrap justify-content-center">
+                    <div class="flex my-2 mx-3 w-17rem greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
+                        <span class="material-symbols-outlined icon text-5xl greenLogoColor" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48 ">database</span>
+                        <h3 class="fontt mt-2 mx-1" @click="push('/dashboard/products/edit')">Products</h3> 
+                    </div>
+                    <div v-if="userRole == 'admin'" class="flex my-2 w-18rem mx-3 greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
+                        <span class="material-symbols-outlined icon text-5xl greenLogoColor" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48 ">monitoring</span>
+                        <a class="no-underline text-black" href="https://marketingplatform.google.com/about/analytics/"><h3 class="fontt mt-2 mx-1">Google Analytics</h3></a>
+                    </div>
+                    <div v-if="userRole == 'admin'" class="flex my-2 mx-3 w-17rem greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
+                        <span class="material-symbols-outlined icon text-5xl greenLogoColor" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48 ">group</span>
+                        <h3 class="fontt mt-2 mx-1" @click="push('/dashboard/products/edit')">Users</h3> 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -106,6 +115,19 @@ onMounted(() => {
 .bgImg{
     background: #1a1b20 url('../assets/bggGredient2.jpg') fixed;
     background-size: cover;
+}
+.greenHoverBg{
+    transition-duration: 0.2s;
+}
+.greenHoverBg:hover{
+background-color: #00a650 !important;
+color: white !important;
+}
+.greenHoverBg:hover h3{
+color: white !important;
+}
+.greenHoverBg:hover .icon{
+    color: white !important;
 }
 .p-tabmenu{
     margin: auto;
@@ -216,18 +238,3 @@ label{
     }
 }
 </style>
-
-
-                <!-- <TabMenu v-model:activeIndex="active" :model="items">
-                    <template #item="{ item }">
-                        <router-link class="mx-2 flex align-items-center" v-if="item.route" v-slot="routerProps" :to="item.route">
-                            <div class="mx-2 flex align-items-center">
-                                <span class="material-symbols-outlined text-3xl">
-                                    {{ item.icon }}
-                                </span>
-                                <h2 class="fontt text-2xl">{{ item.label }}</h2>
-                            </div>
-                        </router-link>
-                    </template>
-                </TabMenu> -->
-                <!-- <h2 class="text-center py-3 fontt">Welcome {{ userInfo.name }}, to your admin panel</h2> -->

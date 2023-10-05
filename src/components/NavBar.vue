@@ -194,7 +194,7 @@ nav{
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
-  'wght' 100,
+  'wght' 150,
   'GRAD' 0,
   'opsz' 48
 }

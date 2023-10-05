@@ -11,6 +11,7 @@ import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 import { useRouter } from 'vue-router';
 import ContactIcons from '@/components/ContactIcons.vue';
+// import loadingCart from '@/components/cartLoading.vue';
 import axios from 'axios';
 const { push } = useRouter();
 import { AES, enc } from 'crypto-js';
@@ -233,7 +234,7 @@ const contactUs = () => {
             <h4 class="text-center p-2 my-2">Product Added To Cart Successfully!</h4>
         </div>
         <template #footer>
-            <Button class="textSmMob mt-2" label="Contact Us" icon="pi pi-comment" @click="contactUs()" autofocus />
+            <Button v-if="!cartLoading && isOutOfStock" class="textSmMob mt-2" label="Contact Us" icon="pi pi-comment" @click="contactUs()" autofocus />
             <div v-if="!cartLoading && !isOutOfStock">
                 <Button class="textSmMob mt-2" label="Go To Cart" icon="pi pi-shopping-cart" @click="push('/cart'); scrollToTop()" text />
                 <Button class="textSmMob mt-2" label="Continue Shopping" icon="pi pi-shopping-bag" @click="isDialogVisible = false" autofocus />
