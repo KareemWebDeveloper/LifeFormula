@@ -83,6 +83,11 @@ onMounted(() => {
     
 })
 
+const googleAnalytics = () => {
+    let link = document.getElementById('googleAnalytics')
+    link?.click()
+}
+
 </script>
 <template>
     <DashBoardSideBar></DashBoardSideBar>
@@ -93,17 +98,17 @@ onMounted(() => {
                 <p class="fontt text-center">you can navigate to any page in the admin panel by clicking on the widgets icon on the left of the page</p>
                 <p class="mt-5 mb-3">Most Commonly Used</p>
                 <div class="flex mb-5 flex-wrap justify-content-center">
-                    <div class="flex my-2 mx-3 w-17rem greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
+                    <div @click="push('/dashboard/products/edit')" class="flex my-2 mx-3 w-17rem greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
                         <span class="material-symbols-outlined icon text-5xl greenLogoColor" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48 ">database</span>
-                        <h3 class="fontt mt-2 mx-1" @click="push('/dashboard/products/edit')">Products</h3> 
+                        <h3 class="fontt mt-2 mx-1" >Products</h3> 
                     </div>
-                    <div v-if="userRole == 'admin'" class="flex my-2 w-18rem mx-3 greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
+                    <div v-if="userRole == 'admin'" class="flex my-2 w-18rem mx-3 greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" @click="googleAnalytics()" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
                         <span class="material-symbols-outlined icon text-5xl greenLogoColor" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48 ">monitoring</span>
-                        <a class="no-underline text-black" href="https://marketingplatform.google.com/about/analytics/"><h3 class="fontt mt-2 mx-1">Google Analytics</h3></a>
+                        <a id="googleAnalytics" class="no-underline text-black" target="_blank" href="https://marketingplatform.google.com/about/analytics/"><h3 class="fontt mt-2 mx-1">Google Analytics</h3></a>
                     </div>
-                    <div v-if="userRole == 'admin'" class="flex my-2 mx-3 w-17rem greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
+                    <div v-if="userRole == 'admin'"  @click="push('/dashboard/users')" class="flex my-2 mx-3 w-17rem greenHoverBg align-items-center justify-content-center surface-100 p-2 cursor-pointer" style="border-radius: 10px; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.378);">
                         <span class="material-symbols-outlined icon text-5xl greenLogoColor" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48 ">group</span>
-                        <h3 class="fontt mt-2 mx-1" @click="push('/dashboard/products/edit')">Users</h3> 
+                        <h3 class="fontt mt-2 mx-1">Users</h3> 
                     </div>
                 </div>
             </div>

@@ -170,7 +170,7 @@ const updateActiveProduct = () => {
     </div>
     <div v-else class="editProducts p-2 surface-300 m-auto">
         <div class="p-4 flex align-items-center m-2 justify-content-center m-auto" style="width: fit-content;">
-            <div class="ProductImage mx-1">
+            <div class="ProductImage hidden md:flex mx-1">
                 <img :src="updateProduct.image" class="productt" alt="">
                 <span class="material-symbols-outlined appearOnHover">
                     edit
