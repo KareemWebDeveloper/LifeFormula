@@ -527,6 +527,9 @@ const contactUs = () => {
 }
 }
 @media screen and (max-width : 480px){
+    .p-paginator{
+        padding: 0.5rem 0 !important;
+    }
     .headerResp{
         flex-direction: column !important;
         width: 100% !important;
