@@ -31,7 +31,7 @@ const contactUs = () => {
             <h4>INFORMATION</h4>
             <RouterLink to="/about" @click="scrollToTop" class="links">About Us</RouterLink>
             <!-- <RouterLink to="" class="links">FAQ</RouterLink> -->
-            <RouterLink to="/privacy-policy" class="links">privacy policy</RouterLink>
+            <RouterLink to="/privacy-policy"  @click="scrollToTop" class="links">privacy policy</RouterLink>
             <RouterLink :to="{ name: 'termsConditions', hash: '#terms' }" @click="scrollToTop" class="links">Terms & condition</RouterLink>
         </div> 
         <div class="shops">

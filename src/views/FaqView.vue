@@ -145,7 +145,7 @@ function scrollToTop() {
 }
 @media screen and (max-width : 500px) {
   .marginTop{
-    padding-top: 12vh !important;
+    padding-top: 13.5vh !important;
   } 
 }
 </style>

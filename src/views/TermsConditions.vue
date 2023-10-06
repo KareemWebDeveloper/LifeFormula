@@ -61,7 +61,7 @@ onBeforeMount(() => {
         padding: 2vh !important;
     }
     .marginTop{
-      padding-top: 9vh !important;
+      padding-top: 11.5vh !important;
     }
     .paddingMobX{
         padding: 3vh 1vh !important;
