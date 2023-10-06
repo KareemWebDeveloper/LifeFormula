@@ -330,7 +330,7 @@ const contactUs = () => {
                                     <h3 class=" my-2">{{slotProps.data.name}}</h3>    
                                     <!-- <p class="lg:w-10 text-justify sm:w-full md:w-full responsivee none" v-if="slotProps.data.product_description.length > 300">{{slotProps.data.product_description.substring(0, 250)}} ... <RouterLink :to="`/products/${slotProps.data.id}`" @click="scrollToTop()">See More</RouterLink></p> -->
                                     <!-- <p class="lg:w-10 text-justify sm:w-full md:w-full responsivee none" v-else>{{slotProps.data.product_description}}</p> -->
-                                    <ScrollPanel style="width: 95%; height: 160px">
+                                    <ScrollPanel class="none" style="width: 100%; height: 160px">
                                         <div v-html="slotProps.data.product_description" class="lg:w-10 text-justify sm:w-full md:w-full responsivee none">
                                         </div>
                                     </ScrollPanel>
@@ -344,8 +344,12 @@ const contactUs = () => {
                                     </span>
                                 </div>
                             </div>
-                            <p class="lg:hidden text-justify sm:w-full md:w-full responsivee" v-if="slotProps.data.product_description.length > 250">{{slotProps.data.product_description.substring(0, 250)}} ... <RouterLink :to="`/products/${slotProps.data.id}`" @click="scrollToTop()">See More</RouterLink></p>
-                            <p class="lg:hidden text-justify sm:w-full md:w-full responsivee" v-else>{{slotProps.data.product_description}}</p>
+                            <ScrollPanel class="flex lg:hidden" style="width: 98%; height: 100px">
+                                <div v-html="slotProps.data.product_description" class="lg:hidden sm:w-full md:w-full responsivee">
+                                </div>
+                            </ScrollPanel>
+                            <!-- <p class="lg:hidden text-justify sm:w-full md:w-full responsivee" v-if="slotProps.data.product_description.length > 250">{{slotProps.data.product_description.substring(0, 250)}} ... <RouterLink :to="`/products/${slotProps.data.id}`" @click="scrollToTop()">See More</RouterLink></p> -->
+                            <!-- <p class="lg:hidden text-justify sm:w-full md:w-full responsivee" v-else>{{slotProps.data.product_description}}</p> -->
 
                         </div>
                     </div>
