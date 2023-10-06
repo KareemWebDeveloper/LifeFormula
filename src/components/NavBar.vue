@@ -132,7 +132,7 @@ const sendMail = (req : any) => {
                     <span class="material-symbols-outlined text-4xl mx-2 cursor-pointer colorHover fontHover" @click="push('/cart'); scrollToTop()">
                         shopping_cart
                     </span>
-                    <span @click="push('/login'); scrollToTop()" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
+                    <span @click="push('/login'); scrollToTop()" v-if="!Authenticated" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
                         login
                     </span>
                 </div>
@@ -158,7 +158,7 @@ const sendMail = (req : any) => {
             <span class="material-symbols-outlined text-4xl mx-2 cursor-pointer colorHover fontHover" @click="push('/cart'); scrollToTop()">
                 shopping_cart
             </span>
-            <span @click="push('/login'); scrollToTop()" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
+            <span @click="push('/login'); scrollToTop()" v-if="!Authenticated" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
                 login
             </span>
         </div>

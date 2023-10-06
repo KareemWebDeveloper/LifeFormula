@@ -17,7 +17,7 @@ const ErrorMsg = ref()
 const ResetPwErrorMsg = ref()
 let token = localStorage.getItem('LF_Token')
 const dbError = ref(false)
-const genderOptions = ['male','female']
+const genderOptions = ['male','female','prefer not to say']
 const stateOptions = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
 const getUserInfo = async() => {
     let response = await axios.get('https://api-lifeformula.com/api/userProfile')

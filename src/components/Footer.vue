@@ -31,15 +31,15 @@ const contactUs = () => {
             <h4>INFORMATION</h4>
             <RouterLink to="/about" @click="scrollToTop" class="links">About Us</RouterLink>
             <!-- <RouterLink to="" class="links">FAQ</RouterLink> -->
-            <RouterLink :to="{ name: 'termsConditions', hash: '#privacy' }" @click="reload" class="links">privacy policy</RouterLink>
-            <RouterLink :to="{ name: 'termsConditions', hash: '#terms' }" @click="reload" class="links">Terms & condition</RouterLink>
+            <RouterLink to="/privacy-policy" class="links">privacy policy</RouterLink>
+            <RouterLink :to="{ name: 'termsConditions', hash: '#terms' }" @click="scrollToTop" class="links">Terms & condition</RouterLink>
         </div> 
         <div class="shops">
             <h4>CUSTOMER SERVICE</h4>
             <!-- <RouterLink to="" class="links">Search Terms</RouterLink> -->
-            <RouterLink :to="{ name: 'termsConditions', hash: '#shipping' }" @click="reload" class="links">Shipping policy</RouterLink>
+            <RouterLink to="/Shipping-policies" @click="scrollToTop" class="links">Shipping policy</RouterLink>
             <RouterLink to="" class="links" @click="contactUs">Contact Us</RouterLink>
-            <RouterLink :to="{ name: 'home', hash: '#FAQ' }" @click="reload" class="links">Help & FAQs</RouterLink>
+            <RouterLink to="/FAQ" @click="scrollToTop" class="links">Help & FAQs</RouterLink>
         </div> 
         <div class="newsletter my-3">
             <!-- <h4>Registration</h4> -->

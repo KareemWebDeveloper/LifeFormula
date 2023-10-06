@@ -88,6 +88,21 @@ const router = createRouter({
       name: 'blog',
       component: () => import('../views/Blog.vue')
     },
+    {
+      path: '/FAQ',
+      name: 'FAQ',
+      component: () => import('../views/FaqView.vue')
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy-policy',
+      component: () => import('../views/privacyPolicy.vue')
+    },
+    {
+      path: '/Shipping-policies',
+      name: 'Shipping-policies',
+      component: () => import('../views/shippingPolicy.vue')
+    },
   ]
 })
 
