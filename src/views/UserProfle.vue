@@ -143,13 +143,13 @@ const logout = () => {
                             <div class="flex align-items-center justify-content-center">
                                 <label for="location" class="px-1 fontt">Location Link <span class="mx-1 text-sm">(Optional)</span></label>
                             </div>
-                            <FormKit id="location" type="text" label="Location Link" placeholder="Enter your Location link" name="location_link" validation="required" />
+                            <FormKit id="location" type="text" label="Location Link" placeholder="Enter your Location link" name="location_link" validation="" />
                         </div>
                         <div class="mt-3">
                             <div class="flex align-items-center justify-content-center">
                                 <label for="gender" class="px-1 fontt">Gender <span class="mx-1 text-sm">(Optional)</span></label>
                             </div>
-                            <FormKit id="gender" type="select" label="Gender" :options="genderOptions" placeholder="choose your gender" name="gender" validation="required" />
+                            <FormKit id="gender" type="select" label="Gender" :options="genderOptions" placeholder="choose your gender" name="gender" validation="" />
                         </div>
     
                         <!-- <button type="submit" class="submitBtn">Login</button> -->

@@ -90,7 +90,7 @@ const { push } = useRouter();
 const getCategories = async () => {
     let response = await axios.get('https://api-lifeformula.com/api/categories');
     categories.value = response.data.Categories.map((obj : any) => {
-        return { label: obj.name, value: obj.id };
+        return { name: obj.name, code: obj.id };
     });
     console.log(categories.value);
 }

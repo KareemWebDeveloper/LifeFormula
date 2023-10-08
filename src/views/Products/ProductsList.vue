@@ -166,8 +166,7 @@ watch(SearchValue, () => {
       }
 });
 watch(selectedCategories, () => {
-
-        
+    let exitLoop = false;  
       if(SearchValue.value == '' || SearchValue.value == undefined){
         Products.value = productTmp
       }
@@ -186,14 +185,19 @@ watch(selectedCategories, () => {
                 setTimeout(() => {
                     loading.value = false
                 }, 500);
+                selectedCategories.value = [{ "name": "Select All", "code": 0 }, { "name": "Wellness Supplements", "code": 1 },{ "name": "Fertility Supplements", "code": 2 }]
                 Products.value = productTmp
-                return
+                exitLoop = true;
             }
             filteredCategories = filteredCategories.filter((product : any) =>
           product.categoryName.toLowerCase().includes(element.name.toLowerCase())
         );
         console.log(element.name);
         });
+        if (exitLoop) {
+            Products.value = productTmp
+            return; // Exit the function
+        }
         loading.value = true
         Products.value = filteredCategories
         setTimeout(() => {
@@ -262,7 +266,7 @@ const contactUs = () => {
     </div>
     <div class="sm:w-full md:w-full p-2 m-auto fadeindown animation-duration-1000 animation-iteration-1" style="width: 87% !important;">
         <div v-if="loading" class="w-full flex sm:flex-column md:flex-column lg:flex-row flex-wrap">
-            <div v-for="i in 3" key="i" class="p-2 lg:w-4 sm:w-full md-w-full responsivee">
+            <div v-for="i in 3" :key="i" class="p-2 lg:w-4 sm:w-full md-w-full responsivee">
                 <div class="p-4 border-1 mx-2 surface-border surface-card border-round">
                     <div class="flex flex-column align-items-center gap-3 py-2">
                         <Skeleton class="w-11 shadow-2 border-round h-12rem surface-400" />

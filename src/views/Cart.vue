@@ -242,7 +242,7 @@ onBeforeMount(() => {
                         <h4 class="GrotesqueFont textAlignCenter">{{ item.product.name }}</h4>
                         <h5 class="GrotesqueFont textAlignCenter my-2 fontMd">{{ item.product.categoryName }}</h5>
                         <div class="flex justify-content-between mgMob">
-                            <h4 class="GrotesqueFont logoSecondaryColor">{{ item.product.price }}$</h4>
+                            <h4 class="GrotesqueFont logoSecondaryColor">${{ item.product.price }}</h4>
                             <div>
                                 <h5 :id="`totaaal${item.product.id}`" class="GrotesqueFont logoSecondaryColor" v-if="item.quantity < 3 ">Total : ${{ (item.product.price * item.quantity).toFixed(2) }}</h5>
                                 <h5 :id="`totaaal${item.product.id}`" class="GrotesqueFont logoSecondaryColor" v-else-if="item.quantity >= 3 && item.quantity < 6 && item.product.sale_on_3">
