@@ -9,7 +9,7 @@ import type { Ref } from 'vue';
 const { push } = useRouter();
 const userInfo = ref()
 const hasShippingInfo = ref(false)
-const passwordResetSuccess = ref(false)
+const userUpdatedSuccessfully = ref(false)
 const loading = ref(false)
 const isResetPwErrorVisible = ref(false)
 const isErrorVisible = ref(false)
@@ -44,10 +44,10 @@ const submitProfileInfo = (req : any) => {
     loading.value = true
 
     console.log(req);
-    if(hasShippingInfo){
+    if(hasShippingInfo.value){
       axios.put('https://api-lifeformula.com/api/userProfile/update',req).then((result) => {
           console.log(result);
-          passwordResetSuccess.value = true
+          userUpdatedSuccessfully.value = true
           isErrorVisible.value = false
             loading.value = false
             setTimeout(() => {
@@ -59,7 +59,23 @@ const submitProfileInfo = (req : any) => {
             ErrorMsg.value = err.response.data.message
             loading.value = false
         });  
-    }   
+    }  
+    else{
+        axios.post('https://api-lifeformula.com/api/userProfile/create',req).then((result) => {
+          console.log(result);
+          userUpdatedSuccessfully.value = true
+          isErrorVisible.value = false
+            loading.value = false
+            setTimeout(() => {
+                location.reload()
+            }, 800);
+        }).catch((err) => {
+            console.log(err);
+            isErrorVisible.value = true
+            ErrorMsg.value = err.response.data.message
+            loading.value = false
+        });  
+    } 
 }
 
 const resetPw = (req : any) => {
@@ -68,7 +84,7 @@ const resetPw = (req : any) => {
     console.log(req);
     axios.post('https://api-lifeformula.com/api/resetPw',req).then((result) => {
         console.log(result);
-        passwordResetSuccess.value = true
+        userUpdatedSuccessfully.value = true
         isResetPwErrorVisible.value = false
         loading.value = false
         setTimeout(() => {
@@ -154,7 +170,7 @@ const logout = () => {
     
                         <!-- <button type="submit" class="submitBtn">Login</button> -->
                         <Button type="submit" class="submitBtn mt-5" label="Submit" :loading="loading" />
-                        <h5 v-if="passwordResetSuccess" class="fadein animation-duration-500 animation-iteration-1 p-3 px-4 text-white text-center" style="background-color: #00b457;">Your Details Updated successfully</h5>
+                        <h5 v-if="userUpdatedSuccessfully" class="fadein animation-duration-500 animation-iteration-1 p-3 px-4 text-white text-center" style="background-color: #00b457;">Your Details Updated successfully</h5>
                     </FormKit>
                     <h4 @click="logout();scrollToTop()" class="width80 p-3 w-5 cursor-pointer px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4">Logout</h4>
                     <h4 @click="push('/products');scrollToTop()" class="width80 p-3 w-5 cursor-pointer px-5 m-auto bg-black text-center no-underline text-white shopNowHover my-4">Shop Now</h4>
@@ -187,7 +203,7 @@ const logout = () => {
                             <FormKit type="password" id="pw2" label="Confirm Password" placeholder="Re-Enter your password" name="new_password_confirm" validation="required|confirm" />
                         </div>
                         <Button type="submit" class="submitBtn" label="Reset Password" :loading="loading" />
-                        <h5 v-if="passwordResetSuccess" class="fadein animation-duration-500 animation-iteration-1 p-3 px-4 text-white text-center" style="background-color: #00b457;">Password Changed Successfully</h5>
+                        <h5 v-if="userUpdatedSuccessfully" class="fadein animation-duration-500 animation-iteration-1 p-3 px-4 text-white text-center" style="background-color: #00b457;">Password Changed Successfully</h5>
                     </FormKit>
                 </div>
             </div>
