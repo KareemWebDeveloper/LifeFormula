@@ -24,6 +24,14 @@ function scrollToTop() {
         top: 0,
         behavior: 'smooth'
     });
+    setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        location.reload()
+    }, 300);
+
 }
 
 const loading = ref(true)
@@ -282,7 +290,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
     </div>
 
     <!-- PRODUCT ICONS -->
-    <div v-if="Product.product_icons" class="productIcons p-5 w-full flex flex-wrap justify-content-center mt-5">
+    <div v-if="Product && Product.product_icons" class="productIcons p-5 w-full flex flex-wrap justify-content-center mt-5">
         <div class="text-center my-3 lg:mb-5 w-3 iconDiv"  v-for="(icon,index) in Product.product_icons.product_icons" :key="index">
             <span class="material-symbols-outlined text-white text-7xl iconnBorder">
                 {{ icon.icon_name }}
@@ -292,7 +300,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
     </div>
 
     <!-- Blog -->
-    <div v-html="Product.product_article" v-if="Product.product_article" class="Blog w-12 lg:w-9 m-auto padding5 sm:p-2 md:p-3 lg:p-5">
+    <div v-html="Product.product_article" v-if="Product && Product.product_article" class="Blog w-12 lg:w-9 m-auto padding5 sm:p-2 md:p-3 lg:p-5">
        
     </div>
 
@@ -302,7 +310,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
         <div class="m-auto noneForMob" style="width: 88%;">
             <Carousel :value="FeaturedProducts" :numVisible="3" :numScroll="1" circular :responsiveOptions="responsiveOptions" :autoplayInterval="4500">
                 <template #item="slotProps">
-                <div v-if="slotProps.data.id != ProductId" class="p-4 CARD m-auto" style="width: fit-content;" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
+                <div v-if="slotProps.data.id != ProductId" class="p-4 CARD m-auto" style="width: fit-content;">
                     <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop();">
                     <img :src="slotProps.data.image" class="productt" alt="">
                     <span class="material-symbols-outlined appearOnHover">
@@ -311,8 +319,8 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                     <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
                     </div>
                     <div class="px-2">
-                        <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
-                        <h3 class=" my-2">{{slotProps.data.name}}</h3>
+                        <p style="color: grey;" class="text-sm my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.categoryName}}</p>
+                        <h3 class=" my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.name}}</h3>
                         <p class="text-sm my-2" :class="{'greenLogoColor' : slotProps.data.old_price , 'grey' : !slotProps.data.old_price}">${{ slotProps.data.price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">${{slotProps.data.old_price}}</span></p>
                         <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
@@ -328,7 +336,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
             <Carousel :value="FeaturedProducts" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="500px" 
             containerClass="w-full" contentClass="flex align-items-center">
                 <template #item="slotProps">
-                <div v-if="slotProps.data.id != ProductId" class="p-4 CARD m-auto" style="width: fit-content;" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
+                <div v-if="slotProps.data.id != ProductId" class="p-4 CARD m-auto" style="width: fit-content;">
                     <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
                     <img :src="slotProps.data.image" class="productt" alt="">
                     <span class="material-symbols-outlined appearOnHover">
@@ -337,12 +345,12 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                     <h4 v-if="slotProps.data.sale" style="background-color: #ffc12b; color: white; position: absolute; top: 20px; right: 25px; border-radius: 6px;" class="p-1 px-3">-{{ slotProps.data.sale }}%</h4>
                     </div>
                     <div class="px-2">
-                        <p style="color: grey;" class="text-sm my-2">{{slotProps.data.categoryName}}</p>
-                        <h3 class=" my-2">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
+                        <p style="color: grey;" class="text-sm my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.categoryName}}</p>
+                        <h3 class=" my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
                         <p class="text-sm my-2" :class="{'greenLogoColor' : slotProps.data.old_price , 'grey' : !slotProps.data.old_price}">{{ slotProps.data.price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">-{{slotProps.data.old_price}}%</span></p>
                         <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
-                    </span> </h4>
+                    </span></h4>
                     </div>
                 </div>
                 </template>
