@@ -76,7 +76,7 @@ onBeforeMount(() => {
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
-  }, 1500);
+  }, 600);
 })
 
 const responsiveOptions = ref([
