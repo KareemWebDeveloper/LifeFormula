@@ -16,6 +16,7 @@ import axios from 'axios';
 const { push , currentRoute } = useRouter();
 import { AES, enc } from 'crypto-js';
 import type { Ref } from 'vue';
+import Dropdown from 'primevue/dropdown';
 
 type layoutType = "grid" | "list" | undefined
 function scrollToTop() {
@@ -26,7 +27,7 @@ function scrollToTop() {
 }
 const isDialogVisible = ref(false)
 const isOutOfStock = ref(false)
-const selectedCategories : Ref<Array<any>> = ref([])
+const selectedCategories : any = ref()
 const loading = ref(true)
 const redirectedFilterCategory = ref()
 const Slogan = ref(false)
@@ -47,7 +48,7 @@ const getProducts = async () => {
   productTmp = Products.value
   if(currentRoute.value.query.filterCategory && currentRoute.value.query.categoryId){
         redirectedFilterCategory.value = currentRoute.value.query.filterCategory
-        selectedCategories.value.push({"name": redirectedFilterCategory.value , "code" : parseInt(currentRoute.value.query.categoryId as string)})
+        selectedCategories.value = {"name": redirectedFilterCategory.value , "code" : parseInt(currentRoute.value.query.categoryId as string)}
         filterProductsByCategories()
     }
 }
@@ -175,11 +176,11 @@ watch(selectedCategories, () => {
 });
 
 const filterProductsByCategories = () => {
-    let exitLoop = false;  
+    console.log(selectedCategories.value);
       if(SearchValue.value == '' || SearchValue.value == undefined){
         Products.value = productTmp
       }
-      if(selectedCategories.value.length == 0) {
+      if(!selectedCategories.value) {
         console.log('length 0');
         loading.value = true
         Products.value = productTmp
@@ -189,29 +190,19 @@ const filterProductsByCategories = () => {
       }
       else{
         let filteredCategories = productTmp
-        selectedCategories.value.some((element) => {
-        if (element.name == 'Select All') {
+        if (selectedCategories.value.name == 'Select All') {
             loading.value = true
                 setTimeout(() => {
                     loading.value = false
                 }, 500);
-                selectedCategories.value = [{ "name": "Select All", "code": 0 }, { "name": "Wellness Supplements", "code": 1 },{ "name": "Fertility Supplements", "code": 2 }]
                 Products.value = productTmp
-                exitLoop = true;
-                return true; // Return from the loop
+                return true;
         }
         else{
             filteredCategories = filteredCategories.filter((product : any) =>
-            product.categoryName.toLowerCase().includes(element.name.toLowerCase())
+            product.categoryName.toLowerCase().includes(selectedCategories.value.name.toLowerCase())
             );
-            console.log(filteredCategories);
-            console.log(element.name);
-        }
-        }); 
-        if (exitLoop) {
-            Products.value = productTmp
-            return; // Exit the function
-        }
+        } 
         loading.value = true
         Products.value = filteredCategories
         setTimeout(() => {
@@ -296,7 +287,6 @@ const contactUs = () => {
                 </div>
             </div>
         </div>
-        <!-- {{ selectedCategories }} -->
         <data-view v-if="!loading" ref="dataview" animation-duration-1000 animation-iteration-1 :value="Products" paginator :layout="layout" dataKey="productId" :rows="6">
             <template #header>
                 <div class="flex justify-content-between headerResp align-items-center">
@@ -305,9 +295,10 @@ const contactUs = () => {
                             <i class="pi pi-search" />
                             <InputText v-model="SearchValue" class="font-bold" placeholder="Search Products" />
                         </span>
-                        <span class="filterSelect p-float-label mx-3 font-light w-full sm:my-4 md:my-4 mb-0 lg:my-1 FilterResponsiveSelect">
-                            <MultiSelect id="ms-cities" v-model="selectedCategories" filter :options="categories" optionLabel="name" :maxSelectedLabels="3" class="w-full md:w-20rem" />
-                            <label for="ms-cities">Select Product Categories</label>
+                        <span class="filterSelect mx-3 font-light w-full sm:my-4 md:my-4 mb-0 lg:my-1 FilterResponsiveSelect">
+                            <Dropdown v-model="selectedCategories" :options="categories" filter  showClear optionLabel="name" placeholder="Select Product Categories"  class="w-full md:w-20rem" />
+                            <!-- <MultiSelect id="ms-cities" v-model="selectedCategories" filter :options="categories" optionLabel="name" :maxSelectedLabels="3" class="w-full md:w-20rem" /> -->
+                            <!-- <label for="ms-cities">Select Product Categories</label> -->
                         </span>
                     </div>
                     <DataViewLayoutOptions v-model="layout" />
@@ -379,6 +370,9 @@ const contactUs = () => {
 </div>
 </template>
 <style>
+.p-dropdown .p-dropdown-clear-icon {
+    top: 2.2vh;
+}
 
 .p-multiselect-header{
     display: none !important;
