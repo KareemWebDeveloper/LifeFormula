@@ -13,7 +13,7 @@ import { useRouter } from 'vue-router';
 import ContactIcons from '@/components/ContactIcons.vue';
 // import loadingCart from '@/components/cartLoading.vue';
 import axios from 'axios';
-const { push } = useRouter();
+const { push , currentRoute } = useRouter();
 import { AES, enc } from 'crypto-js';
 import type { Ref } from 'vue';
 
@@ -28,6 +28,7 @@ const isDialogVisible = ref(false)
 const isOutOfStock = ref(false)
 const selectedCategories : Ref<Array<any>> = ref([])
 const loading = ref(true)
+const redirectedFilterCategory = ref()
 const Slogan = ref(false)
 const layout : Ref<layoutType> = ref('grid')
 const SearchValue = ref()
@@ -43,7 +44,12 @@ let token = localStorage.getItem('LF_Token')
 const getProducts = async () => {
   let response = await axios.get('https://api-lifeformula.com/api/products');
   Products.value = response.data.products as any
-  console.log(Products.value);
+  productTmp = Products.value
+  if(currentRoute.value.query.filterCategory && currentRoute.value.query.categoryId){
+        redirectedFilterCategory.value = currentRoute.value.query.filterCategory
+        selectedCategories.value.push({"name": redirectedFilterCategory.value , "code" : parseInt(currentRoute.value.query.categoryId as string)})
+        filterProductsByCategories()
+    }
 }
 
 const getCategories = async () => {
@@ -51,7 +57,7 @@ const getCategories = async () => {
     let responseCategories = response.data.Categories.map((obj : any) => {
         return { name: obj.name, code: obj.id };
     });
-    console.log(responseCategories);
+    // console.log(responseCategories);
     categories.value.push({name : 'Select All' , code : 0} as any)
     responseCategories.forEach((category : any) => {
         categories.value.push(category)
@@ -132,7 +138,6 @@ onBeforeMount(() => {
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
-        productTmp = Products.value
     }, 1800);
     setTimeout(() => {
         Slogan.value = true
@@ -166,11 +171,16 @@ watch(SearchValue, () => {
       }
 });
 watch(selectedCategories, () => {
+    filterProductsByCategories()
+});
+
+const filterProductsByCategories = () => {
     let exitLoop = false;  
       if(SearchValue.value == '' || SearchValue.value == undefined){
         Products.value = productTmp
       }
       if(selectedCategories.value.length == 0) {
+        console.log('length 0');
         loading.value = true
         Products.value = productTmp
         setTimeout(() => {
@@ -179,21 +189,25 @@ watch(selectedCategories, () => {
       }
       else{
         let filteredCategories = productTmp
-        selectedCategories.value.forEach((element) => {
-            if(element.name == 'Select All'){
-                loading.value = true
+        selectedCategories.value.some((element) => {
+        if (element.name == 'Select All') {
+            loading.value = true
                 setTimeout(() => {
                     loading.value = false
                 }, 500);
                 selectedCategories.value = [{ "name": "Select All", "code": 0 }, { "name": "Wellness Supplements", "code": 1 },{ "name": "Fertility Supplements", "code": 2 }]
                 Products.value = productTmp
                 exitLoop = true;
-            }
+                return true; // Return from the loop
+        }
+        else{
             filteredCategories = filteredCategories.filter((product : any) =>
-          product.categoryName.toLowerCase().includes(element.name.toLowerCase())
-        );
-        console.log(element.name);
-        });
+            product.categoryName.toLowerCase().includes(element.name.toLowerCase())
+            );
+            console.log(filteredCategories);
+            console.log(element.name);
+        }
+        }); 
         if (exitLoop) {
             Products.value = productTmp
             return; // Exit the function
@@ -204,7 +218,9 @@ watch(selectedCategories, () => {
             loading.value = false
         }, 500);
       }
-});
+}
+
+
 
 const contactUs = () => {
     isDialogVisible.value = false

@@ -51,7 +51,7 @@ const getProduct = async () => {
     Product.value.product_icons = JSON.parse(Product.value.product_icons)  
     items.value = [
         {label: 'products' , route: '/products', to:'/products'},
-        {label: Product.value.categoryName , route: '/products', to:'/products' },
+        {label: Product.value.categoryName , route: `/products?filterCategory=${Product.value.categoryName}&categoryId=${Product.value.category_id}`, to:`/products?filterCategory=${Product.value.categoryName}&categoryId=${Product.value.category_id}` },
         {label: Product.value.name.split(' ').slice(0, 2).join(' ')},
     ];  
 }
