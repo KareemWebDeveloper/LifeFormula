@@ -347,7 +347,7 @@ const options = ref(['HOW TO TAKE IT', 'INGREDIENTS']);
                     <div class="px-2">
                         <p style="color: grey;" class="text-sm my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.categoryName}}</p>
                         <h3 class=" my-2" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">{{slotProps.data.name.split(' ').slice(0, 3).join(' ')}}</h3>
-                        <p class="text-sm my-2" :class="{'greenLogoColor' : slotProps.data.old_price , 'grey' : !slotProps.data.old_price}">{{ slotProps.data.price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">-{{slotProps.data.old_price}}%</span></p>
+                        <p class="text-sm my-2" :class="{'greenLogoColor' : slotProps.data.old_price , 'grey' : !slotProps.data.old_price}">${{ slotProps.data.price }} <span style="color: grey; text-decoration: line-through;" v-if="slotProps.data.old_price" class="mx-2">${{slotProps.data.old_price}}</span></p>
                         <h4 class="p-3 px-4 flex align-items-center AddToCart text-center justify-content-center" @click="addToCart(slotProps.data.id)">ADD TO CART <span class="material-symbols-outlined text-2xl mx-1 cursor-pointer">
                         shopping_cart
                     </span></h4>

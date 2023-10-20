@@ -158,9 +158,9 @@ const items = ref([
 
 watch(SearchValue, () => {
       console.log('myValue changed');
-      if(selectedCategories.value.length == 0) {
-        Products.value = productTmp
-      }
+    //   if(selectedCategories.value.length == 0) {
+    //     Products.value = productTmp
+    //   }
       // Perform actions or call functions
       const query = SearchValue.value.toLowerCase();
       if (query === '') {
@@ -377,7 +377,9 @@ const contactUs = () => {
 .p-multiselect-header{
     display: none !important;
 }
-
+.p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
+    top: 2vh;
+}
 @keyframes ldio-ujurhm9bi0c {
     0% { transform: rotate(0) }
     100% { transform: rotate(360deg) }

@@ -79,6 +79,11 @@ const router = createRouter({
       component: () => import('../views/ContentManagement/terms&conditions.vue')
     },
     {
+      path: '/dashboard/orders',
+      name: 'dashboard_orders',
+      component: () => import('../views/orders/OrdersList.vue')
+    },
+    {
       path: '/terms&conditions',
       name: 'termsConditions',
       component: () => import('../views/TermsConditions.vue')
