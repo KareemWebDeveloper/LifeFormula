@@ -113,7 +113,21 @@ function scrollToTop() {
       </div>
       <img src="../assets/aboutUs2.jpg" class="w-5 imageHoverr width75" style="border-radius: 20%;" alt="">
   </div>
-  <div class="w-12 md:w-8 m-auto text-center my-5">
+
+
+  <div class="w-full flex align-items-center lg:flex-row flexColumnRev p-5 paddingMob textCenterResp">
+    <img src="../assets/list-3227575_1920affordability_crop_1000.jpg" class="w-5 imageHoverr width75" style="border-radius: 20%;" alt="">
+    <div class="px-5 padding0">
+      <div class="flex align-items-center flexColumnn">
+        <h1 class="mt-2 margAuto">Affordability</h1>
+        <span class="material-symbols-outlined text-6xl mx-2">monetization_on</span>
+      </div>
+      <p class="w-11 darkGrey margAuto width95 justifyy textCenterMob"> At Life Formula, we believe that everyone should have access to high-quality vitamins and supplements, regardless
+        of their income. This is why we offer our products at affordable prices along with a variety of discounts and 
+        promotions to help our customers save money. </p>
+    </div>
+  </div>
+  <!-- <div class="w-12 md:w-8 m-auto text-center my-5">
     <div class="flex align-items-center my-2 justify-content-center m-auto">
       <h1 class="mt-2">Affordability</h1>
       <span class="material-symbols-outlined text-6xl mx-1">
@@ -125,7 +139,7 @@ function scrollToTop() {
        of their income. This is why we offer our products at affordable prices along with a variety of discounts and 
        promotions to help our customers save money.
     </p>
-  </div>
+  </div> -->
   <div class="w-10 m-auto text-center my-5">
     <h1>Start Your Wellness Journey</h1>
     <p>

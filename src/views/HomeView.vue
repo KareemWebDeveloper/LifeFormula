@@ -307,7 +307,7 @@ onMounted(() => {
 
 
 <!-- Reviews  -->
-<div class="p-0 lg:p-5 marginnn text-center">
+<!-- <div class="p-0 lg:p-5 marginnn text-center">
   <h3 class="text-center flex align-items-center m-auto justify-content-center darkGrey mb-5"><span class="material-symbols-outlined mx-2 text-5xl">
     reviews
     </span>OUR CUSTOMERS FEEDBACKS</h3>
@@ -350,7 +350,7 @@ onMounted(() => {
         <img src="../assets/user.png" class="absolute w-2" style="top: -30px; left: 20px;"  alt="">
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- // FAQ -->
 
