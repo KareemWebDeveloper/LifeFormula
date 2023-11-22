@@ -272,7 +272,7 @@ onMounted(() => {
   <Carousel :value="FeaturedProducts" :numVisible="1" :numScroll="1" orientation="vertical" circular verticalViewPortHeight="530px" 
   containerClass="w-full" contentClass="flex align-items-center">
     <template #item="slotProps">
-      <div class="p-4 CARD m-auto cursor-pointer" style="width: fit-content;" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
+      <div class="p-4 CARD m-auto cursor-pointer" style="width: fit-content;" >
         <div class="ProductImage" @click="push(`/products/${slotProps.data.id}`); scrollToTop()">
           <img :src="slotProps.data.image" class="productt" alt="">
           <span class="material-symbols-outlined appearOnHover">
