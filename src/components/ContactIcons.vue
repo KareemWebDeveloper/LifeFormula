@@ -42,7 +42,7 @@ const sendMail = (req : any) => {
 }
 </script>
 <template>
-    <Dialog v-model:visible="isDialogVisible" modal header="Life Formula" :style="{ width: '55vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
+    <Dialog v-model:visible="isDialogVisible"  @after-hide="formCreated = false" modal header="Life Formula" :style="{ width: '55vw' }" :breakpoints="{ '960px': '75vw', '641px': '100vw' }">
         <div v-if="!formCreated" class="ContactUsForm">
             <h4 class="text-center p-2 my-2">Contact Us</h4>
             <p class="GrotesqueFont w-9 width90 text-center m-auto my-2">Please provide us with a valid and active email so we can easily and effectively contact you as soon as possible</p>
