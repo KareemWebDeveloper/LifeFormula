@@ -51,6 +51,9 @@ const getProducts = async () => {
         selectedCategories.value = {"name": redirectedFilterCategory.value , "code" : parseInt(currentRoute.value.query.categoryId as string)}
         filterProductsByCategories()
     }
+    if(currentRoute.value.query.filterProduct){
+        SearchValue.value = currentRoute.value.query.filterProduct
+    }
 }
 
 const getCategories = async () => {

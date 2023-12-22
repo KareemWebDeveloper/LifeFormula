@@ -31,16 +31,16 @@ onBeforeMount(() => {
         <div v-if="Blog" class="marginn w-11">
             <!-- <h1 class="text-center">Blog</h1> -->
             <div v-for="(article,index) in Blog" :key="index">
-                <div v-if="article.product_article" class="divBg py-4 px-2 md:px-4 my-5" style="border-radius: 10px;">
+                <div v-if="article.product_article" class="py-4 px-1 md:px-4 my-5" style="border-radius: 10px;">
                     <div class="flex justify-content-between align-items-center my-2">
                         <div class="image-container m-auto mb-2 cursor-pointer" @click="push(`/products/${article.id}`)">
                             <img :src="article.image" style="border-radius: 10px;width: 250px;height: 200px;" alt="">
                             <div class="text-overlay" style="width: 250px">
-                                <p class="text-sm w-full text-center m-0 p-0" style="text-shadow: 0px 0px 4px black;">{{ article.name }}</p>
+                                <p class="text-sm w-full m-0 p-0" style="text-shadow: 0px 0px 4px black;">{{ article.name }}</p>
                             </div>
                         </div>
                     </div>
-                    <div v-html="article.product_article">
+                    <div class="text-sm text-left" v-html="article.product_article">
                     </div>
                     <div class="mx-3">
                         <div class="w-full flex justify-content-center">
@@ -53,9 +53,7 @@ onBeforeMount(() => {
     </div>
 </template>
 <style>
-.blog *{
-    text-align: center;
-}
+
 .marginn{
     margin: 20vh auto 2vh;
 }

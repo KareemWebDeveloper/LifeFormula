@@ -6,9 +6,12 @@ import { AES, enc } from 'crypto-js';
 import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 import axios from 'axios'
+import InputText from 'primevue/inputtext';
 
 const { push } = useRouter();
 const canAccessDashBoard = ref(false)
+const showSearchBar = ref(false)
+const searchKey = ref()
 const isDialogVisible = ref(false)
 const Authenticated = ref(false)
 const formCreated = ref(false)
@@ -36,6 +39,11 @@ onBeforeMount(() => {
      });
   }
 })
+
+const globalSearch = () => {
+    push({ path : '/products' , query : {filterProduct : searchKey.value}})
+    visible.value = false
+}
 
 let visible = ref(false)
 function scrollToTop() {
@@ -119,7 +127,14 @@ const sendMail = (req : any) => {
                     <router-link to="/products" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">Shop</router-link> 
                     <router-link to="/" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="isDialogVisible = true">Contact Us</router-link> 
                 </div>
-                <div class="pl-5">
+                <div class="pl-5 flex align-items-center">
+                    <span v-if="!showSearchBar" @click="showSearchBar = true" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
+                        search
+                    </span>
+                    <span v-if="showSearchBar" class="flipleft animation-duration-300 animation-iteration-1 p-input-icon-left">
+                        <i class="pi pi-search cursor-pointer" @click="globalSearch" />
+                        <InputText v-model="searchKey" class="font-bold" placeholder="Search Products" />
+                    </span>
                     <span v-if="canAccessDashBoard" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover" @click="push('/dashboard')">
                         dashboard
                     </span>
@@ -170,6 +185,10 @@ const sendMail = (req : any) => {
             <hr>
         </div>
         <div class="flex flex-column m-auto text-left p-3 px-3">
+            <span class="flipleft animation-duration-300 animation-iteration-1 p-input-icon-left">
+                <i class="pi pi-search cursor-pointer" @click="globalSearch" />
+                <InputText v-model="searchKey" class="font-bold" placeholder="Search Products" />
+            </span>
             <router-link to="/" class="flex align-items-center my-3 no-underline colorHover" @click="scrollToTop();" style="color: #30364b;"><span class="material-symbols-outlined text-2xl mx-2">home</span>
                 Home
             </router-link> 
@@ -181,6 +200,9 @@ const sendMail = (req : any) => {
     </Sidebar>
 </template>
 <style>
+.searchInput:focus{
+    outline: none;
+}
 nav{
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.302);
