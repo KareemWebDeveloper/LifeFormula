@@ -41,7 +41,7 @@ onBeforeMount(() => {
                 <div class="paddingMob lg:p-5">
                     <h1 class="tajwal md:px-1 lg:px-4 font-bold w-full md:mt-2 lg:mt-0 md:text-center lg:text-left lg:w-10">MFS : Empowering Male Fertility Naturally for a Joyful Future</h1>
                     <p class="tajwal py-2 md:px-1 lg:px-3">Reignite your fertility journey with our breakthrough natural supplement</p>
-                    <p class="md:px-1 lg:px-3 underline cursor-pointer">READ MORE</p>
+                    <!-- <p class="md:px-1 lg:px-3 underline cursor-pointer">READ MORE</p> -->
                 </div>
                 <img src="../assets/blogs1.jpg" style="border-bottom-right-radius: 8px; border-top-right-radius: 8px;" class="borderRounded max-h-25rem w-full md:w-7" alt="">
             </div>

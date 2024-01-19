@@ -8,7 +8,7 @@ import Button from 'primevue/button';
 import axios from 'axios'
 import InputText from 'primevue/inputtext';
 
-const { push } = useRouter();
+const { push , currentRoute } = useRouter();
 const canAccessDashBoard = ref(false)
 const showSearchBar = ref(false)
 const searchKey = ref()
@@ -52,6 +52,12 @@ function scrollToTop() {
     top: 0,
     behavior: 'smooth'
   });
+}
+
+function goToBlog(){
+    if(currentRoute.value.path == '/blog'){
+        location.reload();
+    }
 }
 
 const sendMail = (req : any) => {
@@ -123,7 +129,7 @@ const sendMail = (req : any) => {
                 <div>
                     <router-link to="/" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">Home</router-link> 
                     <router-link to="/about" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">About Us</router-link> 
-                    <router-link to="/blog" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">Blog</router-link> 
+                    <router-link to="/blog" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop(); goToBlog();">Blog</router-link> 
                     <router-link to="/products" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="scrollToTop()">Shop</router-link> 
                     <router-link to="/" class="mx-3 no-underline colorHover" style="color: #30364b;" @click="isDialogVisible = true">Contact Us</router-link> 
                 </div>
@@ -131,9 +137,10 @@ const sendMail = (req : any) => {
                     <span v-if="!showSearchBar" @click="showSearchBar = true" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover">
                         search
                     </span>
-                    <span v-if="showSearchBar" class="flipleft animation-duration-300 animation-iteration-1 p-input-icon-left">
-                        <i class="pi pi-search cursor-pointer" @click="globalSearch" />
-                        <InputText v-model="searchKey" class="font-bold" placeholder="Search Products" />
+                    <span v-if="showSearchBar" class="searchBar flipleft animation-duration-300 animation-iteration-1 p-input-icon-left">
+                        <InputText @keyup.enter="globalSearch" v-model="searchKey" class="font-bold" placeholder="Search Products" />
+                        <i class="pi pi-search searchBtn cursor-pointer" @click="globalSearch" />
+                        <i class="pi pi-times cancelButton cursor-pointer" @click="searchKey = ''; if(currentRoute.path == '/' || currentRoute.path !== '/products'){showSearchBar = false;} else{showSearchBar = false; push('/');}" />
                     </span>
                     <span v-if="canAccessDashBoard" class="material-symbols-outlined text-4xl mx-1 cursor-pointer colorHover fontHover" @click="push('/dashboard')">
                         dashboard
@@ -200,6 +207,19 @@ const sendMail = (req : any) => {
     </Sidebar>
 </template>
 <style>
+.searchBar .p-inputtext{
+    position: relative;
+}
+.searchBtn{
+    position: absolute;
+    left: 0.3rem;
+    color: #495057;
+}
+.cancelButton{
+    position: absolute;
+    right: 0.7rem;
+    color: #495057;
+}
 .searchInput:focus{
     outline: none;
 }
