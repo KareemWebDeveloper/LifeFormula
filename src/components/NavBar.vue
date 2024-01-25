@@ -35,12 +35,22 @@ onBeforeMount(() => {
     axios.get('https://api-lifeformula.com/api/userProfile').then((result) => {
          userInfo.value = result.data.user
      }).catch((err) => {
+        Authenticated.value = false
+        localStorage.removeItem('LF_Token')
         console.log(err);
      });
   }
 })
 
 const globalSearch = () => {
+    if(currentRoute.value.path == '/products'){
+        push({ path : '/products' , query : {filterProduct : searchKey.value}})
+        setTimeout(() => {
+            location.reload()
+        }, 200);
+        visible.value = false   
+        return
+    }
     push({ path : '/products' , query : {filterProduct : searchKey.value}})
     visible.value = false
 }
